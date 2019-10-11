@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 740621000113938108}
   - component: {fileID: 5218115152465227478}
   - component: {fileID: 2884057999616612730}
-  - component: {fileID: 5899274844901998193}
   - component: {fileID: 1887245343931298634}
   - component: {fileID: 1049541455913165154}
+  - component: {fileID: 5899274844901998193}
   m_Layer: 0
   m_Name: PianoFlag
   m_TagString: Untagged
@@ -94,20 +94,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5899274844901998193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810600777744568548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e153f2d95e2be1429b28512272a82be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitSound: {fileID: 8300000, guid: 7ff4472b5181adf4a8079407bf7eb8ba, type: 3}
-  missSound: {fileID: 8300000, guid: 5d43f651490c46741a28e9d7a41b278e, type: 3}
 --- !u!54 &1887245343931298634
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -220,3 +206,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5899274844901998193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810600777744568548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e153f2d95e2be1429b28512272a82be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 3525917342036512841, guid: 95ddd4857d0ffeb4fbd941a90651e6d9,
+    type: 3}
+  hitSound: {fileID: 8300000, guid: 7ff4472b5181adf4a8079407bf7eb8ba, type: 3}
+  missSound: {fileID: 8300000, guid: 5d43f651490c46741a28e9d7a41b278e, type: 3}
