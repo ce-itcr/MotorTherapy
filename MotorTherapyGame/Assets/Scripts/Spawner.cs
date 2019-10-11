@@ -15,16 +15,22 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        createNote(TilesColors.Colors.Red);
-        createNote(TilesColors.Colors.Green);
-        createNote(TilesColors.Colors.Blue);
-        createNote(TilesColors.Colors.Yellow);
+        StartCoroutine(TestNotes());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator TestNotes()
     {
-        
+        createNote(TilesColors.Colors.Red);
+        yield return new WaitForSeconds(2);
+        createNote(TilesColors.Colors.Green);
+        yield return new WaitForSeconds(1);
+        createNote(TilesColors.Colors.Blue);
+        yield return new WaitForSeconds(1);
+        createNote(TilesColors.Colors.Yellow);
+        yield return new WaitForSeconds(2);
+        createNote(TilesColors.Colors.Green);
+        yield return new WaitForSeconds(1);
+        createNote(TilesColors.Colors.Yellow);
     }
 
     private void createNote(TilesColors.Colors color)
