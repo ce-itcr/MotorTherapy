@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AuthManager : MonoBehaviour {
@@ -15,7 +16,8 @@ public class AuthManager : MonoBehaviour {
     [SerializeField] private GameObject LoginGroup = null;
     [SerializeField] private GameObject RegisterGroup = null;
 
-    void Start () {
+    void Start()
+    {
         InitializeFirebase();
     }
 
@@ -92,8 +94,11 @@ public class AuthManager : MonoBehaviour {
             Firebase.Auth.FirebaseUser newUser = task.Result;
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
+
+            SceneManager.LoadScene("AppInterface");
         });
     }
+
 
     public void ShowLoginGroup()
     {
