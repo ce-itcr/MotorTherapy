@@ -5,6 +5,8 @@ from src.lexical.Tokens import reserved
 
 
 # Regular expressions for simple tokens
+t_EQUAL = r'\='
+t_COMMA = r'\,'
 t_SEMCOL = r'\;'
 t_PLUS = r'\+'
 t_MINUS = r'-'
@@ -20,7 +22,7 @@ t_RSPAREN = r'\]'
 
 # Rule to define identifiers
 def t_ID(t):
-    r'[a-zA-Z_][a-zA-Z0-9_-&@]*'
+    r'[a-zA-Z_][a-zA-Z_0-9]*'
     t.type = reserved.get(t.value, 'ID')
     return t
 

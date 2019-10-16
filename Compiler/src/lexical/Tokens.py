@@ -30,10 +30,13 @@ reserved = {
 # List of token names
 tokens = [
     # SYMBOLS
+    'ID',
     'SEMCOL',
+    'COMMA',
     'NUMBER',
 
     # OPERATORS
+    'EQUAL',
     'PLUS',
     'MINUS',
     'MULTI',
