@@ -8,6 +8,7 @@ from src.lexical.Tokens import reserved
 t_EQUAL = r'\='
 t_COMMA = r'\,'
 t_SEMCOL = r'\;'
+t_QUOTE = r'\"'
 t_PLUS = r'\+'
 t_MINUS = r'-'
 t_MULTI = r'\*'

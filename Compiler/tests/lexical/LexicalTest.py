@@ -59,5 +59,6 @@ def types_test():
     int x = 20 * 3 / 10;
     int y = 2 + x - 10;
     string(10) color[10];
+    string(6) name = Jose;
     '''
     printTokens(consume(data))

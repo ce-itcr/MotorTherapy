@@ -33,6 +33,7 @@ tokens = [
     'ID',
     'SEMCOL',
     'COMMA',
+    'QUOTE',
     'NUMBER',
 
     # OPERATORS
