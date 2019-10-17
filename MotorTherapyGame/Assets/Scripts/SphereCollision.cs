@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using UnityEngine.XR.WSA.WebCam;
@@ -32,4 +33,10 @@ public class SphereCollision : MonoBehaviour
         }
         
     }
+    
+    public void OpenAppInterface()
+    {
+        SceneManager.LoadScene("AppInterface");
+    }
+    
 }
