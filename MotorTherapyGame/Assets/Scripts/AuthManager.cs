@@ -9,7 +9,8 @@ public class AuthManager : MonoBehaviour {
     protected Firebase.Auth.FirebaseAuth auth;
     protected Firebase.Auth.FirebaseUser user;
     private string displayName;
-
+    public Text errorMsgs;
+    
     [SerializeField] private InputField inputFieldEmail = null;
     [SerializeField] private InputField inputFieldPassword = null;
 
@@ -55,12 +56,14 @@ public class AuthManager : MonoBehaviour {
         auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
             if (task.IsCanceled)
             {
-                Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
+                //Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
+                errorMsgs.text = "CreateUserWithEmailAndPasswordAsync was canceled.";
                 return;
             }
             if (task.IsFaulted)
             {
-                Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                //Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                errorMsgs.text = "CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception;
                 return;
             }
 
@@ -82,12 +85,14 @@ public class AuthManager : MonoBehaviour {
         auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
             if (task.IsCanceled)
             {
-                Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
+                //Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
+                errorMsgs.text = "SignInWithEmailAndPasswordAsync was canceled.";
                 return;
             }
             if (task.IsFaulted)
             {
-                Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                //Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                errorMsgs.text = "SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception;
                 return;
             }
 
@@ -98,8 +103,7 @@ public class AuthManager : MonoBehaviour {
             SceneManager.LoadScene("AppInterface");
         });
     }
-
-
+    
     public void ShowLoginGroup()
     {
         LoginGroup.SetActive(true);
