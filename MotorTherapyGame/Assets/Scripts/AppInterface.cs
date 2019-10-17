@@ -54,4 +54,8 @@ public class AppInterface : MonoBehaviour
     public void OpenPianoGame() {
         SceneManager.LoadScene("Scenes/PianoScene");
     }
+    
+    public void OpenBalloonsGame() {
+        SceneManager.LoadScene("Scenes/Balloons");
+    }
 }
