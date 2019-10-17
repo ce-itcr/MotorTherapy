@@ -1,64 +1,115 @@
 from src.lexical.Lexical import *
 
 
+ok = "OK"
+
+
+# Main function to run the test
 def lexical_test():
-    print("Lexical_TEST")
+    print("\nLexical_TEST running... ")
 
-    print("\nGame_TEST")
     game_test()
-
-    print("\nLoops_TEST")
     loops_test()
-
-    print("\nTypes_TEST")
     types_test()
+    symbols_test()
+    functions_test()
+    operators_test()
+    containers_test()
+
+    print(ok)
 
 
 def game_test():
+    print("\tGame_TEST running... ", end='')
+
     data = '''
     // Start of the game
     Begin
-
     Main { }
-    
-    // Balloons
     Game1 { }
-    
-    // Piano
     Game2 { }
-    
-    // CobWeb
     Game3 { }
-    
-    // Targets
     Game4 { }
-    
     End;
     '''
-    printTokens(consume(data))
+    consume(data)
+    print(ok)
 
 
 def loops_test():
+    print("\tLoops_TEST running... ", end='')
+
     data = '''
     // Loops
-    Dow(i)
-	Enddo;
-	
-	FOR 5 times using color
-    FOREND;
-    
-    ForAsignWord(rows, columns) DO
-	AsignWord(words, points);
+    Dow(i)	Enddo;
+	FOR 5 times using color FOREND;
+    ForAsignWord(rows, columns) DO AsignWord(words, points);
     '''
-    printTokens(consume(data))
+
+    consume(data)
+    print(ok)
 
 
 def types_test():
+    print("\tTypes_TEST running... ", end='')
+
     data = '''
     // Types
-    int x = 20 * 3 / 10;
-    int y = 2 + x - 10;
+    int x;
     string(10) color[10];
-    string(6) name = Jose;
     '''
-    printTokens(consume(data))
+    consume(data)
+    print(ok)
+
+
+def symbols_test():
+    print("\tSymbols_TEST running... ", end='')
+
+    data = '''
+    // Symbols
+    x = 29876;
+    myName = "Jose Daniel";
+    comma = ,
+    '''
+    consume(data)
+    print(ok)
+
+
+def functions_test():
+    print("\tFunctions_TEST running... ", end='')
+
+    data = '''
+    // Functions
+    Balloon();
+    Inc();
+    Dec();
+    Random();
+    ForAsignWord();
+    AsignWord();
+    Object();
+    SpiderWeb();
+    '''
+    consume(data)
+    print(ok)
+
+
+def operators_test():
+    print("\tOperators_TEST running... ", end='')
+
+    data = '''
+        // Operators
+        = + - * /
+        '''
+    consume(data)
+    print(ok)
+
+
+def containers_test():
+    print("\tContainers_TEST running... ", end='')
+
+    data = '''
+        // Containers
+        () [] {}
+        '''
+    consume(data)
+    print(ok)

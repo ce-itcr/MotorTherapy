@@ -3,8 +3,9 @@ import os
 
 
 def game_test():
-    print("\nGame_TEST")
-    printTokens(consume(read_file()))
+    print("\nGame_TEST running...")
+    consume(read_file())
+    print("OK")
 
 
 # Reads the game.txt file
@@ -13,7 +14,7 @@ def read_file():
     cur_path = os.path.dirname(__file__)
     path = os.path.relpath('game.txt', cur_path)
     file = open(path, "r")
-    print("Open file:", file.name)
+    print("\tOpen file:", file.name)
 
     # Read the file
     line = file.read()

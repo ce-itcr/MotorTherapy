@@ -1,5 +1,5 @@
 # @Author Jose Daniel Acuna
-# Last time edited 10/12/19
+# Last time edited 10/16/19
 
 
 # Regular expressions for simple tokens
@@ -52,7 +52,7 @@ t_SPIDERWEB = 'SpiderWeb'
 t_ID = r'[a-z][a-zA-Z0-9_&@-]*'
 
 # Rule for strings
-t_TEXT = r'"[a-zA-Z0-9]*"'
+t_TEXT = r'"[a-zA-Z0-9_ ]*"'
 
 
 # Rule to define a integers
