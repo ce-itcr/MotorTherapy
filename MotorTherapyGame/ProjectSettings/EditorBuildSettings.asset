@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Targets.unity
     guid: 4d47cbefa833b924fb10df3b8c960e7c
+  - enabled: 1
+    path: Assets/Scenes/CobWeb.unity
+    guid: c5997e97b4b02ea4e94acb902e6fd5bc
   m_configObjects: {}

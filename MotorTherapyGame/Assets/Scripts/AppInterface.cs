@@ -43,8 +43,11 @@ public class AppInterface : MonoBehaviour
         SettingsCanvas.SetActive(true);
     }
 
-    public void OpenTargetsGame()
-    {
+    public void OpenTargetsGame() {
         SceneManager.LoadScene("Scenes/Targets");
+    }
+    
+    public void OpenCobWebGame() {
+        SceneManager.LoadScene("Scenes/CobWeb");
     }
 }

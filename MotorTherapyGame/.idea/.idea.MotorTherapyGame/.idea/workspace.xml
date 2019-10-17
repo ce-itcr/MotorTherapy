@@ -3,21 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="4da6729e-4a64-4372-b46e-ea87ea6ea522" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MotorTherapyGame/riderModule.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AppInterface.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AppInterface.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AuthManager.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AuthManager.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Targets.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Targets.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CobWeb.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CobWeb.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AppInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AppInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SphereCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SphereCollision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/EditorInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorInstance.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/49/49ae34d21386c5e4e8073fdc6c9fe1df" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
@@ -41,8 +37,8 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/AuthManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CardsManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AppInterface.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SphereCollision.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AppInterface.cs" />
       </list>
     </option>
   </component>
@@ -107,6 +103,7 @@
       <workItem from="1571247994868" duration="269000" />
       <workItem from="1571272628953" duration="596000" />
       <workItem from="1571276927159" duration="2431000" />
+      <workItem from="1571281110851" duration="655000" />
     </task>
     <servers />
   </component>
