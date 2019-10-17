@@ -6,6 +6,7 @@
     <e p="C:\Users\angel\Documents\ce-itcr\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+<<<<<<< HEAD
         <e p="Firebase" t="Include">
           <e p="m2repository" t="Include">
             <e p="com" t="Include">
@@ -30,6 +31,11 @@
           <e p="AuthManager.cs" t="Include" />
           <e p="SphereCollision.cs" t="Include" />
           <e p="TimerCountdown.cs" t="Include" />
+=======
+        <e p="Scripts" t="Include">
+          <e p="CardsManager.cs" t="Include" />
+          <e p="PlayerController.cs" t="Include" />
+>>>>>>> feature-cobweb
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
