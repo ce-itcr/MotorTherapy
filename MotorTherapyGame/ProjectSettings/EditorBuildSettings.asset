@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CobWeb.unity
     guid: c5997e97b4b02ea4e94acb902e6fd5bc
+  - enabled: 1
+    path: Assets/Scenes/PianoScene.unity
+    guid: 8c244c3b5edac0549ab00591243f35fe
   m_configObjects: {}

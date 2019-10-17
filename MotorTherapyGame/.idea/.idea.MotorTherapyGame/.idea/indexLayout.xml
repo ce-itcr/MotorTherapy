@@ -14,10 +14,7 @@
     </explicitIncludes>
     <explicitExcludes>
       <Path>.idea</Path>
-<<<<<<< HEAD
-=======
       <Path>.vs</Path>
->>>>>>> feature-piano
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Temp</Path>

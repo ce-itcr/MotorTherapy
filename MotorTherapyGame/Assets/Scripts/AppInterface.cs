@@ -50,4 +50,8 @@ public class AppInterface : MonoBehaviour
     public void OpenCobWebGame() {
         SceneManager.LoadScene("Scenes/CobWeb");
     }
+    
+    public void OpenPianoGame() {
+        SceneManager.LoadScene("Scenes/PianoScene");
+    }
 }
