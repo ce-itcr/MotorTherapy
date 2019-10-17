@@ -9,13 +9,13 @@ public class Score : MonoBehaviour
 
     public Text scoreText;
     public string tag = "";
-    private int score = 0;
+    private int _score = 0;
     
     // Update is called once per frame
     private void Update()
     {
-        scoreText.text = $"{tag} : {score.ToString()}";
+        scoreText.text = $"{tag} : {_score.ToString()}";
     }
 
-    public void AddScore() => score += 1;
+    public void AddScore() => _score += 1;
 }
