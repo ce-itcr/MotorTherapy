@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":true,"showSkybox":false,"showFlares":false,"showImageEffects":true,"showParticleSystems":false},"in2DMode":true,"pivot":{"x":25.304935455322267,"y":-99.27947998046875,"z":8.560124397277832},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":-1.0},"size":1161.384521484375,"orthographic":true}
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":true,"showSkybox":false,"showFlares":false,"showImageEffects":true,"showParticleSystems":false},"in2DMode":false,"pivot":{"x":0.0,"y":0.0,"z":0.0},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":-1.0},"size":20.307249069213868,"orthographic":true}
+>>>>>>> feature-targets
