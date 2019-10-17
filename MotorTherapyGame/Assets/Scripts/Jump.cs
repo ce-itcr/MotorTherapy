@@ -16,21 +16,22 @@ public class Jump : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         rb.velocity = Vector3.zero;
-        if (Random.value > 0.5f)
-        {
-            rb.AddForce(1000 * Time.deltaTime, 20000 * Time.deltaTime, 0);
+        if (collision.gameObject.tag.Equals("Player")) {
+            Score.instance.score++;
         }
-        else
+        if (Random.value > 0.5f) {
+            rb.AddForce(1000 * Time.deltaTime, 20000 * Time.deltaTime, 0);
+        } else {
             rb.AddForce(-1000 * Time.deltaTime, 20000 * Time.deltaTime, 0);
+        }
     }
 
     public void OnMouseDown() {
         rb.velocity = Vector3.zero;
-        if (Random.value > 0.5f)
-        {
+        if (Random.value > 0.5f) {
             rb.AddForce(1000 * Time.deltaTime, 5000 * Time.deltaTime, 0);
-        }
-        else
+        } else {
             rb.AddForce(-1000 * Time.deltaTime, 5000 * Time.deltaTime, 0);
+        }
     }
 }
