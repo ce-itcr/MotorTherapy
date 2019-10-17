@@ -7,6 +7,7 @@ def game_test():
     printTokens(consume(read_file()))
 
 
+# Reads the game.txt file
 def read_file():
     # Open the file
     cur_path = os.path.dirname(__file__)

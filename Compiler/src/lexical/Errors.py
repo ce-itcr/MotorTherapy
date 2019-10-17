@@ -4,5 +4,6 @@
 
 # Error handling for invalid characters
 def t_error(t):
-    print("Illegal character '%s'" % t.value[0])
-    t.lexer.skip(1)
+    error = "Lexical error: {0} in line {1}".format(t.value[0], t.lineno)
+    print(error)
+    exit(1)

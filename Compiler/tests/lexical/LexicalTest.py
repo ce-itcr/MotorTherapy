@@ -44,7 +44,7 @@ def loops_test():
     Dow(i)
 	Enddo;
 	
-	FOR 5 times using Color
+	FOR 5 times using color
     FOREND;
     
     ForAsignWord(rows, columns) DO

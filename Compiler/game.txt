@@ -40,9 +40,9 @@ points[2] = 8;
 color[3] = "yellow";
 points[3] = 4;
 
-Random(Color, cant, time);
+Random(color, cant, time);
 
-FOR 5 times using Color
+FOR 5 times using color
 	Random(cant, time);
 	Inc(cant, 3);
 	Dec(time, 10);

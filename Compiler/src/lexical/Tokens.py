@@ -2,38 +2,32 @@
 # Last time edited 10/12/19
 
 
-# List of keywords
-reserved = {
-    # LOOPS
-    'Begin': 'BEGIN',
-    'End': 'END',
-    'DO': 'DO',
-    'Dow': 'DOW',
-    'Enddo': 'ENDDO',
-    'FOR': 'FOR',
-    'FOREND': 'FOREND',
-    'times': 'TIMES',
-    'using': 'USING',
-
-    # GAME
-    'Main': 'MAIN',
-    'Game1': 'GAME1',
-    'Game2': 'GAME2',
-    'Game3': 'GAME3',
-    'Game4': 'GAME4',
-
-    # TYPES
-    'int': 'INT',
-    'string': 'STRING',
-}
-
 # List of token names
 tokens = [
+    # LOOPS
+    'BEGIN',
+    'END',
+    'DO',
+    'DOW',
+    'ENDDO',
+    'FOR',
+    'FOREND',
+    'TIMES',
+    'USING',
+
+    # GAME
+    'MAIN',
+    'GAME',
+
+    # TYPES
+    'INT',
+    'STRING',
+
     # SYMBOLS
     'ID',
     'SEMCOL',
     'COMMA',
-    'QUOTE',
+    'TEXT',
     'NUMBER',
 
     # OPERATORS
@@ -51,4 +45,13 @@ tokens = [
     'LSPAREN',
     'RSPAREN',
 
-] + list(reserved.values())
+    # FUNCTIONS
+    'BALLOON',
+    'INC',
+    'DEC',
+    'RANDOM',
+    'FORASIGNWORD',
+    'ASIGNWORD',
+    'OBJECT',
+    'SPIDERWEB',
+]
