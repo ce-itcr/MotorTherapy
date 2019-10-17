@@ -71,6 +71,28 @@ public class AuthManager : MonoBehaviour {
             Firebase.Auth.FirebaseUser newUser = task.Result;
             Debug.LogFormat("Firebase user created successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
+            
+            // MotorTherapy send an email verification
+            Firebase.Auth.FirebaseUser user = auth.CurrentUser;
+            if (user != null)
+            {
+                user.SendEmailVerificationAsync().ContinueWith(taskEV =>
+                {
+                    if (task.IsCanceled)
+                    {
+                        Debug.LogError("SendEmailVerificationAsync was canceled.");
+                        return;
+                    }
+
+                    if (task.IsFaulted)
+                    {
+                        Debug.LogError("SendEmailVerificationAsync encountered an error: " + taskEV.Exception);
+                        return;
+                    }
+                    Debug.Log("Email sent successfully.");
+                });
+            }
+        
 
             ShowLoginGroup();
         });
