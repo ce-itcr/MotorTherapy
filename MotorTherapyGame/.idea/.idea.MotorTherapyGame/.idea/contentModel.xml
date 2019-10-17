@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+<<<<<<< HEAD
     <e p="C:\Users\angel\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\angel\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.469352631.00" t="ExcludeRecursive" />
     <e p="C:\Users\angel\Documents\ce-itcr\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
@@ -100,6 +101,24 @@
           <e p="Sprites" t="Include">
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
+=======
+    <e p="C:\Users\José Acuña\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.-1786982385.00" t="ExcludeRecursive" />
+    <e p="F:\Projects\Unity\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Fonts" t="Include">
+          <e p="Roboto" t="Include">
+            <e p="LICENSE.txt" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="GameController.cs" t="Include" />
+          <e p="Note.cs" t="Include" />
+          <e p="PianoFlag.cs" t="Include" />
+          <e p="Score.cs" t="Include" />
+          <e p="Spawner.cs" t="Include" />
+          <e p="TilesColors.cs" t="Include" />
+>>>>>>> feature-piano
         </e>
       </e>
       <e p="MotorTherapyGame.sln" t="IncludeFlat" />

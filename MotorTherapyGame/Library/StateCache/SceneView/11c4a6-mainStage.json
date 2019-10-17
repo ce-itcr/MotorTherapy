@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":true,"showSkybox":false,"showFlares":false,"showImageEffects":true,"showParticleSystems":false},"in2DMode":true,"pivot":{"x":25.304935455322267,"y":-99.27947998046875,"z":8.560124397277832},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":-1.0},"size":1161.384521484375,"orthographic":true}
 =======
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":true,"showSkybox":false,"showFlares":false,"showImageEffects":true,"showParticleSystems":false},"in2DMode":false,"pivot":{"x":0.0,"y":0.0,"z":0.0},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":-1.0},"size":20.307249069213868,"orthographic":true}
@@ -7,3 +8,10 @@
 =======
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":true,"showSkybox":false,"showFlares":false,"showImageEffects":true,"showParticleSystems":false},"in2DMode":false,"pivot":{"x":-2.4692940711975099,"y":0.09999847412109375,"z":1.0975126028060914},"rotation":{"x":0.7071068286895752,"y":0.0,"z":0.0,"w":0.7071068286895752},"size":77.10879516601563,"orthographic":false}
 >>>>>>> feature-cobweb
+=======
+<<<<<<< Updated upstream
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":true,"showSkybox":false,"showFlares":false,"showImageEffects":true,"showParticleSystems":false},"in2DMode":false,"pivot":{"x":4.860937595367432,"y":2.1479978561401369,"z":-15.073437690734864},"rotation":{"x":0.13903245329856873,"y":-0.47242385149002077,"z":0.07575380802154541,"w":0.8670334815979004},"size":48.7402229309082,"orthographic":true}
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":false,"showMaterialUpdate":true,"showSkybox":false,"showFlares":false,"showImageEffects":true,"showParticleSystems":false},"in2DMode":false,"pivot":{"x":-1.72265625,"y":5.521728515625,"z":-19.390625},"rotation":{"x":0.08910387754440308,"y":-0.13049033284187318,"z":0.011774654500186444,"w":0.9873672723770142},"size":49.30527877807617,"orthographic":true}
+>>>>>>> Stashed changes
+>>>>>>> feature-piano
