@@ -34,6 +34,9 @@
           <e p="AppInterface.cs" t="Include" />
           <e p="AuthManager.cs" t="Include" />
           <e p="CardsManager.cs" t="Include" />
+          <e p="Client" t="Include">
+            <e p="Client.cs" t="Include" />
+          </e>
           <e p="GameController.cs" t="Include" />
           <e p="Note.cs" t="Include" />
           <e p="PianoFlag.cs" t="Include" />
