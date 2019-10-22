@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\AppInterface.cs" />
     <Compile Include="Assets\Scripts\AuthManager.cs" />
     <Compile Include="Assets\Scripts\CardsManager.cs" />
+    <Compile Include="Assets\Scripts\Client\Client.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Jump.cs" />
     <Compile Include="Assets\Scripts\Note.cs" />
