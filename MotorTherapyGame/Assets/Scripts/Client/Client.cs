@@ -1,79 +1,96 @@
 ﻿using System;
+using System.IO;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using UnityEngine;
 
+/**
+ * @Author Jose Acuna
+ * Last time edited 22/10/19 by Jose Acuna
+ * @Reference https://gist.github.com/danielbierwirth/0636650b005834204cb19ef5ae6ccedb
+ */
 namespace Client
 {
     public class Client : MonoBehaviour
     {
         private TcpClient _socket;
-        private Thread _thread;
-        private const string Ip = "127.0.0.1";
-        private const int Port = 8888;
+        private string _ip = "127.0.0.1";
+        private int _port = 8888;
 
+        public void Message(string message)
+        {
+            var thread = new Thread(() => 
+            {
+                Connect();
+                Send(message);
+                Listen();
+                Disconnect();
+            });
+            thread.Start();
+        }
+        
         private void Start()
         {
-            Connect();
+            Debug.Log("Client starting...");
         }
 
         private void OnDestroy()
         {
-            _socket.Close();
-            _thread.Abort();
+            _socket?.Close();
         }
 
         private void Connect()
         {
             try
             {
-                Debug.Log("Client starting...");
-                _thread = new Thread(new ThreadStart(Listen)) {IsBackground = true};
-                _thread.Start();
+                _socket = new TcpClient(_ip, _port);
+                Debug.LogFormat("Client connected to {0}:{1}", _ip, _port);
             }
-            catch (Exception  e)
+            catch (SocketException  e)
             {
                 Debug.LogError(e);
             }
         }
 
-        private void Listen()
+        private void Disconnect()
         {
+            _socket.Close();
+            Debug.LogFormat("Client disconnected from {0}:{1}", _ip, _port);
+        }
+
+        private string Listen()
+        {
+            var serverMessage = "";
             try
             {
-                _socket = new TcpClient(Ip, Port);
-                Debug.LogFormat("Client connected to {0}:{1}", Ip, Port);
-                while (true)
-                {
-                    var stream = _socket.GetStream() ;
-                    var serverMessage = ReadStream(stream);
-                    Debug.LogFormat("Client receive: {0}", serverMessage);
-                }
+                var stream = _socket.GetStream() ;
+                serverMessage = ReadStream(stream);
+                Debug.LogFormat("Client receive: {0}", serverMessage);
             }
             catch (SocketException e)
             {
                 Debug.LogError(e);
             }
+            return serverMessage;
         }
 
         private string ReadStream(NetworkStream stream)
         {
-            var serverMessage = "";
-            var data = new byte[1024];
-            int length;
-            // Read incoming stream into byte array. 					
-            while ((length = stream.Read(data, 0, data.Length)) != 0)
-            {
-                var incomingData = new byte[length];
-                Array.Copy(data, 0, incomingData, 0, length);
-                // Convert byte array to string message. 						
-                serverMessage = Encoding.ASCII.GetString(incomingData);
+            var serverMessage = new StringBuilder();
+            var buffer = new byte[256];
+            
+            // Incoming message may be larger than the buffer size.
+            do{
+                var bytes = stream.Read(buffer, 0, buffer.Length);
+                serverMessage.AppendFormat("{0}", Encoding.ASCII.GetString(buffer, 0, bytes));
             }
-            return serverMessage;
+            while(stream.DataAvailable);
+            
+            return serverMessage.ToString();
         }
 
-        private void SendMessage(string message)
+        private void Send(string message)
         {
             if (_socket == null) return;
             try
@@ -82,13 +99,26 @@ namespace Client
                 if (!stream.CanWrite) return;
                 			
                 // Convert string message to byte array.
-                byte[] clientMessageAsByteArray = Encoding.ASCII.GetBytes(message);
+                var clientMessageAsByteArray = Encoding.ASCII.GetBytes(message);
                 stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);
+                Debug.LogFormat("Client send: {0}", message);
             }
             catch (SocketException e)
             {
                 Debug.LogError(e);
             }
+        }
+
+        public string Ip
+        {
+            get => _ip;
+            set => _ip = value;
+        }
+
+        public int Port
+        {
+            get => _port;
+            set => _port = value;
         }
     }
 }
