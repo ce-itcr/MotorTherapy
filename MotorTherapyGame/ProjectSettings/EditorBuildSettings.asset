@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Balloons.unity
     guid: e290b8fb5f180fe4aa2507d2a69e4289
+  - enabled: 1
+    path: Assets/Scenes/AppInterface.unity
+    guid: aebada7b6d9f2c740858a95a9f938e4a
   m_configObjects: {}

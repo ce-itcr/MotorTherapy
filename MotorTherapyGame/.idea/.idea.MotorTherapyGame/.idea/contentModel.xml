@@ -35,9 +35,15 @@
         <e p="Scripts" t="Include">
           <e p="AppInterface.cs" t="Include" />
           <e p="AuthManager.cs" t="Include" />
+          <e p="Ballons" t="Include">
+            <e p="Ballons.cs" t="Include" />
+          </e>
           <e p="CardsManager.cs" t="Include" />
           <e p="Client" t="Include">
             <e p="Client.cs" t="Include" />
+          </e>
+          <e p="CobWeb" t="Include">
+            <e p="CobWeb.cs" t="Include" />
           </e>
           <e p="Jump.cs" t="Include" />
           <e p="Piano" t="Include">
@@ -50,8 +56,38 @@
           </e>
           <e p="PlayerController.cs" t="Include" />
           <e p="Score.cs" t="Include" />
-          <e p="SphereCollision.cs" t="Include" />
-          <e p="TimerCountdown.cs" t="Include" />
+          <e p="Targets" t="Include">
+            <e p="SphereCollision.cs" t="Include" />
+            <e p="TimerCountdown.cs" t="Include" />
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+            <e p="Shaders" t="Include">
+              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+              <e p="TMP_Bitmap.shader" t="Include" />
+              <e p="TMP_SDF Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface.shader" t="Include" />
+              <e p="TMP_SDF.shader" t="Include" />
+              <e p="TMP_Sprite.shader" t="Include" />
+              <e p="TMPro.cginc" t="Include" />
+              <e p="TMPro_Properties.cginc" t="Include" />
+              <e p="TMPro_Surface.cginc" t="Include" />
+            </e>
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
+          </e>
         </e>
       </e>
       <e p="MotorTherapyGame.sln" t="IncludeFlat" />
