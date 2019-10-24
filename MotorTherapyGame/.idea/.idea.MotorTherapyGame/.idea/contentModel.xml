@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\José Acuña\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\José Acuña\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.-1786982385.00" t="ExcludeRecursive" />
-    <e p="F:\Projects\Unity\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
+    <e p="C:\Users\Alexander\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Alexander\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.1055752050.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Alexander\Documents\ce-itcr\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Firebase" t="Include">
@@ -55,6 +55,7 @@
             <e p="TilesColors.cs" t="Include" />
           </e>
           <e p="PlayerController.cs" t="Include" />
+          <e p="PopulateGrid.cs" t="Include" />
           <e p="Score.cs" t="Include" />
           <e p="Targets" t="Include">
             <e p="SphereCollision.cs" t="Include" />
