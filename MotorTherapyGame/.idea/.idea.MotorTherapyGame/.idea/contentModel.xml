@@ -45,6 +45,7 @@
           <e p="CobWeb" t="Include">
             <e p="CobWeb.cs" t="Include" />
           </e>
+          <e p="Game.cs" t="Include" />
           <e p="Jump.cs" t="Include" />
           <e p="Piano" t="Include">
             <e p="GameController.cs" t="Include" />

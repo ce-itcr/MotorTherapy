@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\CardsManager.cs" />
     <Compile Include="Assets\Scripts\Client\Client.cs" />
     <Compile Include="Assets\Scripts\CobWeb\CobWeb.cs" />
+    <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\Jump.cs" />
     <Compile Include="Assets\Scripts\Piano\GameController.cs" />
     <Compile Include="Assets\Scripts\Piano\Note.cs" />
