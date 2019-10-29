@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.ceitcr.motortherapy.login.LoginActivity;
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
@@ -36,12 +37,12 @@ public class IntroActivity extends AppIntro {
     @Override
     public void onDonePressed(Fragment currentFragment){
         super.onDonePressed(currentFragment);
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
 
     @Override
     public void onSkipPressed(Fragment currentFragment){
         super.onSkipPressed(currentFragment);
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
 }
