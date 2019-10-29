@@ -1,5 +1,7 @@
 {
-	"type": "piano",
+	"type": "",
+
+	"status": "",
   
   	"piano":
   	{
@@ -23,7 +25,7 @@
 	              {"name":"mountain", "points":8, "i":1, "j":1}]
 	},
 	  
-	"ballons":
+	"balloons":
 	{
 		"x": 300,
 	    "y": 200

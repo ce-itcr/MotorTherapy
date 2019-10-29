@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4451545, g: 0.49476475, b: 0.57382697, a: 1}
+  m_IndirectSpecularColor: {r: 0.44515383, g: 0.49476403, b: 0.57382566, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -182,8 +182,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: b679c1120a88352438cb4d4bb44e10ad, type: 3}
     m_FontSize: 36
@@ -349,6 +347,11 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 2147178845}
+    - target: {fileID: 5899274844901998193, guid: 253dfe489eebe4c4ba83b02133988dc2,
+        type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eb7718ec51b2c414aa87df1e8d0c7a96, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 253dfe489eebe4c4ba83b02133988dc2, type: 3}
 --- !u!224 &799718729 stripped
@@ -474,11 +477,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4075372173039849814, guid: 7753b34d77738204682473b7d644dcb6,
-        type: 3}
-      propertyPath: m_CullTransparentMesh
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4075372173039849896, guid: 7753b34d77738204682473b7d644dcb6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -493,6 +491,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075372173039849814, guid: 7753b34d77738204682473b7d644dcb6,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4075372172461146297, guid: 7753b34d77738204682473b7d644dcb6,
         type: 3}
@@ -706,6 +709,11 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 2147178845}
+    - target: {fileID: 5899274844901998193, guid: 253dfe489eebe4c4ba83b02133988dc2,
+        type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0fa414ebdf54c5541a469911981e89d3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 253dfe489eebe4c4ba83b02133988dc2, type: 3}
 --- !u!1 &872509640
@@ -763,8 +771,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9eae428d260ab204389512cf92c09196, type: 3}
     m_FontSize: 36
@@ -944,6 +950,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 54, y: 0, z: 0}
+--- !u!1 &1452660568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3765970084036892951, guid: 6353d354cd927aa48b1514a151801cd4,
+    type: 3}
+  m_PrefabInstance: {fileID: 8978386092030480877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1584917246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1053223717240671021, guid: 253dfe489eebe4c4ba83b02133988dc2,
@@ -1117,8 +1129,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: b679c1120a88352438cb4d4bb44e10ad, type: 3}
     m_FontSize: 36
@@ -1218,6 +1228,11 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 2147178845}
+    - target: {fileID: 5899274844901998193, guid: 253dfe489eebe4c4ba83b02133988dc2,
+        type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95c6ab8125e1d434da5d1ea285ce7a7a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 253dfe489eebe4c4ba83b02133988dc2, type: 3}
 --- !u!1 &2147178845 stripped
@@ -1256,6 +1271,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 2604661840598802514, guid: 95ddd4857d0ffeb4fbd941a90651e6d9,
+        type: 3}
+      propertyPath: hitText
+      value: 
+      objectReference: {fileID: 1668578510}
+    - target: {fileID: 2604661840598802514, guid: 95ddd4857d0ffeb4fbd941a90651e6d9,
+        type: 3}
+      propertyPath: missText
+      value: 
+      objectReference: {fileID: 236787308}
+    - target: {fileID: 2604661840598802514, guid: 95ddd4857d0ffeb4fbd941a90651e6d9,
+        type: 3}
+      propertyPath: noteSpawner
+      value: 
+      objectReference: {fileID: 1452660568}
     - target: {fileID: 3201870439984936330, guid: 95ddd4857d0ffeb4fbd941a90651e6d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1311,17 +1341,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2604661840598802514, guid: 95ddd4857d0ffeb4fbd941a90651e6d9,
-        type: 3}
-      propertyPath: hitText
-      value: 
-      objectReference: {fileID: 1668578510}
-    - target: {fileID: 2604661840598802514, guid: 95ddd4857d0ffeb4fbd941a90651e6d9,
-        type: 3}
-      propertyPath: missText
-      value: 
-      objectReference: {fileID: 236787308}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5746479827634450641, guid: 95ddd4857d0ffeb4fbd941a90651e6d9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 95ddd4857d0ffeb4fbd941a90651e6d9, type: 3}
 --- !u!1001 &5932552559536476130
 PrefabInstance:
@@ -1495,6 +1516,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2873781635242608125, guid: ef823c714f7416342a6678beb3f1a68e,
         type: 3}
+    - target: {fileID: 496001417057115215, guid: 6353d354cd927aa48b1514a151801cd4,
+        type: 3}
+      propertyPath: finished
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1303403869329482108, guid: 6353d354cd927aa48b1514a151801cd4, type: 3}
+    - {fileID: 2677383462394302872, guid: 6353d354cd927aa48b1514a151801cd4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6353d354cd927aa48b1514a151801cd4, type: 3}

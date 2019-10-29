@@ -5,6 +5,7 @@ using UnityEngine;
 public class Note : MonoBehaviour
 {
     public Rigidbody rb;
+    public int points;
     private const float YSpeed = -0.05f;
 
     private void Update()

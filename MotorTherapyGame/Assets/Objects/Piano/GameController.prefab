@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3201870439984936330}
-  - component: {fileID: 5746479827634450641}
   - component: {fileID: 2604661840598802514}
   - component: {fileID: 6591786147699148851}
   m_Layer: 0
@@ -33,18 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5746479827634450641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3525917342036512841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3e2ec4a04c8fd84bb5ed2645c5b0a93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2604661840598802514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec9ba7ace0334d4b84696bee3e9091c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noteSpawner: {fileID: 0}
+  hitText: {fileID: 0}
+  missText: {fileID: 0}
 --- !u!82 &6591786147699148851
 AudioSource:
   m_ObjectHideFlags: 0

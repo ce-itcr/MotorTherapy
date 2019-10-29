@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 /**
@@ -11,10 +10,20 @@ using UnityEngine;
 public class Game
 {
     public string type;
+    public string status;
     public Piano piano;
     public Targets targets;
     public CobWeb cobWeb;
-    public Ballons ballons;
+    public Balloons balloons;
+
+    public Game() {}
+    
+    
+    public Game(string type, string status)
+    {
+        this.type = type;
+        this.status = status;
+    }
     
     
     public static Game CreateFromJson(string json)
@@ -55,7 +64,7 @@ public class Game
     }
     
     [Serializable]
-    public struct Ballons
+    public struct Balloons
     {
         public int x;
         public int y;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Alexander\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Alexander\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.1055752050.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Alexander\Documents\ce-itcr\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
+    <e p="C:\Users\Jesica\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jesica\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.36862027.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Jesica\Documents\TEC\Jose\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Firebase" t="Include">
@@ -48,12 +48,12 @@
           <e p="Game.cs" t="Include" />
           <e p="Jump.cs" t="Include" />
           <e p="Piano" t="Include">
+            <e p="Colors.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="Note.cs" t="Include" />
             <e p="PianoFlag.cs" t="Include" />
             <e p="Score.cs" t="Include" />
             <e p="Spawner.cs" t="Include" />
-            <e p="TilesColors.cs" t="Include" />
           </e>
           <e p="PlayerController.cs" t="Include" />
           <e p="PopulateGrid.cs" t="Include" />

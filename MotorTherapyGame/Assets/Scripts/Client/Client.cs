@@ -12,22 +12,26 @@ using UnityEngine;
  */
 namespace Client
 {
-    public class Client : MonoBehaviour
+    public class Client
     {
+        private static Client _instance;
         private TcpClient _socket;
         private string _ip = "127.0.0.1";
         private int _port = 8888;
 
-        public void Message(string message)
+        public static Client GetInstance()
         {
-            var thread = new Thread(() => 
-            {
+            return _instance ?? (_instance = new Client());
+        }
+
+        public string Message(string message)
+        {
+            var response = "";
                 Connect();
                 Send(message);
-                Listen();
+                response = Listen();
                 Disconnect();
-            });
-            thread.Start();
+            return response;
         }
         
         private void Start()
