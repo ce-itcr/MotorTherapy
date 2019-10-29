@@ -1,4 +1,4 @@
-package com.ceforce.motortherapy;
+package com.ceitcr.motortherapy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
