@@ -1,4 +1,5 @@
 from src.lexical.Lexical import *
+import src.syntax.Syntax as syn
 
 
 ok = "OK"
@@ -32,7 +33,8 @@ def game_test():
     Game4 { }
     End;
     '''
-    consume(data)
+    # consume(data)
+
     print(ok)
 
 
@@ -46,7 +48,8 @@ def loops_test():
     ForAsignWord(rows, columns) DO AsignWord(words, points);
     '''
 
-    consume(data)
+    # consume(data)
+    # parser.parse(data)
     print(ok)
 
 
@@ -54,11 +57,11 @@ def types_test():
     print("\tTypes_TEST running... ", end='')
 
     data = '''
-    // Types
-    int x;
-    string(10) color[10];
+    Int x = 0;
+    String(10) color[10];
     '''
-    consume(data)
+    # consume(data)
+    syn.parser.parse(data)
     print(ok)
 
 
@@ -71,7 +74,7 @@ def symbols_test():
     myName = "Jose Daniel";
     comma = ,
     '''
-    consume(data)
+    # consume(data)
     print(ok)
 
 
@@ -89,7 +92,7 @@ def functions_test():
     Object();
     SpiderWeb();
     '''
-    consume(data)
+    # consume(data)
     print(ok)
 
 
@@ -100,7 +103,7 @@ def operators_test():
         // Operators
         = + - * /
         '''
-    consume(data)
+    # consume(data)
     print(ok)
 
 
@@ -111,5 +114,5 @@ def containers_test():
         // Containers
         () [] {}
         '''
-    consume(data)
+    # consume(data)
     print(ok)

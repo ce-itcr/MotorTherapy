@@ -35,8 +35,8 @@ t_MAIN = r'Main'
 t_GAME = r'Game[1-4]'
 
 # Types
-t_INT = r'int'
-t_STRING = r'string'
+t_INT = r'Int'
+t_STRING = r'String'
 
 # Functions
 t_BALLOON = 'Balloon'
