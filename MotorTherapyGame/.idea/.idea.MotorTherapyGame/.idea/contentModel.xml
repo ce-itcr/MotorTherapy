@@ -59,6 +59,7 @@
           <e p="PopulateGrid.cs" t="Include" />
           <e p="Score.cs" t="Include" />
           <e p="Targets" t="Include">
+            <e p="GameController.cs" t="Include" />
             <e p="SphereCollision.cs" t="Include" />
             <e p="TimerCountdown.cs" t="Include" />
           </e>

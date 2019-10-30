@@ -5,14 +5,14 @@
   
   	"piano":
   	{
-    	"colors": ["red", "blue", "green", "yellow"],
+    	    "colors": ["red", "blue", "green", "yellow"],
 	    "points": [1, 2, 3, 4],
 	    "time": 60
   	},
   
 	"targets":
 	{
-		"x": 300,
+	    "x": 300,
 	    "y": 200,
 	    "time": 30
 	},
