@@ -1,5 +1,6 @@
 from src.lexical.Lexical import *
 import src.syntax.Syntax as syn
+from src.syntax.Statements import *
 
 
 ok = "OK"
@@ -9,19 +10,19 @@ ok = "OK"
 def lexical_test():
     print("\nLexical_TEST running... ")
 
-    game_test()
-    loops_test()
+    # game_test()
+    # loops_test()
     types_test()
-    symbols_test()
-    functions_test()
-    operators_test()
-    containers_test()
+    # symbols_test()
+    # functions_test()
+    # operators_test()
+    # containers_test()
 
-    print(ok)
+    # print(ok)
 
 
 def game_test():
-    print("\tGame_TEST running... ", end='')
+    # print("\tGame_TEST running... ", end='')
 
     data = '''
     // Start of the game
@@ -57,10 +58,10 @@ def types_test():
     print("\tTypes_TEST running... ", end='')
 
     data = '''
-    Int x = 0;
+    Int x = 5;
     String(10) color[10];
     '''
-    # consume(data)
+    print(consume(data))
     syn.parser.parse(data)
     print(ok)
 

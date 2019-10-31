@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "ASIGNWORD BALLOON BEGIN COMMA DEC DIVIDE DO DOW END ENDDO EQUAL FOR FORASIGNWORD FOREND GAME ID INC INT LBRACE LPAREN LSPAREN MAIN MINUS MULTI NUMBER OBJECT PLUS RANDOM RBRACE RPAREN RSPAREN SEMCOL SPIDERWEB STRING TEXT TIMES USING\n    For : FOR NUMBER TIMES USING NUMBER\n    \n    Dow : DOW '(' ID ')'\n        | DOW '(' NUMBER ')'\n    var : \n    var_assign : INT ID EQUAL NUMBER SEMCOL\n    \n    empty :\n    "
+_lr_signature = "ASIGNWORD BALLOON BEGIN COMMA DEC DIVIDE DO DOW END ENDDO EQUAL FOR FORASIGNWORD FOREND GAME ID INC INT LBRACE LPAREN LSPAREN MAIN MINUS MULTI NUMBER OBJECT PLUS RANDOM RBRACE RPAREN RSPAREN SEMCOL SPIDERWEB STRING TEXT TIMES USING\n    var_assign : TYPE ID EQUAL ATOMIC SEMCOL\n               | TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL\n    \n    For : FOR NUMBER TIMES USING NUMBER\n    \n    Dow : DOW '(' ID ')'\n        | DOW '(' NUMBER ')'\n    var : \n    empty :\n    \n    TYPE : INT\n         | STRING\n    \n    ATOMIC : NUMBER\n         | TEXT\n    "
     
-_lr_action_items = {'FOR':([0,],[2,]),'$end':([1,6,],[0,-1,]),'NUMBER':([2,5,],[3,6,]),'TIMES':([3,],[4,]),'USING':([4,],[5,]),}
+_lr_action_items = {'INT':([0,],[3,]),'STRING':([0,],[4,]),'$end':([1,13,18,],[0,-1,-2,]),'ID':([2,3,4,12,],[5,-8,-9,14,]),'LPAREN':([2,3,4,],[6,-8,-9,]),'EQUAL':([5,],[7,]),'NUMBER':([6,7,15,],[8,10,16,]),'TEXT':([7,],[11,]),'RPAREN':([8,],[12,]),'SEMCOL':([9,10,11,17,],[13,-10,-11,18,]),'LSPAREN':([14,],[15,]),'RSPAREN':([16,],[17,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'For':([0,],[1,]),}
+_lr_goto_items = {'var_assign':([0,],[1,]),'TYPE':([0,],[2,]),'ATOMIC':([7,],[9,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,11 +26,16 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> For","S'",1,None,None,None),
-  ('For -> FOR NUMBER TIMES USING NUMBER','For',5,'p_For','Syntax.py',10),
-  ('Dow -> DOW ( ID )','Dow',4,'p_Dow','Syntax.py',19),
-  ('Dow -> DOW ( NUMBER )','Dow',4,'p_Dow','Syntax.py',20),
-  ('var -> <empty>','var',0,'p_var','Syntax.py',30),
-  ('var_assign -> INT ID EQUAL NUMBER SEMCOL','var_assign',5,'p_var_assign','Syntax.py',34),
+  ("S' -> var_assign","S'",1,None,None,None),
+  ('var_assign -> TYPE ID EQUAL ATOMIC SEMCOL','var_assign',5,'p_var_assign','Syntax.py',9),
+  ('var_assign -> TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL','var_assign',9,'p_var_assign','Syntax.py',10),
+  ('For -> FOR NUMBER TIMES USING NUMBER','For',5,'p_For','Syntax.py',25),
+  ('Dow -> DOW ( ID )','Dow',4,'p_Dow','Syntax.py',34),
+  ('Dow -> DOW ( NUMBER )','Dow',4,'p_Dow','Syntax.py',35),
+  ('var -> <empty>','var',0,'p_var','Syntax.py',45),
   ('empty -> <empty>','empty',0,'p_empty','Syntax.py',49),
+  ('TYPE -> INT','TYPE',1,'p_type','Syntax.py',55),
+  ('TYPE -> STRING','TYPE',1,'p_type','Syntax.py',56),
+  ('ATOMIC -> NUMBER','ATOMIC',1,'p_atomic','Syntax.py',63),
+  ('ATOMIC -> TEXT','ATOMIC',1,'p_atomic','Syntax.py',64),
 ]

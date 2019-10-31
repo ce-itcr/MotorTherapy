@@ -4,6 +4,21 @@ import numpy
 
 variables = {}
 
+def p_var_assign(p):
+    '''
+    var_assign : TYPE ID EQUAL ATOMIC SEMCOL
+               | TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL
+    '''
+    if p[3] == '=':
+        variables[p[2]] = p[4]
+        print(('=', p[2], p[4]))
+    elif p[2] == '(':
+        print(('=', p[1], p[5]))
+        variables[p[5]] = numpy.zeros(p[7], int)
+    elif p[3] == '[':
+        variables[p[2]] = numpy.zeros(p[4], int)
+    else:
+        print("FAILED TO ASSIGN")
 
 def p_For(p):
     '''
@@ -29,27 +44,26 @@ def p_Dow(p):
 def p_var(p):
     '''var : '''
 
-def p_var_assign(p):
-    '''
-    var_assign : INT ID EQUAL NUMBER SEMCOL
-    '''
-    if p[2] == '\=':
-        variables[p[1]] = p[3]
-    elif p[2] == '(':
-        variables[p[5]] = numpy.zeros(p[7], int)
-    elif p[3] == '[':
-        variables[p[2]] = numpy.zeros(p[4], int)
-    elif p[1] == 'int':
-        variables[p[2]] = p[4]
-        print(('=', p[2], p[4]))
-        p[0] = ('=', p[2], p[4])
-
 def p_empty(p):
     '''
     empty :
     '''
     p[0] = None
 
+def p_type(p):
+    '''
+    TYPE : INT
+         | STRING
+    '''
+    p[0] = p[1]
+    print(p[0])
+
+def p_atomic(p):
+    '''
+    ATOMIC : NUMBER
+         | TEXT
+    '''
+    p[0] = p[1]
 
 # def p_optitem(p):
 #     '''
