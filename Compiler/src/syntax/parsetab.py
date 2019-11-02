@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "ASIGNWORD BALLOON BEGIN COMMA DEC DIVIDE DO DOW END ENDDO EQUAL FOR FORASIGNWORD FOREND GAME ID INC INT LBRACE LPAREN LSPAREN MAIN MINUS MULTI NUMBER OBJECT PLUS RANDOM RBRACE RPAREN RSPAREN SEMCOL SPIDERWEB STRING TEXT TIMES USING\n    var_assign : TYPE ID EQUAL ATOMIC SEMCOL\n               | TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL\n    \n    For : FOR NUMBER TIMES USING NUMBER\n    \n    Dow : DOW '(' ID ')'\n        | DOW '(' NUMBER ')'\n    var : \n    empty :\n    \n    TYPE : INT\n         | STRING\n    \n    ATOMIC : NUMBER\n         | TEXT\n    "
+_lr_signature = "statementsASIGNWORD BALLOON BEGIN COMMA DEC DIVIDE DO DOW END ENDDO EQUAL FOR FORASIGNWORD FOREND GAME ID INC INT LBRACE LPAREN LSPAREN MAIN MINUS MULTI NUMBER OBJECT PLUS RANDOM RBRACE RPAREN RSPAREN SEMCOL SPIDERWEB STRING TEXT TIMES USING\n    statements : var_assign statements\n               | var_define statements\n               | For statements\n               | empty\n    \n    var_assign : TYPE ID LSPAREN NUMBER RSPAREN SEMCOL\n               | TYPE ID SEMCOL\n    \n    var_define : ID EQUAL ATOMIC SEMCOL\n               | ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL\n               | TYPE ID EQUAL ATOMIC SEMCOL\n    \n    Inc : INC LPAREN ID COMMA NUMBER RPAREN\n    \n    Dec : DEC LPAREN ID COMMA NUMBER RPAREN\n    \n    Body : Inc Body\n         | Dec Body\n         | RANDOM Body\n         | empty\n    \n    For : FOR NUMBER TIMES USING ID Body FOREND SEMCOL\n    \n    Dow : DOW '(' ID ')'\n        | DOW '(' NUMBER ')'\n    \n    empty :\n    \n    TYPE : INT\n         | STRING LPAREN NUMBER RPAREN\n    \n    ATOMIC : NUMBER\n        | TEXT\n    "
     
-_lr_action_items = {'INT':([0,],[3,]),'STRING':([0,],[4,]),'$end':([1,13,18,],[0,-1,-2,]),'ID':([2,3,4,12,],[5,-8,-9,14,]),'LPAREN':([2,3,4,],[6,-8,-9,]),'EQUAL':([5,],[7,]),'NUMBER':([6,7,15,],[8,10,16,]),'TEXT':([7,],[11,]),'RPAREN':([8,],[12,]),'SEMCOL':([9,10,11,17,],[13,-10,-11,18,]),'LSPAREN':([14,],[15,]),'RSPAREN':([16,],[17,]),}
+_lr_action_items = {'ID':([0,2,3,4,6,9,20,30,32,33,35,38,47,52,53,54,],[7,7,7,7,14,-20,-6,-7,37,-21,-9,-5,-8,55,56,-16,]),'FOR':([0,2,3,4,20,30,35,38,47,54,],[8,8,8,8,-6,-7,-9,-5,-8,-16,]),'$end':([0,1,2,3,4,5,11,12,13,20,30,35,38,47,54,],[-19,0,-19,-19,-19,-4,-1,-2,-3,-6,-7,-9,-5,-8,-16,]),'INT':([0,2,3,4,20,30,35,38,47,54,],[9,9,9,9,-6,-7,-9,-5,-8,-16,]),'STRING':([0,2,3,4,20,30,35,38,47,54,],[10,10,10,10,-6,-7,-9,-5,-8,-16,]),'EQUAL':([7,14,31,],[15,21,36,]),'LSPAREN':([7,14,],[16,19,]),'NUMBER':([8,15,16,18,19,21,36,57,58,],[17,23,25,27,28,23,23,59,60,]),'LPAREN':([10,45,46,],[18,52,53,]),'SEMCOL':([14,22,23,24,29,34,39,48,],[20,30,-22,-23,35,38,47,54,]),'TEXT':([15,21,36,],[24,24,24,]),'TIMES':([17,],[26,]),'RSPAREN':([25,28,],[31,34,]),'USING':([26,],[32,]),'RPAREN':([27,59,60,],[33,61,62,]),'RANDOM':([37,41,42,43,61,62,],[43,43,43,43,-10,-11,]),'INC':([37,41,42,43,61,62,],[45,45,45,45,-10,-11,]),'DEC':([37,41,42,43,61,62,],[46,46,46,46,-10,-11,]),'FOREND':([37,40,41,42,43,44,49,50,51,61,62,],[-19,48,-19,-19,-19,-15,-12,-13,-14,-10,-11,]),'COMMA':([55,56,],[57,58,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'var_assign':([0,],[1,]),'TYPE':([0,],[2,]),'ATOMIC':([7,],[9,]),}
+_lr_goto_items = {'statements':([0,2,3,4,],[1,11,12,13,]),'var_assign':([0,2,3,4,],[2,2,2,2,]),'var_define':([0,2,3,4,],[3,3,3,3,]),'For':([0,2,3,4,],[4,4,4,4,]),'empty':([0,2,3,4,37,41,42,43,],[5,5,5,5,44,44,44,44,]),'TYPE':([0,2,3,4,],[6,6,6,6,]),'ATOMIC':([15,21,36,],[22,29,39,]),'Body':([37,41,42,43,],[40,49,50,51,]),'Inc':([37,41,42,43,],[41,41,41,41,]),'Dec':([37,41,42,43,],[42,42,42,42,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,16 +26,28 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> var_assign","S'",1,None,None,None),
-  ('var_assign -> TYPE ID EQUAL ATOMIC SEMCOL','var_assign',5,'p_var_assign','Syntax.py',9),
-  ('var_assign -> TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL','var_assign',9,'p_var_assign','Syntax.py',10),
-  ('For -> FOR NUMBER TIMES USING NUMBER','For',5,'p_For','Syntax.py',25),
-  ('Dow -> DOW ( ID )','Dow',4,'p_Dow','Syntax.py',34),
-  ('Dow -> DOW ( NUMBER )','Dow',4,'p_Dow','Syntax.py',35),
-  ('var -> <empty>','var',0,'p_var','Syntax.py',45),
-  ('empty -> <empty>','empty',0,'p_empty','Syntax.py',49),
-  ('TYPE -> INT','TYPE',1,'p_type','Syntax.py',55),
-  ('TYPE -> STRING','TYPE',1,'p_type','Syntax.py',56),
-  ('ATOMIC -> NUMBER','ATOMIC',1,'p_atomic','Syntax.py',63),
-  ('ATOMIC -> TEXT','ATOMIC',1,'p_atomic','Syntax.py',64),
+  ("S' -> statements","S'",1,None,None,None),
+  ('statements -> var_assign statements','statements',2,'p_statements','Statements.py',3),
+  ('statements -> var_define statements','statements',2,'p_statements','Statements.py',4),
+  ('statements -> For statements','statements',2,'p_statements','Statements.py',5),
+  ('statements -> empty','statements',1,'p_statements','Statements.py',6),
+  ('var_assign -> TYPE ID LSPAREN NUMBER RSPAREN SEMCOL','var_assign',6,'p_var_assign','Syntax.py',13),
+  ('var_assign -> TYPE ID SEMCOL','var_assign',3,'p_var_assign','Syntax.py',14),
+  ('var_define -> ID EQUAL ATOMIC SEMCOL','var_define',4,'p_var_define','Syntax.py',31),
+  ('var_define -> ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL','var_define',7,'p_var_define','Syntax.py',32),
+  ('var_define -> TYPE ID EQUAL ATOMIC SEMCOL','var_define',5,'p_var_define','Syntax.py',33),
+  ('Inc -> INC LPAREN ID COMMA NUMBER RPAREN','Inc',6,'p_Inc','Syntax.py',104),
+  ('Dec -> DEC LPAREN ID COMMA NUMBER RPAREN','Dec',6,'p_Dec','Syntax.py',116),
+  ('Body -> Inc Body','Body',2,'p_Body','Syntax.py',127),
+  ('Body -> Dec Body','Body',2,'p_Body','Syntax.py',128),
+  ('Body -> RANDOM Body','Body',2,'p_Body','Syntax.py',129),
+  ('Body -> empty','Body',1,'p_Body','Syntax.py',130),
+  ('For -> FOR NUMBER TIMES USING ID Body FOREND SEMCOL','For',8,'p_For','Syntax.py',140),
+  ('Dow -> DOW ( ID )','Dow',4,'p_Dow','Syntax.py',150),
+  ('Dow -> DOW ( NUMBER )','Dow',4,'p_Dow','Syntax.py',151),
+  ('empty -> <empty>','empty',0,'p_empty','Syntax.py',162),
+  ('TYPE -> INT','TYPE',1,'p_type','Syntax.py',168),
+  ('TYPE -> STRING LPAREN NUMBER RPAREN','TYPE',4,'p_type','Syntax.py',169),
+  ('ATOMIC -> NUMBER','ATOMIC',1,'p_atomic','Syntax.py',178),
+  ('ATOMIC -> TEXT','ATOMIC',1,'p_atomic','Syntax.py',179),
 ]

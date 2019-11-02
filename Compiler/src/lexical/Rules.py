@@ -27,8 +27,8 @@ t_DOW = r'Dow'
 t_ENDDO = r'Enddo'
 t_FOR = r'FOR'
 t_FOREND = r'FOREND'
-t_TIMES = r'times'
-t_USING = r'using'
+t_TIMES = r'Times'
+t_USING = r'Using'
 
 # Game
 t_MAIN = r'Main'

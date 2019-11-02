@@ -5,239 +5,741 @@ Unused terminals:
     ASIGNWORD
     BALLOON
     BEGIN
-    COMMA
-    DEC
     DIVIDE
     DO
     END
     ENDDO
     FORASIGNWORD
-    FOREND
     GAME
-    INC
     LBRACE
     MAIN
     MINUS
     MULTI
     OBJECT
     PLUS
-    RANDOM
     RBRACE
     SPIDERWEB
 
 Grammar
 
-Rule 0     S' -> var_assign
-Rule 1     var_assign -> TYPE ID EQUAL ATOMIC SEMCOL
-Rule 2     var_assign -> TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL
-Rule 3     For -> FOR NUMBER TIMES USING NUMBER
-Rule 4     Dow -> DOW ( ID )
-Rule 5     Dow -> DOW ( NUMBER )
-Rule 6     var -> <empty>
-Rule 7     empty -> <empty>
-Rule 8     TYPE -> INT
-Rule 9     TYPE -> STRING
-Rule 10    ATOMIC -> NUMBER
-Rule 11    ATOMIC -> TEXT
+Rule 0     S' -> statements
+Rule 1     statements -> var_assign statements
+Rule 2     statements -> var_define statements
+Rule 3     statements -> For statements
+Rule 4     statements -> empty
+Rule 5     var_assign -> TYPE ID LSPAREN NUMBER RSPAREN SEMCOL
+Rule 6     var_assign -> TYPE ID SEMCOL
+Rule 7     var_define -> ID EQUAL ATOMIC SEMCOL
+Rule 8     var_define -> ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL
+Rule 9     var_define -> TYPE ID EQUAL ATOMIC SEMCOL
+Rule 10    Inc -> INC LPAREN ID COMMA NUMBER RPAREN
+Rule 11    Dec -> DEC LPAREN ID COMMA NUMBER RPAREN
+Rule 12    Body -> Inc Body
+Rule 13    Body -> Dec Body
+Rule 14    Body -> RANDOM Body
+Rule 15    Body -> empty
+Rule 16    For -> FOR NUMBER TIMES USING ID Body FOREND SEMCOL
+Rule 17    Dow -> DOW ( ID )
+Rule 18    Dow -> DOW ( NUMBER )
+Rule 19    empty -> <empty>
+Rule 20    TYPE -> INT
+Rule 21    TYPE -> STRING LPAREN NUMBER RPAREN
+Rule 22    ATOMIC -> NUMBER
+Rule 23    ATOMIC -> TEXT
 
 Terminals, with rules where they appear
 
-(                    : 4 5
-)                    : 4 5
+(                    : 17 18
+)                    : 17 18
 ASIGNWORD            : 
 BALLOON              : 
 BEGIN                : 
-COMMA                : 
-DEC                  : 
+COMMA                : 10 11
+DEC                  : 11
 DIVIDE               : 
 DO                   : 
-DOW                  : 4 5
+DOW                  : 17 18
 END                  : 
 ENDDO                : 
-EQUAL                : 1
-FOR                  : 3
+EQUAL                : 7 8 9
+FOR                  : 16
 FORASIGNWORD         : 
-FOREND               : 
+FOREND               : 16
 GAME                 : 
-ID                   : 1 2 4
-INC                  : 
-INT                  : 8
+ID                   : 5 6 7 8 9 10 11 16 17
+INC                  : 10
+INT                  : 20
 LBRACE               : 
-LPAREN               : 2
-LSPAREN              : 2
+LPAREN               : 10 11 21
+LSPAREN              : 5 8
 MAIN                 : 
 MINUS                : 
 MULTI                : 
-NUMBER               : 2 2 3 3 5 10
+NUMBER               : 5 8 10 11 16 18 21 22
 OBJECT               : 
 PLUS                 : 
-RANDOM               : 
+RANDOM               : 14
 RBRACE               : 
-RPAREN               : 2
-RSPAREN              : 2
-SEMCOL               : 1 2
+RPAREN               : 10 11 21
+RSPAREN              : 5 8
+SEMCOL               : 5 6 7 8 9 16
 SPIDERWEB            : 
-STRING               : 9
-TEXT                 : 11
-TIMES                : 3
-USING                : 3
+STRING               : 21
+TEXT                 : 23
+TIMES                : 16
+USING                : 16
 error                : 
 
 Nonterminals, with rules where they appear
 
-ATOMIC               : 1
+ATOMIC               : 7 8 9
+Body                 : 12 13 14 16
+Dec                  : 13
 Dow                  : 
-For                  : 
-TYPE                 : 1 2
-empty                : 
-var                  : 
-var_assign           : 0
+For                  : 3
+Inc                  : 12
+TYPE                 : 5 6 9
+empty                : 4 15
+statements           : 1 2 3 0
+var_assign           : 1
+var_define           : 2
 
 Parsing method: LALR
 
 state 0
 
-    (0) S' -> . var_assign
-    (1) var_assign -> . TYPE ID EQUAL ATOMIC SEMCOL
-    (2) var_assign -> . TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL
-    (8) TYPE -> . INT
-    (9) TYPE -> . STRING
+    (0) S' -> . statements
+    (1) statements -> . var_assign statements
+    (2) statements -> . var_define statements
+    (3) statements -> . For statements
+    (4) statements -> . empty
+    (5) var_assign -> . TYPE ID LSPAREN NUMBER RSPAREN SEMCOL
+    (6) var_assign -> . TYPE ID SEMCOL
+    (7) var_define -> . ID EQUAL ATOMIC SEMCOL
+    (8) var_define -> . ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL
+    (9) var_define -> . TYPE ID EQUAL ATOMIC SEMCOL
+    (16) For -> . FOR NUMBER TIMES USING ID Body FOREND SEMCOL
+    (19) empty -> .
+    (20) TYPE -> . INT
+    (21) TYPE -> . STRING LPAREN NUMBER RPAREN
 
-    INT             shift and go to state 3
-    STRING          shift and go to state 4
+    ID              shift and go to state 7
+    FOR             shift and go to state 8
+    $end            reduce using rule 19 (empty -> .)
+    INT             shift and go to state 9
+    STRING          shift and go to state 10
 
-    var_assign                     shift and go to state 1
-    TYPE                           shift and go to state 2
+    statements                     shift and go to state 1
+    var_assign                     shift and go to state 2
+    var_define                     shift and go to state 3
+    For                            shift and go to state 4
+    empty                          shift and go to state 5
+    TYPE                           shift and go to state 6
 
 state 1
 
-    (0) S' -> var_assign .
+    (0) S' -> statements .
 
 
 
 state 2
 
-    (1) var_assign -> TYPE . ID EQUAL ATOMIC SEMCOL
-    (2) var_assign -> TYPE . LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL
+    (1) statements -> var_assign . statements
+    (1) statements -> . var_assign statements
+    (2) statements -> . var_define statements
+    (3) statements -> . For statements
+    (4) statements -> . empty
+    (5) var_assign -> . TYPE ID LSPAREN NUMBER RSPAREN SEMCOL
+    (6) var_assign -> . TYPE ID SEMCOL
+    (7) var_define -> . ID EQUAL ATOMIC SEMCOL
+    (8) var_define -> . ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL
+    (9) var_define -> . TYPE ID EQUAL ATOMIC SEMCOL
+    (16) For -> . FOR NUMBER TIMES USING ID Body FOREND SEMCOL
+    (19) empty -> .
+    (20) TYPE -> . INT
+    (21) TYPE -> . STRING LPAREN NUMBER RPAREN
 
-    ID              shift and go to state 5
-    LPAREN          shift and go to state 6
+    ID              shift and go to state 7
+    FOR             shift and go to state 8
+    $end            reduce using rule 19 (empty -> .)
+    INT             shift and go to state 9
+    STRING          shift and go to state 10
 
+    var_assign                     shift and go to state 2
+    statements                     shift and go to state 11
+    var_define                     shift and go to state 3
+    For                            shift and go to state 4
+    empty                          shift and go to state 5
+    TYPE                           shift and go to state 6
 
 state 3
 
-    (8) TYPE -> INT .
+    (2) statements -> var_define . statements
+    (1) statements -> . var_assign statements
+    (2) statements -> . var_define statements
+    (3) statements -> . For statements
+    (4) statements -> . empty
+    (5) var_assign -> . TYPE ID LSPAREN NUMBER RSPAREN SEMCOL
+    (6) var_assign -> . TYPE ID SEMCOL
+    (7) var_define -> . ID EQUAL ATOMIC SEMCOL
+    (8) var_define -> . ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL
+    (9) var_define -> . TYPE ID EQUAL ATOMIC SEMCOL
+    (16) For -> . FOR NUMBER TIMES USING ID Body FOREND SEMCOL
+    (19) empty -> .
+    (20) TYPE -> . INT
+    (21) TYPE -> . STRING LPAREN NUMBER RPAREN
 
-    ID              reduce using rule 8 (TYPE -> INT .)
-    LPAREN          reduce using rule 8 (TYPE -> INT .)
+    ID              shift and go to state 7
+    FOR             shift and go to state 8
+    $end            reduce using rule 19 (empty -> .)
+    INT             shift and go to state 9
+    STRING          shift and go to state 10
 
+    var_define                     shift and go to state 3
+    statements                     shift and go to state 12
+    var_assign                     shift and go to state 2
+    For                            shift and go to state 4
+    empty                          shift and go to state 5
+    TYPE                           shift and go to state 6
 
 state 4
 
-    (9) TYPE -> STRING .
+    (3) statements -> For . statements
+    (1) statements -> . var_assign statements
+    (2) statements -> . var_define statements
+    (3) statements -> . For statements
+    (4) statements -> . empty
+    (5) var_assign -> . TYPE ID LSPAREN NUMBER RSPAREN SEMCOL
+    (6) var_assign -> . TYPE ID SEMCOL
+    (7) var_define -> . ID EQUAL ATOMIC SEMCOL
+    (8) var_define -> . ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL
+    (9) var_define -> . TYPE ID EQUAL ATOMIC SEMCOL
+    (16) For -> . FOR NUMBER TIMES USING ID Body FOREND SEMCOL
+    (19) empty -> .
+    (20) TYPE -> . INT
+    (21) TYPE -> . STRING LPAREN NUMBER RPAREN
 
-    ID              reduce using rule 9 (TYPE -> STRING .)
-    LPAREN          reduce using rule 9 (TYPE -> STRING .)
+    ID              shift and go to state 7
+    FOR             shift and go to state 8
+    $end            reduce using rule 19 (empty -> .)
+    INT             shift and go to state 9
+    STRING          shift and go to state 10
 
+    For                            shift and go to state 4
+    statements                     shift and go to state 13
+    var_assign                     shift and go to state 2
+    var_define                     shift and go to state 3
+    empty                          shift and go to state 5
+    TYPE                           shift and go to state 6
 
 state 5
 
-    (1) var_assign -> TYPE ID . EQUAL ATOMIC SEMCOL
+    (4) statements -> empty .
 
-    EQUAL           shift and go to state 7
+    $end            reduce using rule 4 (statements -> empty .)
 
 
 state 6
 
-    (2) var_assign -> TYPE LPAREN . NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL
-
-    NUMBER          shift and go to state 8
-
-
-state 7
-
-    (1) var_assign -> TYPE ID EQUAL . ATOMIC SEMCOL
-    (10) ATOMIC -> . NUMBER
-    (11) ATOMIC -> . TEXT
-
-    NUMBER          shift and go to state 10
-    TEXT            shift and go to state 11
-
-    ATOMIC                         shift and go to state 9
-
-state 8
-
-    (2) var_assign -> TYPE LPAREN NUMBER . RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL
-
-    RPAREN          shift and go to state 12
-
-
-state 9
-
-    (1) var_assign -> TYPE ID EQUAL ATOMIC . SEMCOL
-
-    SEMCOL          shift and go to state 13
-
-
-state 10
-
-    (10) ATOMIC -> NUMBER .
-
-    SEMCOL          reduce using rule 10 (ATOMIC -> NUMBER .)
-
-
-state 11
-
-    (11) ATOMIC -> TEXT .
-
-    SEMCOL          reduce using rule 11 (ATOMIC -> TEXT .)
-
-
-state 12
-
-    (2) var_assign -> TYPE LPAREN NUMBER RPAREN . ID LSPAREN NUMBER RSPAREN SEMCOL
+    (5) var_assign -> TYPE . ID LSPAREN NUMBER RSPAREN SEMCOL
+    (6) var_assign -> TYPE . ID SEMCOL
+    (9) var_define -> TYPE . ID EQUAL ATOMIC SEMCOL
 
     ID              shift and go to state 14
 
 
+state 7
+
+    (7) var_define -> ID . EQUAL ATOMIC SEMCOL
+    (8) var_define -> ID . LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL
+
+    EQUAL           shift and go to state 15
+    LSPAREN         shift and go to state 16
+
+
+state 8
+
+    (16) For -> FOR . NUMBER TIMES USING ID Body FOREND SEMCOL
+
+    NUMBER          shift and go to state 17
+
+
+state 9
+
+    (20) TYPE -> INT .
+
+    ID              reduce using rule 20 (TYPE -> INT .)
+
+
+state 10
+
+    (21) TYPE -> STRING . LPAREN NUMBER RPAREN
+
+    LPAREN          shift and go to state 18
+
+
+state 11
+
+    (1) statements -> var_assign statements .
+
+    $end            reduce using rule 1 (statements -> var_assign statements .)
+
+
+state 12
+
+    (2) statements -> var_define statements .
+
+    $end            reduce using rule 2 (statements -> var_define statements .)
+
+
 state 13
 
-    (1) var_assign -> TYPE ID EQUAL ATOMIC SEMCOL .
+    (3) statements -> For statements .
 
-    $end            reduce using rule 1 (var_assign -> TYPE ID EQUAL ATOMIC SEMCOL .)
+    $end            reduce using rule 3 (statements -> For statements .)
 
 
 state 14
 
-    (2) var_assign -> TYPE LPAREN NUMBER RPAREN ID . LSPAREN NUMBER RSPAREN SEMCOL
+    (5) var_assign -> TYPE ID . LSPAREN NUMBER RSPAREN SEMCOL
+    (6) var_assign -> TYPE ID . SEMCOL
+    (9) var_define -> TYPE ID . EQUAL ATOMIC SEMCOL
 
-    LSPAREN         shift and go to state 15
+    LSPAREN         shift and go to state 19
+    SEMCOL          shift and go to state 20
+    EQUAL           shift and go to state 21
 
 
 state 15
 
-    (2) var_assign -> TYPE LPAREN NUMBER RPAREN ID LSPAREN . NUMBER RSPAREN SEMCOL
+    (7) var_define -> ID EQUAL . ATOMIC SEMCOL
+    (22) ATOMIC -> . NUMBER
+    (23) ATOMIC -> . TEXT
 
-    NUMBER          shift and go to state 16
+    NUMBER          shift and go to state 23
+    TEXT            shift and go to state 24
 
+    ATOMIC                         shift and go to state 22
 
 state 16
 
-    (2) var_assign -> TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER . RSPAREN SEMCOL
+    (8) var_define -> ID LSPAREN . NUMBER RSPAREN EQUAL ATOMIC SEMCOL
 
-    RSPAREN         shift and go to state 17
+    NUMBER          shift and go to state 25
 
 
 state 17
 
-    (2) var_assign -> TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN . SEMCOL
+    (16) For -> FOR NUMBER . TIMES USING ID Body FOREND SEMCOL
 
-    SEMCOL          shift and go to state 18
+    TIMES           shift and go to state 26
 
 
 state 18
 
-    (2) var_assign -> TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL .
+    (21) TYPE -> STRING LPAREN . NUMBER RPAREN
 
-    $end            reduce using rule 2 (var_assign -> TYPE LPAREN NUMBER RPAREN ID LSPAREN NUMBER RSPAREN SEMCOL .)
+    NUMBER          shift and go to state 27
+
+
+state 19
+
+    (5) var_assign -> TYPE ID LSPAREN . NUMBER RSPAREN SEMCOL
+
+    NUMBER          shift and go to state 28
+
+
+state 20
+
+    (6) var_assign -> TYPE ID SEMCOL .
+
+    ID              reduce using rule 6 (var_assign -> TYPE ID SEMCOL .)
+    FOR             reduce using rule 6 (var_assign -> TYPE ID SEMCOL .)
+    INT             reduce using rule 6 (var_assign -> TYPE ID SEMCOL .)
+    STRING          reduce using rule 6 (var_assign -> TYPE ID SEMCOL .)
+    $end            reduce using rule 6 (var_assign -> TYPE ID SEMCOL .)
+
+
+state 21
+
+    (9) var_define -> TYPE ID EQUAL . ATOMIC SEMCOL
+    (22) ATOMIC -> . NUMBER
+    (23) ATOMIC -> . TEXT
+
+    NUMBER          shift and go to state 23
+    TEXT            shift and go to state 24
+
+    ATOMIC                         shift and go to state 29
+
+state 22
+
+    (7) var_define -> ID EQUAL ATOMIC . SEMCOL
+
+    SEMCOL          shift and go to state 30
+
+
+state 23
+
+    (22) ATOMIC -> NUMBER .
+
+    SEMCOL          reduce using rule 22 (ATOMIC -> NUMBER .)
+
+
+state 24
+
+    (23) ATOMIC -> TEXT .
+
+    SEMCOL          reduce using rule 23 (ATOMIC -> TEXT .)
+
+
+state 25
+
+    (8) var_define -> ID LSPAREN NUMBER . RSPAREN EQUAL ATOMIC SEMCOL
+
+    RSPAREN         shift and go to state 31
+
+
+state 26
+
+    (16) For -> FOR NUMBER TIMES . USING ID Body FOREND SEMCOL
+
+    USING           shift and go to state 32
+
+
+state 27
+
+    (21) TYPE -> STRING LPAREN NUMBER . RPAREN
+
+    RPAREN          shift and go to state 33
+
+
+state 28
+
+    (5) var_assign -> TYPE ID LSPAREN NUMBER . RSPAREN SEMCOL
+
+    RSPAREN         shift and go to state 34
+
+
+state 29
+
+    (9) var_define -> TYPE ID EQUAL ATOMIC . SEMCOL
+
+    SEMCOL          shift and go to state 35
+
+
+state 30
+
+    (7) var_define -> ID EQUAL ATOMIC SEMCOL .
+
+    ID              reduce using rule 7 (var_define -> ID EQUAL ATOMIC SEMCOL .)
+    FOR             reduce using rule 7 (var_define -> ID EQUAL ATOMIC SEMCOL .)
+    INT             reduce using rule 7 (var_define -> ID EQUAL ATOMIC SEMCOL .)
+    STRING          reduce using rule 7 (var_define -> ID EQUAL ATOMIC SEMCOL .)
+    $end            reduce using rule 7 (var_define -> ID EQUAL ATOMIC SEMCOL .)
+
+
+state 31
+
+    (8) var_define -> ID LSPAREN NUMBER RSPAREN . EQUAL ATOMIC SEMCOL
+
+    EQUAL           shift and go to state 36
+
+
+state 32
+
+    (16) For -> FOR NUMBER TIMES USING . ID Body FOREND SEMCOL
+
+    ID              shift and go to state 37
+
+
+state 33
+
+    (21) TYPE -> STRING LPAREN NUMBER RPAREN .
+
+    ID              reduce using rule 21 (TYPE -> STRING LPAREN NUMBER RPAREN .)
+
+
+state 34
+
+    (5) var_assign -> TYPE ID LSPAREN NUMBER RSPAREN . SEMCOL
+
+    SEMCOL          shift and go to state 38
+
+
+state 35
+
+    (9) var_define -> TYPE ID EQUAL ATOMIC SEMCOL .
+
+    ID              reduce using rule 9 (var_define -> TYPE ID EQUAL ATOMIC SEMCOL .)
+    FOR             reduce using rule 9 (var_define -> TYPE ID EQUAL ATOMIC SEMCOL .)
+    INT             reduce using rule 9 (var_define -> TYPE ID EQUAL ATOMIC SEMCOL .)
+    STRING          reduce using rule 9 (var_define -> TYPE ID EQUAL ATOMIC SEMCOL .)
+    $end            reduce using rule 9 (var_define -> TYPE ID EQUAL ATOMIC SEMCOL .)
+
+
+state 36
+
+    (8) var_define -> ID LSPAREN NUMBER RSPAREN EQUAL . ATOMIC SEMCOL
+    (22) ATOMIC -> . NUMBER
+    (23) ATOMIC -> . TEXT
+
+    NUMBER          shift and go to state 23
+    TEXT            shift and go to state 24
+
+    ATOMIC                         shift and go to state 39
+
+state 37
+
+    (16) For -> FOR NUMBER TIMES USING ID . Body FOREND SEMCOL
+    (12) Body -> . Inc Body
+    (13) Body -> . Dec Body
+    (14) Body -> . RANDOM Body
+    (15) Body -> . empty
+    (10) Inc -> . INC LPAREN ID COMMA NUMBER RPAREN
+    (11) Dec -> . DEC LPAREN ID COMMA NUMBER RPAREN
+    (19) empty -> .
+
+    RANDOM          shift and go to state 43
+    INC             shift and go to state 45
+    DEC             shift and go to state 46
+    FOREND          reduce using rule 19 (empty -> .)
+
+    Body                           shift and go to state 40
+    Inc                            shift and go to state 41
+    Dec                            shift and go to state 42
+    empty                          shift and go to state 44
+
+state 38
+
+    (5) var_assign -> TYPE ID LSPAREN NUMBER RSPAREN SEMCOL .
+
+    ID              reduce using rule 5 (var_assign -> TYPE ID LSPAREN NUMBER RSPAREN SEMCOL .)
+    FOR             reduce using rule 5 (var_assign -> TYPE ID LSPAREN NUMBER RSPAREN SEMCOL .)
+    INT             reduce using rule 5 (var_assign -> TYPE ID LSPAREN NUMBER RSPAREN SEMCOL .)
+    STRING          reduce using rule 5 (var_assign -> TYPE ID LSPAREN NUMBER RSPAREN SEMCOL .)
+    $end            reduce using rule 5 (var_assign -> TYPE ID LSPAREN NUMBER RSPAREN SEMCOL .)
+
+
+state 39
+
+    (8) var_define -> ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC . SEMCOL
+
+    SEMCOL          shift and go to state 47
+
+
+state 40
+
+    (16) For -> FOR NUMBER TIMES USING ID Body . FOREND SEMCOL
+
+    FOREND          shift and go to state 48
+
+
+state 41
+
+    (12) Body -> Inc . Body
+    (12) Body -> . Inc Body
+    (13) Body -> . Dec Body
+    (14) Body -> . RANDOM Body
+    (15) Body -> . empty
+    (10) Inc -> . INC LPAREN ID COMMA NUMBER RPAREN
+    (11) Dec -> . DEC LPAREN ID COMMA NUMBER RPAREN
+    (19) empty -> .
+
+    RANDOM          shift and go to state 43
+    INC             shift and go to state 45
+    DEC             shift and go to state 46
+    FOREND          reduce using rule 19 (empty -> .)
+
+    Inc                            shift and go to state 41
+    Body                           shift and go to state 49
+    Dec                            shift and go to state 42
+    empty                          shift and go to state 44
+
+state 42
+
+    (13) Body -> Dec . Body
+    (12) Body -> . Inc Body
+    (13) Body -> . Dec Body
+    (14) Body -> . RANDOM Body
+    (15) Body -> . empty
+    (10) Inc -> . INC LPAREN ID COMMA NUMBER RPAREN
+    (11) Dec -> . DEC LPAREN ID COMMA NUMBER RPAREN
+    (19) empty -> .
+
+    RANDOM          shift and go to state 43
+    INC             shift and go to state 45
+    DEC             shift and go to state 46
+    FOREND          reduce using rule 19 (empty -> .)
+
+    Dec                            shift and go to state 42
+    Body                           shift and go to state 50
+    Inc                            shift and go to state 41
+    empty                          shift and go to state 44
+
+state 43
+
+    (14) Body -> RANDOM . Body
+    (12) Body -> . Inc Body
+    (13) Body -> . Dec Body
+    (14) Body -> . RANDOM Body
+    (15) Body -> . empty
+    (10) Inc -> . INC LPAREN ID COMMA NUMBER RPAREN
+    (11) Dec -> . DEC LPAREN ID COMMA NUMBER RPAREN
+    (19) empty -> .
+
+    RANDOM          shift and go to state 43
+    INC             shift and go to state 45
+    DEC             shift and go to state 46
+    FOREND          reduce using rule 19 (empty -> .)
+
+    Body                           shift and go to state 51
+    Inc                            shift and go to state 41
+    Dec                            shift and go to state 42
+    empty                          shift and go to state 44
+
+state 44
+
+    (15) Body -> empty .
+
+    FOREND          reduce using rule 15 (Body -> empty .)
+
+
+state 45
+
+    (10) Inc -> INC . LPAREN ID COMMA NUMBER RPAREN
+
+    LPAREN          shift and go to state 52
+
+
+state 46
+
+    (11) Dec -> DEC . LPAREN ID COMMA NUMBER RPAREN
+
+    LPAREN          shift and go to state 53
+
+
+state 47
+
+    (8) var_define -> ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL .
+
+    ID              reduce using rule 8 (var_define -> ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL .)
+    FOR             reduce using rule 8 (var_define -> ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL .)
+    INT             reduce using rule 8 (var_define -> ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL .)
+    STRING          reduce using rule 8 (var_define -> ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL .)
+    $end            reduce using rule 8 (var_define -> ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL .)
+
+
+state 48
+
+    (16) For -> FOR NUMBER TIMES USING ID Body FOREND . SEMCOL
+
+    SEMCOL          shift and go to state 54
+
+
+state 49
+
+    (12) Body -> Inc Body .
+
+    FOREND          reduce using rule 12 (Body -> Inc Body .)
+
+
+state 50
+
+    (13) Body -> Dec Body .
+
+    FOREND          reduce using rule 13 (Body -> Dec Body .)
+
+
+state 51
+
+    (14) Body -> RANDOM Body .
+
+    FOREND          reduce using rule 14 (Body -> RANDOM Body .)
+
+
+state 52
+
+    (10) Inc -> INC LPAREN . ID COMMA NUMBER RPAREN
+
+    ID              shift and go to state 55
+
+
+state 53
+
+    (11) Dec -> DEC LPAREN . ID COMMA NUMBER RPAREN
+
+    ID              shift and go to state 56
+
+
+state 54
+
+    (16) For -> FOR NUMBER TIMES USING ID Body FOREND SEMCOL .
+
+    ID              reduce using rule 16 (For -> FOR NUMBER TIMES USING ID Body FOREND SEMCOL .)
+    FOR             reduce using rule 16 (For -> FOR NUMBER TIMES USING ID Body FOREND SEMCOL .)
+    INT             reduce using rule 16 (For -> FOR NUMBER TIMES USING ID Body FOREND SEMCOL .)
+    STRING          reduce using rule 16 (For -> FOR NUMBER TIMES USING ID Body FOREND SEMCOL .)
+    $end            reduce using rule 16 (For -> FOR NUMBER TIMES USING ID Body FOREND SEMCOL .)
+
+
+state 55
+
+    (10) Inc -> INC LPAREN ID . COMMA NUMBER RPAREN
+
+    COMMA           shift and go to state 57
+
+
+state 56
+
+    (11) Dec -> DEC LPAREN ID . COMMA NUMBER RPAREN
+
+    COMMA           shift and go to state 58
+
+
+state 57
+
+    (10) Inc -> INC LPAREN ID COMMA . NUMBER RPAREN
+
+    NUMBER          shift and go to state 59
+
+
+state 58
+
+    (11) Dec -> DEC LPAREN ID COMMA . NUMBER RPAREN
+
+    NUMBER          shift and go to state 60
+
+
+state 59
+
+    (10) Inc -> INC LPAREN ID COMMA NUMBER . RPAREN
+
+    RPAREN          shift and go to state 61
+
+
+state 60
+
+    (11) Dec -> DEC LPAREN ID COMMA NUMBER . RPAREN
+
+    RPAREN          shift and go to state 62
+
+
+state 61
+
+    (10) Inc -> INC LPAREN ID COMMA NUMBER RPAREN .
+
+    RANDOM          reduce using rule 10 (Inc -> INC LPAREN ID COMMA NUMBER RPAREN .)
+    INC             reduce using rule 10 (Inc -> INC LPAREN ID COMMA NUMBER RPAREN .)
+    DEC             reduce using rule 10 (Inc -> INC LPAREN ID COMMA NUMBER RPAREN .)
+    FOREND          reduce using rule 10 (Inc -> INC LPAREN ID COMMA NUMBER RPAREN .)
+
+
+state 62
+
+    (11) Dec -> DEC LPAREN ID COMMA NUMBER RPAREN .
+
+    RANDOM          reduce using rule 11 (Dec -> DEC LPAREN ID COMMA NUMBER RPAREN .)
+    INC             reduce using rule 11 (Dec -> DEC LPAREN ID COMMA NUMBER RPAREN .)
+    DEC             reduce using rule 11 (Dec -> DEC LPAREN ID COMMA NUMBER RPAREN .)
+    FOREND          reduce using rule 11 (Dec -> DEC LPAREN ID COMMA NUMBER RPAREN .)
 
