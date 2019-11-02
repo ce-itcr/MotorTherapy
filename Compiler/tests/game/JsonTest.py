@@ -15,6 +15,7 @@ def encoding_test():
     targets_test()
     balloons_test()
     cob_web_test()
+    game_test()
 
     print(ok)
 
@@ -66,6 +67,29 @@ def cob_web_test():
                       ]).to_json()
 
     if json.__eq__(cob_web.replace(' ', '')):
+        print(ok)
+    else:
+        exit(1)
+
+
+def game_test():
+    print("\tGame_TEST running... ", end='')
+    json = "{\"type\":\"piano\",\"status\":\"\",\"piano\":{\"colors\":[\"red\",\"blue\",\"green\",\"yellow\"]," \
+           "\"points\":[1,2,3,4],\"time\":60},\"targets\":{\"x\":5,\"y\":6,\"time\":30},\"cobWeb\":{\"cards\":[{" \
+           "\"name\":\"ocean\",\"points\":10,\"i\":0,\"j\":0},{\"name\":\"sky\",\"points\":5,\"i\":0,\"j\":1}," \
+           "{\"name\":\"river\",\"points\":4,\"i\":1,\"j\":0},{\"name\":\"mountain\",\"points\":8,\"i\":1,\"j\":1}]}," \
+           "\"balloons\":{\"x\":5,\"y\":6}}"
+
+    piano = Piano(["red", "blue", "green", "yellow"],
+                  [1, 2, 3, 4], 60).dict()
+    targets = Targets(5, 6, 30).dict()
+    balloons = Balloons(5, 6).dict()
+    cob_web = CobWeb([Card("ocean", 10, 0, 0).dict(), Card("sky", 5, 0, 1).dict(),
+                     Card("river", 4, 1, 0).dict(), Card("mountain", 8, 1, 1).dict()]).dict()
+
+    game = Game("piano", "", piano, targets, cob_web, balloons).to_json()
+
+    if json.__eq__(game.replace(' ', '')):
         print(ok)
     else:
         exit(1)
