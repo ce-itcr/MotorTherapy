@@ -6,9 +6,12 @@ import json
 
 
 # Class for Json encoding
+from collections import namedtuple
+
+
 class Game:
 
-    def __init__(self, type, status, piano, targets, cobWeb, balloons):
+    def __init__(self, type="", status="", piano=None, targets=None, cobWeb=None, balloons=None):
         self.type = type
         self.status = status
         self.piano = piano
@@ -28,3 +31,7 @@ class Game:
     def to_json(self):
         return json.dumps(self.dict())
 
+    @staticmethod
+    def from_json(json_str):
+        dict = json.loads(json_str)
+        return namedtuple("Game", dict.keys())(*dict.values())

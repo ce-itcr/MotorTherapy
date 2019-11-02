@@ -6,6 +6,7 @@
 import socket
 import sys
 import time
+from server.ClientObserver import *
 
 
 class Server:
@@ -29,7 +30,8 @@ class Server:
             try:
                 connection, client_address = self.sock.accept()
                 message = self.read(connection, client_address)
-                self.send(connection, message)
+                response = self.handle_message(message)
+                self.send(connection, response)
                 connection.close()
             except:
                 e = sys.exc_info()[0]
@@ -67,3 +69,8 @@ class Server:
     def send(connection, response):
         print("Server sending: %s" % response)
         connection.send(response.encode())
+
+    @staticmethod
+    def handle_message(message):
+        ClientObserver.update(message)
+        return ClientObserver.client_response
