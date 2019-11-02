@@ -1,5 +1,5 @@
 # @Author Jose Daniel Acuna
-# Last time edited 10/12/19
+# Last time edited 11/1/19
 # Reference https://pymotw.com/2/socket/tcp.html
 #           https://www.binarytides.com/receive-full-data-with-the-recv-socket-function-in-python/
 
