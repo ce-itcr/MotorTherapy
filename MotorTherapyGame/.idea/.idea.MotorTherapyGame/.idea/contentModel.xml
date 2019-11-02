@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\angel\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\angel\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.469352631.00" t="ExcludeRecursive" />
-    <e p="C:\Users\angel\Documents\ce-itcr\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
+    <e p="C:\Users\Jesica\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jesica\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.36862027.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Jesica\Documents\TEC\Jose\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Firebase" t="Include">
@@ -25,69 +25,48 @@
             <e p="link.xml" t="Include" />
           </e>
         </e>
-        <e p="Fonts" t="Include">
-          <e p="Roboto" t="Include">
-            <e p="LICENSE.txt" t="Include" />
+        <e p="Resources" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="Roboto" t="Include">
+              <e p="LICENSE.txt" t="Include" />
+            </e>
           </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="AppInterface.cs" t="Include" />
           <e p="AuthManager.cs" t="Include" />
+          <e p="Ballons" t="Include">
+            <e p="Ballons.cs" t="Include" />
+          </e>
           <e p="CardsManager.cs" t="Include" />
-          <e p="GameController.cs" t="Include" />
+          <e p="Client" t="Include">
+            <e p="Client.cs" t="Include" />
+          </e>
+          <e p="CobWeb" t="Include">
+            <e p="CobWeb.cs" t="Include" />
+          </e>
+          <e p="Game.cs" t="Include" />
           <e p="Jump.cs" t="Include" />
-          <e p="Note.cs" t="Include" />
-          <e p="PianoFlag.cs" t="Include" />
+          <e p="Piano" t="Include">
+            <e p="Colors.cs" t="Include" />
+            <e p="GameController.cs" t="Include" />
+            <e p="Note.cs" t="Include" />
+            <e p="PianoFlag.cs" t="Include" />
+            <e p="Score.cs" t="Include" />
+            <e p="Spawner.cs" t="Include" />
+          </e>
           <e p="PlayerController.cs" t="Include" />
+          <e p="PopulateGrid.cs" t="Include" />
           <e p="Score.cs" t="Include" />
-          <e p="Spawner.cs" t="Include" />
-          <e p="SphereCollision.cs" t="Include" />
-          <e p="TilesColors.cs" t="Include" />
-          <e p="TimerCountdown.cs" t="Include" />
+          <e p="Targets" t="Include">
+            <e p="GameController.cs" t="Include" />
+            <e p="SphereCollision.cs" t="Include" />
+            <e p="TimerCountdown.cs" t="Include" />
+          </e>
         </e>
         <e p="TextMesh Pro" t="Include">
-          <e p="Examples &amp; Extras" t="Include">
-            <e p="Fonts" t="Include">
-              <e p="Anton OFL.txt" t="Include" />
-              <e p="Bangers - OFL.txt" t="Include" />
-              <e p="LiberationSans - OFL.txt" t="Include" />
-              <e p="Oswald-Bold - OFL.txt" t="Include" />
-            </e>
-            <e p="Scripts" t="Include">
-              <e p="Benchmark01.cs" t="Include" />
-              <e p="Benchmark01_UGUI.cs" t="Include" />
-              <e p="Benchmark02.cs" t="Include" />
-              <e p="Benchmark03.cs" t="Include" />
-              <e p="Benchmark04.cs" t="Include" />
-              <e p="CameraController.cs" t="Include" />
-              <e p="ChatController.cs" t="Include" />
-              <e p="EnvMapAnimator.cs" t="Include" />
-              <e p="ObjectSpin.cs" t="Include" />
-              <e p="ShaderPropAnimator.cs" t="Include" />
-              <e p="SimpleScript.cs" t="Include" />
-              <e p="SkewTextExample.cs" t="Include" />
-              <e p="TeleType.cs" t="Include" />
-              <e p="TextConsoleSimulator.cs" t="Include" />
-              <e p="TextMeshProFloatingText.cs" t="Include" />
-              <e p="TextMeshSpawner.cs" t="Include" />
-              <e p="TMP_DigitValidator.cs" t="Include" />
-              <e p="TMP_ExampleScript_01.cs" t="Include" />
-              <e p="TMP_FrameRateCounter.cs" t="Include" />
-              <e p="TMP_PhoneNumberValidator.cs" t="Include" />
-              <e p="TMP_TextEventCheck.cs" t="Include" />
-              <e p="TMP_TextEventHandler.cs" t="Include" />
-              <e p="TMP_TextInfoDebugTool.cs" t="Include" />
-              <e p="TMP_TextSelector_A.cs" t="Include" />
-              <e p="TMP_TextSelector_B.cs" t="Include" />
-              <e p="TMP_UiFrameRateCounter.cs" t="Include" />
-              <e p="TMPro_InstructionOverlay.cs" t="Include" />
-              <e p="VertexColorCycler.cs" t="Include" />
-              <e p="VertexJitter.cs" t="Include" />
-              <e p="VertexShakeA.cs" t="Include" />
-              <e p="VertexShakeB.cs" t="Include" />
-              <e p="VertexZoom.cs" t="Include" />
-              <e p="WarpTextExample.cs" t="Include" />
-            </e>
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
           </e>
           <e p="Resources" t="Include">
             <e p="LineBreaking Following Characters.txt" t="Include" />

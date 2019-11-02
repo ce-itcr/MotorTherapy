@@ -75,35 +75,52 @@
     <Compile Include="Assets\Kinect\KinectView\Scripts\MultiSourceManager.cs" />
     <Compile Include="Assets\Scripts\AppInterface.cs" />
     <Compile Include="Assets\Scripts\AuthManager.cs" />
+    <Compile Include="Assets\Scripts\Ballons\Ballons.cs" />
     <Compile Include="Assets\Scripts\CardsManager.cs" />
-    <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\Client\Client.cs" />
+    <Compile Include="Assets\Scripts\CobWeb\CobWeb.cs" />
+    <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\Jump.cs" />
-    <Compile Include="Assets\Scripts\Note.cs" />
-    <Compile Include="Assets\Scripts\PianoFlag.cs" />
+    <Compile Include="Assets\Scripts\Piano\Colors.cs" />
+    <Compile Include="Assets\Scripts\Piano\GameController.cs" />
+    <Compile Include="Assets\Scripts\Piano\Note.cs" />
+    <Compile Include="Assets\Scripts\Piano\PianoFlag.cs" />
+    <Compile Include="Assets\Scripts\Piano\Score.cs" />
+    <Compile Include="Assets\Scripts\Piano\Spawner.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PopulateGrid.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
-    <Compile Include="Assets\Scripts\Spawner.cs" />
-    <Compile Include="Assets\Scripts\SphereCollision.cs" />
-    <Compile Include="Assets\Scripts\TilesColors.cs" />
-    <Compile Include="Assets\Scripts\TimerCountdown.cs" />
-    <None Include="Assets\Fonts\Roboto\LICENSE.txt" />
+    <Compile Include="Assets\Scripts\Targets\GameController.cs" />
+    <Compile Include="Assets\Scripts\Targets\SphereCollision.cs" />
+    <Compile Include="Assets\Scripts\Targets\TimerCountdown.cs" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Resources\Fonts\Roboto\LICENSE.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-app-unity\maven-metadata.xml" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Firebase\Plugins\link.xml" />
     <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-auth-unity\maven-metadata.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>F:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -307,37 +324,37 @@
       <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.App">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Assets/Firebase/Plugins/Firebase.App.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Assets/Firebase/Plugins/Firebase.App.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.Auth">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Assets/Firebase/Plugins/Firebase.Auth.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Assets/Firebase/Plugins/Firebase.Auth.dll</HintPath>
     </Reference>
     <Reference Include="Firebase.Platform">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Google.MiniJson">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Assets/Firebase/Plugins/Google.MiniJson.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Assets/Firebase/Plugins/Google.MiniJson.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Compat">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Assets/Parse/Plugins/Unity.Compat.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Assets/Parse/Plugins/Unity.Compat.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Tasks">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Assets/Parse/Plugins/Unity.Tasks.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Assets/Parse/Plugins/Unity.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>F:/Projects/Unity/MotorTherapy/MotorTherapyGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/Jesica/Documents/TEC/Jose/MotorTherapy/MotorTherapyGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>F:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
