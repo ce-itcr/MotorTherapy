@@ -1,3 +1,6 @@
+import json
+
+
 # Class for Json encoding
 class Targets:
 
@@ -11,3 +14,6 @@ class Targets:
             'x': self.x,
             'y': self.y,
             'time': self.time}
+
+    def to_json(self):
+        return json.dumps(self.dict())

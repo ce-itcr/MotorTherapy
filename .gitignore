@@ -4,3 +4,7 @@ MotorTherapyGame/.idea/.idea.MotorTherapyGame/.idea/workspace.xml
 MotorTherapyGame/Library/
 
 Compiler/src/game/__pycache__/
+
+Compiler/src/lexical/__pycache__/
+
+*.pyc

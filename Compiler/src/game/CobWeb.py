@@ -1,3 +1,6 @@
+import json
+
+
 # Class for Json encoding
 class CobWeb:
 
@@ -7,6 +10,9 @@ class CobWeb:
     def dict(self):
         return {
             'cards': self.cards}
+
+    def to_json(self):
+        return json.dumps(self.dict())
 
 
 class Card:

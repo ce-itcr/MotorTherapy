@@ -1,3 +1,6 @@
+import json
+
+
 # Class for Json encoding
 class Piano:
 
@@ -11,3 +14,6 @@ class Piano:
             'colors': self.colors,
             'points': self.points,
             'time': self.time}
+
+    def to_json(self):
+        return json.dumps(self.dict())
