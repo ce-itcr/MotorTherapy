@@ -5,7 +5,7 @@ import numpy
 import src.syntax.Excecution as ex
 
 variables = {'i':[0, 'Int']}
-for_array = []
+loop_array = []
 start = 'statements'
 
 def p_var_assign(p):
@@ -60,13 +60,18 @@ def p_var_define(p):
                 variables[p[1]][0] = p[3]
             else:
                 print("Error en la definicion de " + p[1])
-    elif p[4] == '=':
+    elif p[5] == '=':
         if variables[p[1]][1] == 'String':
             if isinstance(variables[p[1]][0], list):
                 if isinstance(p[6], str):
                     if len(p[6]) <= variables[p[1]][3]:
-                        # excecute.change_array('String', p[6], len(variables[p[1]][0]), variables[p[1]][2])
-                        variables[p[1]][0][p[3]] = p[6]
+                        if len(variables[p[1]][0]) > p[3]:
+                            # excecute.change_atomic('String', p[3])
+                            variables[p[1]][0][p[3]] = p[6]
+                        elif len(variables[p[1]][0]) == p[3]:
+                            variables[p[1]][0].append(p[6])
+                        else:
+                            print("Indice fuera de rango en declaración " + p[1])
                     else:
                         print("Tamaño de String es incompatible en " + p[1])
                 else:
@@ -76,8 +81,13 @@ def p_var_define(p):
         else:
             if isinstance(variables[p[1]][0], list):
                 if isinstance(p[6], int):
-                    # excecute.change_array('Int', p[6], len(variables[p[1]][0]), variables[p[1]][2])
-                    variables[p[1]][0][p[3]] = p[6]
+                    if len(variables[p[1]][0]) > p[3]:
+                        # excecute.change_atomic('String', p[3])
+                        variables[p[1]][0][p[3]] = p[6]
+                    elif len(variables[p[1]][0]) == p[3]:
+                        variables[p[1]][0].append(p[6])
+                    else:
+                        print("Indice fuera de rango en declaración " + p[1])
                 else:
                     print("Error en la definicion de " + p[1])
             else:
@@ -107,9 +117,9 @@ def p_Inc(p):
     '''
     Inc : INC LPAREN ID COMMA NUMBER RPAREN
     '''
-    global variables, for_array
+    global variables, loop_array
     if isinstance(variables[p[3]][0], int):
-        for_array.append(['Inc', p[3], p[5]])
+        loop_array.append(['Inc', p[3], p[5]])
     else:
         print("Syntax error number in for is not an int")
 
@@ -117,9 +127,9 @@ def p_Dec(p):
     '''
     Dec : DEC LPAREN ID COMMA NUMBER RPAREN
     '''
-    global variables, for_array
+    global variables, loop_array
     if isinstance(variables[p[3]][0], int):
-        for_array.append(['Dec', p[3], p[5]])
+        loop_array.append(['Dec', p[3], p[5]])
     else:
         print("Syntax error number in for is not an int")
 
@@ -130,25 +140,37 @@ def p_Body(p):
          | RANDOM Body
          | empty
     '''
+    p[0] = p[1]
 
 def p_For(p):
     '''
     For : FOR NUMBER TIMES USING ID Body FOREND SEMCOL
     '''
-    global variables, for_array
+    global variables, loop_array
     # if isinstance(variables[p[5]][0], list):
-    #     for_array.append(p[2])
+    #     loop_array.append(p[2])
     # else:
-    for_array.append(p[2])
-    variables = ex.for_index(for_array, variables)
-    for_array = []
+    print(variables)
+    loop_array.append(p[2])
+    variables = ex.loop(loop_array, variables)
+    print(variables)
+    loop_array = []
         
 
 def p_Dow(p):
     '''
-    Dow : DOW '(' ID ')'
-        | DOW '(' NUMBER ')'
+    Dow : DOW LPAREN ID RPAREN Body ENDDO SEMCOL
+        | DOW LPAREN NUMBER RPAREN Body ENDDO SEMCOL
     '''
+    global variables, loop_array
+    if isinstance(p[3], int):
+        loop_array.append(p[3])
+    else:
+        loop_array.append(variables[p[3]][0])
+    print(variables)
+    ex.loop(loop_array, variables)
+    print(variables)
+    loop_array = []
 
 def p_empty(p):
     '''
@@ -169,15 +191,16 @@ def p_type(p):
 def p_atomic(p):
     '''
     ATOMIC : NUMBER
-        | TEXT
+           | TEXT
     '''
     p[0] = p[1]
 
-# def p_random():
+# def p_Random():
 #     '''
-#     random : RANDOM LPAREN ID COMMA ID COMMA ID RPAREN SEMICOL
+#     Random : RANDOM LPAREN ID COMMA ID COMMA ID RPAREN SEMICOL
 #     '''
-#
+#     p[0] = p[1]
+
 
 # def p_optitem(p):
 #     '''

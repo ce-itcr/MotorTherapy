@@ -11,7 +11,7 @@ def lexical_test():
     print("\nLexical_TEST running... ")
 
     # game_test()
-    loops_test()
+    # loops_test()
     # types_test()
     # symbols_test()
     # functions_test()
@@ -47,11 +47,14 @@ def loops_test():
     FOR 5 Times Using x
 	    Inc(i, 10)
 	    Dec(i, 1)
-	    Dec(i, 8)
 	FOREND;
+	Dow(5)
+		Inc(i, 1)
+		Dec(i, 2)
+	Enddo;
     '''
 
-    # consume(data)
+    print(consume(data))
     syn.parser.parse(data)
     print(ok)
 
@@ -65,9 +68,11 @@ def types_test():
     String(10) color[10];
     a = 9;
     a = "hola";
+    color[5] = "uopj";
+    color[0] = "adios";
     '''
     # print(consume(data))
-    # syn.parser.parse(data)
+    syn.parser.parse(data)
     print(ok)
 
 
