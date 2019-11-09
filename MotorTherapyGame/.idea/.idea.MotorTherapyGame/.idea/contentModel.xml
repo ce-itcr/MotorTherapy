@@ -26,12 +26,6 @@
           </e>
         </e>
         <e p="Resources" t="Include">
-          <e p="Colors" t="Include">
-            <e p="BluePianoFlag.mat" t="Include" />
-            <e p="GreenPianoFlag.mat" t="Include" />
-            <e p="RedPianoFlag.mat" t="Include" />
-            <e p="YellowPianoFlag.mat" t="Include" />
-          </e>
           <e p="Fonts" t="Include">
             <e p="Roboto" t="Include">
               <e p="LICENSE.txt" t="Include" />
@@ -41,8 +35,9 @@
         <e p="Scripts" t="Include">
           <e p="AppInterface.cs" t="Include" />
           <e p="AuthManager.cs" t="Include" />
-          <e p="Ballons" t="Include">
-            <e p="Ballons.cs" t="Include" />
+          <e p="Balloons" t="Include">
+            <e p="BalloonsController.cs" t="Include" />
+            <e p="Jump.cs" t="Include" />
           </e>
           <e p="CardsManager.cs" t="Include" />
           <e p="Client" t="Include">
@@ -53,7 +48,6 @@
           </e>
           <e p="Colors.cs" t="Include" />
           <e p="Game.cs" t="Include" />
-          <e p="Jump.cs" t="Include" />
           <e p="Piano" t="Include">
             <e p="GameController.cs" t="Include" />
             <e p="Note.cs" t="Include" />

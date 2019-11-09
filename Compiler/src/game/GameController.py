@@ -55,7 +55,7 @@ class GameController:
     # Example in case the client is in the balloons game
     @staticmethod
     def balloons():
-        balloons = Balloons(5, 6).dict()
+        balloons = Balloons(6, 5).dict()
         return Game(type="balloons", balloons=balloons)
 
     # Example in case the client is in the cobWeb game

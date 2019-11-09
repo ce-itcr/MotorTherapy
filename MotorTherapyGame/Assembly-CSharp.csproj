@@ -59,13 +59,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AppInterface.cs" />
     <Compile Include="Assets\Scripts\AuthManager.cs" />
-    <Compile Include="Assets\Scripts\Ballons\Ballons.cs" />
+    <Compile Include="Assets\Scripts\Balloons\BalloonsController.cs" />
+    <Compile Include="Assets\Scripts\Balloons\Jump.cs" />
     <Compile Include="Assets\Scripts\CardsManager.cs" />
     <Compile Include="Assets\Scripts\Client\Client.cs" />
     <Compile Include="Assets\Scripts\CobWeb\CobWeb.cs" />
     <Compile Include="Assets\Scripts\Colors.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
-    <Compile Include="Assets\Scripts\Jump.cs" />
     <Compile Include="Assets\Scripts\Piano\GameController.cs" />
     <Compile Include="Assets\Scripts\Piano\Note.cs" />
     <Compile Include="Assets\Scripts\Piano\PianoFlag.cs" />
@@ -693,12 +693,6 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>F:/Program Files/Unity/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\Resources\Colors\BluePianoFlag.mat" />
-    <Content Include="Assets\Resources\Colors\GreenPianoFlag.mat" />
-    <Content Include="Assets\Resources\Colors\RedPianoFlag.mat" />
-    <Content Include="Assets\Resources\Colors\YellowPianoFlag.mat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
