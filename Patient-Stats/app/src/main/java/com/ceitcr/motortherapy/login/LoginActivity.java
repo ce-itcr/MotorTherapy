@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         emailId=findViewById(R.id.editText);
@@ -59,22 +62,22 @@ public class LoginActivity extends AppCompatActivity {
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if (email.isEmpty()){
-                    emailId.setError("Please Enter Email Id");
+                    emailId.setError("Ingrese el email.");
                     emailId.requestFocus();
                 }
                 else if (pwd.isEmpty()){
-                    password.setError("Please Enter Your Password");
+                    password.setError("Ingrese la contraseña.");
                     password.requestFocus();
                 }
                 else if (email.isEmpty() && pwd.isEmpty()){
-                    Toast.makeText(LoginActivity.this, "Fields are Empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Los espacios están vacíos.", Toast.LENGTH_SHORT).show();
                 }
                 else if(!(email.isEmpty() && pwd.isEmpty())){
                     mFirebaseAuth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
-                                Toast.makeText(LoginActivity.this, "Login Error,Please Login Aganin", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Error Iniciando Sesión.", Toast.LENGTH_SHORT).show();
                             }
                             else{
                                 Intent intToHome = new Intent(LoginActivity.this,MainActivity.class);
@@ -84,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
                 }
                 else {
-                    Toast.makeText(LoginActivity.this, "Error Ocurred", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Ocurrió un error, inténtelo de nuevo.", Toast.LENGTH_SHORT).show();
                 }
             }
 

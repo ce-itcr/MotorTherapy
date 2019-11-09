@@ -1,12 +1,16 @@
 package com.ceitcr.motortherapy;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+
+import com.ceitcr.motortherapy.login.SaveSharedPreferences;
 
 import com.ceitcr.motortherapy.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,15 +26,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnLogout = findViewById(R.id.logout);
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
+    }
+
+    public void onExit(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+// Add the buttons
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intToMain = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intToMain);
+                SaveSharedPreferences.CleanLogIn(getBaseContext());
+                Intent i= new Intent(getBaseContext(), LoginActivity.class);
+                startActivity(i);
             }
         });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+        builder.setMessage("¿Seguro que desea cerrar sesión?")
+                .setTitle("Confirmar");
 
+        AlertDialog dialog = builder.create();
+
+        dialog.show();
     }
 }
