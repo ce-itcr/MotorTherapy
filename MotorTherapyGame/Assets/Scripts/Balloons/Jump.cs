@@ -30,7 +30,7 @@ namespace Balloons
             _game = Game.CreateFromJson(response);
             #endregion
             
-            const int force = 1000;
+            const int force = 600;
             var gameBalloons = _game.balloons;
             var x = (gameBalloons.x - 5) * Time.deltaTime * force;
             var y = gameBalloons.y * Time.deltaTime * force * 1.3f;

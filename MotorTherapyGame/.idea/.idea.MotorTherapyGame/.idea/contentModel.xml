@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\José Acuña\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\José Acuña\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.-1786982385.00" t="ExcludeRecursive" />
-    <e p="F:\Projects\Unity\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
+    <e p="C:\Users\angelortizv\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\angelortizv\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.1276607404.00" t="ExcludeRecursive" />
+    <e p="C:\Users\angelortizv\Documents\Projects\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="DepthColliderDemo" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="DepthImageViewer.cs" t="Include" />
+            <e p="EggMover.cs" t="Include" />
+            <e p="EggSpawner.cs" t="Include" />
+          </e>
+        </e>
         <e p="Firebase" t="Include">
           <e p="m2repository" t="Include">
             <e p="com" t="Include">
@@ -23,6 +30,45 @@
           </e>
           <e p="Plugins" t="Include">
             <e p="link.xml" t="Include" />
+          </e>
+        </e>
+        <e p="GesturesDemo" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="GestureListener.cs" t="Include" />
+            <e p="PresentationScript.cs" t="Include" />
+          </e>
+        </e>
+        <e p="KinectScripts" t="Include">
+          <e p="AvatarController.cs" t="Include" />
+          <e p="AvatarControllerClassic.cs" t="Include" />
+          <e p="Cubeman" t="Include">
+            <e p="CubemanController.cs" t="Include" />
+          </e>
+          <e p="Filters" t="Include">
+            <e p="BoneOrientationsConstraint.cs" t="Include" />
+            <e p="BoneOrientationsFilter.cs" t="Include" />
+            <e p="ClippedLegsFilter.cs" t="Include" />
+            <e p="JointPositionsFilter.cs" t="Include" />
+            <e p="KinectHelper.cs" t="Include" />
+            <e p="SelfIntersectionConstraint.cs" t="Include" />
+            <e p="TimedLerp.cs" t="Include" />
+            <e p="TrackingStateFilter.cs" t="Include" />
+          </e>
+          <e p="KinectGestures.cs" t="Include" />
+          <e p="KinectManager.cs" t="Include" />
+          <e p="KinectWrapper.cs" t="Include" />
+          <e p="Samples" t="Include">
+            <e p="FollowUserRotation.cs" t="Include" />
+            <e p="GetJointPositionDemo.cs" t="Include" />
+            <e p="LoadMainLevel.cs" t="Include" />
+            <e p="MouseControl.cs" t="Include" />
+            <e p="SetSceneAvatars.cs" t="Include" />
+            <e p="SimpleGestureListener.cs" t="Include" />
+          </e>
+        </e>
+        <e p="OverlayDemo" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="KinectOverlayer.cs" t="Include" />
           </e>
         </e>
         <e p="Resources" t="Include">
@@ -59,6 +105,7 @@
           <e p="PopulateGrid.cs" t="Include" />
           <e p="Score.cs" t="Include" />
           <e p="Targets" t="Include">
+            <e p="CursorCollider.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="SphereCollision.cs" t="Include" />
             <e p="TimerCountdown.cs" t="Include" />

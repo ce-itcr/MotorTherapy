@@ -10,6 +10,8 @@ namespace Targets
         public Camera cam;
         public Text scoreText;
         public int score;
+        public Transform handCursor;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -21,16 +23,22 @@ namespace Targets
         void Update()
         {
             if (Input.GetMouseButtonDown(0)) {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                Ray ray = cam.ScreenPointToRay(handCursor.position);
                 RaycastHit hit;
                 if(Physics.Raycast(ray, out hit)) {
-                    gameController.SendMessage("Spawn");
-                    scoreText.text =  "Score: " + ++score;
+                    // if collision
+                    Hit();
                 }
             }
-        
         }
-    
+
+        public void Hit()
+        {
+            gameController.SendMessage("Spawn");
+            scoreText.text =  "Score: " + ++score;
+        }
+        
+
         public void OpenAppInterface()
         {
             SceneManager.LoadScene("AppInterface");

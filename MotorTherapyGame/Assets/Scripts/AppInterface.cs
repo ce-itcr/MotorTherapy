@@ -55,7 +55,7 @@ public class AppInterface : MonoBehaviour
     }
 
     public void OpenTargetsGame() {
-        SceneManager.LoadScene("Scenes/Targets");
+        SceneManager.LoadScene("Scenes/Targets2");
     }
     
     public void OpenCobWebGame() {
