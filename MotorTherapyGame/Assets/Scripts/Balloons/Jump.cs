@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Balloons
 {
@@ -8,6 +9,7 @@ namespace Balloons
         public GameObject balloons;
         private Client.Client _client;
         private Game _game;
+        private bool _inFloor;
 
         private void Awake()
         {
@@ -29,12 +31,25 @@ namespace Balloons
             #endregion
             
             const int force = 1000;
-            var balloons = _game.balloons;
-            var x = (balloons.x - 5) * Time.deltaTime * force;
-            var y = balloons.y * Time.deltaTime * force * 1.3f;
+            var gameBalloons = _game.balloons;
+            var x = (gameBalloons.x - 5) * Time.deltaTime * force;
+            var y = gameBalloons.y * Time.deltaTime * force * 1.3f;
         
             rb.AddForce(x, y, 0);
         }
+        
+        private void OnCollisionEnter(Collision collision) {
+            
+            // Hits the floor
+            if (!collision.gameObject.tag.Equals("Floor") || _inFloor) return;
+            _inFloor = true;
+            var message = JsonUtility.ToJson(new Game("balloons", "error"));
+            _client.Message(message);
+        }
 
+        private void OnCollisionExit(Collision other)
+        {
+            if (other.gameObject.tag.Equals("Floor")) _inFloor = false;
+        }
     }
 }

@@ -13,10 +13,13 @@ class GameController:
     @staticmethod
     def update(message):
         game = Game.from_json(message)
+
         if game.status == "ok":
-            ClientObserver.client_response = GameController.handle_games(game.type)
+            response = GameController.handle_games(game.type)
         else:
-            GameController.handle_errors()
+            response = GameController.handle_errors()
+
+        ClientObserver.client_response = response
 
     # Switch statement
     @staticmethod
@@ -36,7 +39,7 @@ class GameController:
 
     @staticmethod
     def handle_errors():
-        return
+        return Game(status="error").to_json()
 
     # Example in case the client is in the piano game
     @staticmethod
