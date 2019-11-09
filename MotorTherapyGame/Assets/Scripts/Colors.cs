@@ -1,7 +1,12 @@
-﻿namespace Piano
+﻿using UnityEditor;
+using UnityEngine;
+
+namespace Piano
 {
     public class TilesColors
     {
+        private static Material[] _colorsMesh = LoadMeshColors();
+        
         public static Colors[] ToColorsFromString(string[] colorsStr)
         {
             var colors = new Colors[colorsStr.Length];
@@ -33,6 +38,18 @@
             }
 
             return color;
+        }
+
+        public static Material RandomMeshColor()
+        {
+            var i = Random.Range(0, _colorsMesh.Length);
+            return _colorsMesh[i];
+        }
+
+        private static Material[] LoadMeshColors()
+        {
+            const string path = "Colors";
+            return Resources.LoadAll<Material>(path);
         }
     }
     

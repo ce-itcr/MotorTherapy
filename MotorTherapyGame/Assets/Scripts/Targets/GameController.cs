@@ -43,9 +43,16 @@ namespace Targets
             var xPoss = Mathf.Clamp(x, 0, 7) - xOffset;
             var yPoss = Mathf.Clamp(y, 0, 4) - yOffset;
             var poss = new Vector3(xPoss, yPoss,-3.05f);
+            
+            // Creates the Sphere
             _sphereIns = Instantiate(sphere, poss, sphere.transform.rotation);
             _sphereIns.localScale = new Vector3(1.15f,1.15f,1.15f);
+            
+            // Sets a random color to the sphere
+            var material = TilesColors.RandomMeshColor();
+            _sphereIns.GetComponent<MeshRenderer>().sharedMaterial = material;
             return _sphereIns;
         }
+        
     }
 }

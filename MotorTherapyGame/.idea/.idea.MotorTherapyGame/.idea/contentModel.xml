@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Jesica\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Jesica\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.36862027.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Jesica\Documents\TEC\Jose\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
+    <e p="C:\Users\José Acuña\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\José Acuña\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.-1786982385.00" t="ExcludeRecursive" />
+    <e p="F:\Projects\Unity\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Firebase" t="Include">
@@ -26,6 +26,12 @@
           </e>
         </e>
         <e p="Resources" t="Include">
+          <e p="Colors" t="Include">
+            <e p="BluePianoFlag.mat" t="Include" />
+            <e p="GreenPianoFlag.mat" t="Include" />
+            <e p="RedPianoFlag.mat" t="Include" />
+            <e p="YellowPianoFlag.mat" t="Include" />
+          </e>
           <e p="Fonts" t="Include">
             <e p="Roboto" t="Include">
               <e p="LICENSE.txt" t="Include" />
@@ -45,10 +51,10 @@
           <e p="CobWeb" t="Include">
             <e p="CobWeb.cs" t="Include" />
           </e>
+          <e p="Colors.cs" t="Include" />
           <e p="Game.cs" t="Include" />
           <e p="Jump.cs" t="Include" />
           <e p="Piano" t="Include">
-            <e p="Colors.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="Note.cs" t="Include" />
             <e p="PianoFlag.cs" t="Include" />
