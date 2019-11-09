@@ -39,6 +39,10 @@ namespace Piano
             SceneManager.LoadScene("AppInterface");
         }
 
+        public void Hit()
+        {
+            
+        }
         
     }
 }

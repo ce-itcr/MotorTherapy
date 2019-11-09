@@ -9,6 +9,8 @@ TagManager:
   - cursor
   - target
   - handcursorsphere
+  - balloon
+  - flag
   layers:
   - Default
   - TransparentFX

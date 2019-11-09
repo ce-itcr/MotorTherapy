@@ -20,7 +20,7 @@ public class PianoFlag : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (_noteCollision)
+        if (_noteCollision && _noteCollider.tag.Equals("Note"))
         {
             Hit();
             Destroy(_noteCollider);
@@ -36,10 +36,18 @@ public class PianoFlag : MonoBehaviour
 
     private void OnCollisionExit()
     {
-        _noteCollision = false;
-        Destroy(_noteCollider);
-        _noteCollider = null;
-        Miss();
+        if (_noteCollider.tag.Equals("Note"))
+        {
+            _noteCollision = false;
+            Destroy(_noteCollider);
+            _noteCollider = null;
+            Miss();
+        }
+        else
+        {
+            ;
+        }
+
     }
 
     private void Hit()

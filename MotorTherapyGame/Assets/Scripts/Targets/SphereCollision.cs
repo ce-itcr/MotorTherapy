@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -23,7 +25,7 @@ namespace Targets
         void Update()
         {
             if (Input.GetMouseButtonDown(0)) {
-                Ray ray = cam.ScreenPointToRay(handCursor.position);
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 if(Physics.Raycast(ray, out hit)) {
                     // if collision
@@ -37,7 +39,6 @@ namespace Targets
             gameController.SendMessage("Spawn");
             scoreText.text =  "Score: " + ++score;
         }
-        
 
         public void OpenAppInterface()
         {
