@@ -3,4 +3,4 @@ from tests.lexical.GameTest import game_test
 # from tests.syntax.SyntaxTest import syntax_test
 # Test it out
 lexical_test()
-game_test()
+# game_test()

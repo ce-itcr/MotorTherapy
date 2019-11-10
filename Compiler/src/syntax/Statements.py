@@ -7,6 +7,7 @@ def p_statements_test(p):
                | var_define statements
                | For statements
                | Dow statements
+               | Random statements
                | empty
     '''
     print(p)
@@ -21,19 +22,17 @@ def p_statements_test(p):
 #
 # def p_start(p):
 #     '''
-#     start : BEGIN MAIN LBRACE statements_excecute RBRACE
+#     start : BEGIN MAIN LBRACE statements_excecute RBRACE END SEMICOL
 #     '''
 #
-# def p_statements_excecute(p):
+#
+# def p_statements(p):
 #     '''
-#     statements_exceute : var_assign statements
-#                        | var_define statements
-#                        | For statements
-#                        | Dow statements
-#                        | empty
+#     statements : var_assign statements
+#                | var_define statements
+#                | For statements
+#                | Dow statements
+#                | Game statements
+#                | empty
 #     '''
-#     if p[1] == 'For':
-#         main_instructions.append('For')
-#     elif p[1] == 'Dow':
-#         main_instructions.append('Dow')
 #

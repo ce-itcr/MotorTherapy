@@ -15,7 +15,7 @@ Game1
 	Int y = 2;
 	Int x = 4;
 
-	int i = 5;
+	Int i = 5;
 	Dow(i)
 		Balloon(y, x);
 		Inc(y, 1);
@@ -26,10 +26,10 @@ Game1
 // Piano
 Game2
 {
-string(10) color[10];
-int points[10];
-int time = 60;
-int cant = 3;
+String(10) color[10];
+Int points[10];
+Int time = 60;
+Int cant = 3;
 
 color[0] = "blue";
 points[0] = 10;
@@ -42,7 +42,7 @@ points[3] = 4;
 
 Random(color, cant, time);
 
-FOR 5 times using color
+FOR 5 Times Using color
 	Random(cant, time);
 	Inc(cant, 3);
 	Dec(time, 10);

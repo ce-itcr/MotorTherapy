@@ -3,10 +3,39 @@ from src.lexical.Tokens import *
 from src.syntax.Statements import *
 import numpy
 import src.syntax.Excecution as ex
+import random
 
-variables = {'i':[0, 'Int']}
+variables = {} # Balloons : [[x, y], [x, y]]
 loop_array = []
 start = 'statements'
+
+# def p_game(p):
+#     '''
+#     Game : GAME LBRACE statements_excecute RBRACE END SEMICOL
+#     '''
+def p_Random(p):
+    '''
+    Random : RANDOM LPAREN ID COMMA atomic_variable COMMA atomic_variable RPAREN SEMCOL
+    '''
+    global variables
+    try:
+        ex.random_list(len(variables[p[3]][0]), int(p[5]), variables[p[3]][0])
+    except:
+        try:
+            if isinstance(variables[p[5]][0], int):
+                ex.random_list(len(variables[p[3]][0]), variables[p[5]][0], variables[p[3]][0])
+            else:
+                print("Se requiere un tipo int")
+        except:
+            print("Error: Random contiene un ID que no se ha iniciado")
+
+def p_num_variable(p):
+    '''
+    atomic_variable : NUMBER
+                    | ID
+    '''
+    p[0] = p[1]
+    print(p[0])
 
 def p_var_assign(p):
     '''
@@ -16,7 +45,6 @@ def p_var_assign(p):
     global variables
     if p[3] == '[':
         if p[1][0] == 'Int':
-
             print(("Created", p[2]))
             variables[p[2]] = [[], p[1][0], p[4]]
         elif p[1][0] == 'String':
@@ -39,10 +67,10 @@ def p_var_define(p):
     global variables
     if p[3] == '=':
         try:
-            variables[p[2]] = [p[3], p[1][0], p[1][1]]
+            variables[p[2]] = [p[4], p[1][0], p[1][1]]
         except:
             print(("=", p[2], p[4]))
-            variables[p[2]] = [p[3], p[1][0]]
+            variables[p[2]] = [p[4], p[1][0]]
     elif p[2] == '=':
         if variables[p[1]][1] == 'String':
             if isinstance(p[3], str):
@@ -69,7 +97,8 @@ def p_var_define(p):
                             # excecute.change_atomic('String', p[3])
                             variables[p[1]][0][p[3]] = p[6]
                         elif len(variables[p[1]][0]) == p[3]:
-                            variables[p[1]][0].append(p[6])
+                            variables[p[1]][0].append(str(p[6]))
+                            print(variables)
                         else:
                             print("Indice fuera de rango en declaración " + p[1])
                     else:
@@ -93,51 +122,101 @@ def p_var_define(p):
             else:
                     print("Error en la definicion de " + p[1])
 
-#     # if variables[p[1][1]] == 'String':
-#     #     if isinstance(variables[p[1][0]], list):
-#     #         if isinstance(p[6], str):
-#     #             try:
-#     #                 variables[p[1][0][p[3]]] = p[6]
-#     #             except:
-#     #                 if
-#     # if variables[p[1][1]] == 'Int':
-#     #
-#     # if p[2] == '=':
-#     #     if not isinstance(variables[p[1]][0], list):
-#     #         if p[]
-#     #         variables[p[1]] = p[3]
-#     #         print(('=', p[1], p[3]))
-#     # elif p[5] == '=':
-#     #     print(('=', p[1] + p[2] + p[3] + p[4], p[5]))
-#     #     variables[p[1]][3] = p[6]
-
-
-
-def p_Inc(p):
+def p_ForRandom(p):
     '''
-    Inc : INC LPAREN ID COMMA NUMBER RPAREN
+    ForRandom : RANDOM LPAREN ID COMMA atomic_variable RPAREN SEMCOL
+              | RANDOM LPAREN NUMBER COMMA atomic_variable RPAREN SEMCOL
+              | RANDOM LPAREN ID COMMA atomic_variable COMMA atomic_variable RPAREN SEMCOL
+    '''
+    global loop_array, variables
+    try:
+        p[9]
+        if isinstance(variables[p[3]][0], list):
+            if isinstance(p[5], int):
+                loop_array.append(['Random', p[3], p[5]])
+            elif isinstance(variables[p[5]], int):
+                loop_array.append(['Random', variables[p[3]], variables[p[5]][0]])
+            else:
+                print("Error")
+        else:
+            print("Error")
+    except:
+        if isinstance(p[3], int):
+            loop_array.append(['Random', [], p[3]])
+        elif isinstance(variables[p[3]][0], int):
+            loop_array.append(['Random', [], variables[p[3]][0]])
+        else:
+            print("Error")
+
+
+def p_BalloonFor(p):
+    '''
+    BalloonFor : BALLOON LPAREN ID COMMA ID RPAREN SEMCOL
+               | BALLOON LPAREN ID COMMA NUMBER RPAREN SEMCOL
+               | BALLOON LPAREN NUMBER COMMA ID RPAREN SEMCOL
+               | BALLOON LPAREN NUMBER COMMA NUMBER RPAREN SEMCOL
+    '''
+    global loop_array, variables
+    try:
+        variables["Balloons"]
+    except:
+        variables["Balloons"] = []
+    if isinstance(p[3], int) or isinstance(variables[p[3]][0], int):
+        if isinstance(p[5], int) or isinstance(variables[p[5]][0], int):
+            loop_array.append(['Balloon', p[3], p[5]])
+        else:
+            print("Error en: " + p[5])
+    else:
+        print("Error en: " + p[3])
+
+
+def p_IncFor(p):
+    '''
+    IncFor : INC LPAREN ID COMMA atomic_variable RPAREN SEMCOL
     '''
     global variables, loop_array
-    if isinstance(variables[p[3]][0], int):
-        loop_array.append(['Inc', p[3], p[5]])
-    else:
-        print("Syntax error number in for is not an int")
+    print("variables: " + str(variables))
+    try:
+        if isinstance(p[5], int):
+            if isinstance(variables[p[3]][0], int):
+                loop_array.append(['Inc', p[3], p[5]])
+            else:
+                print("Syntax error number in for is not an int")
+        elif isinstance(variables[p[5]], int):
+            if isinstance(variables[p[3]][0], int):
+                loop_array.append(['Inc', p[3], variables[p[5]]])
+    except:
+        if isinstance(variables[p[3]][0], int):
+            loop_array.append(['Inc', p[3], 'Local'])
+        else:
+            print("Error3")
 
-def p_Dec(p):
+
+def p_DecFor(p):
     '''
-    Dec : DEC LPAREN ID COMMA NUMBER RPAREN
+    DecFor : DEC LPAREN ID COMMA atomic_variable RPAREN SEMCOL
     '''
     global variables, loop_array
-    if isinstance(variables[p[3]][0], int):
-        loop_array.append(['Dec', p[3], p[5]])
-    else:
-        print("Syntax error number in for is not an int")
+    try:
+        if isinstance(p[5], int):
+            if isinstance(variables[p[3]][0], int):
+                loop_array.append(['Dec', p[3], p[5]])
+            else:
+                print("Syntax error number in for is not an int")
+        else:
+            print("Error1")
+    except:
+        if isinstance(variables[p[3]][0], int):
+            loop_array.append(['Dec', variables[p[3]][0], 'Local'])
+        else:
+            print("Error2")
 
 def p_Body(p):
     '''
-    Body : Inc Body
-         | Dec Body
-         | RANDOM Body
+    Body : IncFor Body
+         | DecFor Body
+         | BalloonFor Body
+         | ForRandom Body
          | empty
     '''
     p[0] = p[1]
@@ -146,16 +225,20 @@ def p_For(p):
     '''
     For : FOR NUMBER TIMES USING ID Body FOREND SEMCOL
     '''
-    global variables, loop_array
     # if isinstance(variables[p[5]][0], list):
     #     loop_array.append(p[2])
     # else:
-    print(variables)
+    global variables, loop_array
+    print("variables" + str(variables))
     loop_array.append(p[2])
-    variables = ex.loop(loop_array, variables)
+    print("loop array: " + str(loop_array))
+    try:
+        if isinstance(variables[p[5]][0], list):
+            variables = ex.loop(loop_array, variables, p[5])
+    except:
+        variables = ex.loop(loop_array, variables, 0)
     print(variables)
     loop_array = []
-        
 
 def p_Dow(p):
     '''
@@ -168,7 +251,7 @@ def p_Dow(p):
     else:
         loop_array.append(variables[p[3]][0])
     print(variables)
-    ex.loop(loop_array, variables)
+    ex.loop(loop_array, variables, [])
     print(variables)
     loop_array = []
 
@@ -194,6 +277,8 @@ def p_atomic(p):
            | TEXT
     '''
     p[0] = p[1]
+
+
 
 # def p_Random():
 #     '''

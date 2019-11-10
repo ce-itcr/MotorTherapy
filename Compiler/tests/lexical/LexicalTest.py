@@ -11,7 +11,7 @@ def lexical_test():
     print("\nLexical_TEST running... ")
 
     # game_test()
-    # loops_test()
+    loops_test()
     # types_test()
     # symbols_test()
     # functions_test()
@@ -42,19 +42,46 @@ def game_test():
 def loops_test():
     print("\tLoops_TEST running... ", end='')
 
+#     Dow(5)
+#     Balloon(y, x);
+#     Balloon(x, y);
+#     Inc(x, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#     Inc(y, 1);
+#
+#
+# Enddo;
     data = '''
     // Loops
-    FOR 5 Times Using x
-	    Inc(i, 10)
-	    Dec(i, 1)
-	FOREND;
-	Dow(5)
-		Inc(i, 1)
-		Dec(i, 2)
-	Enddo;
+    Int x = 1;
+    Int y = 1;
+    String(10) color[4];
+    color[0] = "blue";
+    color[1] = "red";
+    color[2] = "green";
+    color[3] = "yellow";
+    color[4] = "purple";
+    FOR 5 Times Using color
+        Inc(x, i);
+        Random(3, 5);
+    FOREND;
     '''
 
-    print(consume(data))
+    # print(consume(data))
     syn.parser.parse(data)
     print(ok)
 
@@ -62,14 +89,24 @@ def loops_test():
 def types_test():
     print("\tTypes_TEST running... ", end='')
 
+    # data = '''
+    # Int a = 5;
+    # String(4) r;
+    # String(10) color[10];
+    # a = 9;
+    # a = "hola";
+    # r = "holapo";
+    # color[5] = "uopj";
+    # color[0] = "adios";
+    # '''
     data = '''
-    Int a = 5;
-    Int r;
-    String(10) color[10];
-    a = 9;
-    a = "hola";
-    color[5] = "uopj";
-    color[0] = "adios";
+    String(10) color[4];
+    color[0] = "blue";
+    color[1] = "red";
+    color[2] = "green";
+    color[3] = "yellow";
+    color[4] = "purple";
+    Random(color, 3, 5);
     '''
     # print(consume(data))
     syn.parser.parse(data)
