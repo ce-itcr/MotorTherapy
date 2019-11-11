@@ -63,7 +63,8 @@ public class AuthManager : MonoBehaviour {
             if (task.IsFaulted)
             {
                 //Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-                errorMsgs.text = "CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception;
+                //errorMsgs.text = "CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception;
+                errorMsgs.text = "CreateUserWithEmailAndPasswordAsync encountered an error.";
                 return;
             }
 
@@ -114,7 +115,8 @@ public class AuthManager : MonoBehaviour {
             if (task.IsFaulted)
             {
                 //Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-                errorMsgs.text = "SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception;
+                //errorMsgs.text = "SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception;
+                errorMsgs.text = "SignInWithEmailAndPasswordAsync encountered an error.";
                 return;
             }
 
