@@ -26,12 +26,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
     }
+
 
     public void onExit(View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-// Add the buttons
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 FirebaseAuth.getInstance().signOut();
@@ -52,4 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         dialog.show();
     }
+
+
 }
