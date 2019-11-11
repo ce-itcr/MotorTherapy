@@ -6,10 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ceitcr.motortherapy.MainActivity;
@@ -18,7 +16,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         input_email=findViewById(R.id.input_email);
@@ -50,26 +47,26 @@ public class LoginActivity extends AppCompatActivity {
         String password = input_password.getText().toString();
 
         if (email.isEmpty()){
-            input_email.setError("Ingrese su email.");
+            input_email.setError("Enter your email.");
             input_email.requestFocus();
         } else if (password.isEmpty()){
-            input_password.setError("Ingrese su contraseña.");
+            input_password.setError("Enter your password.");
             input_password.requestFocus();
         } else if (email.isEmpty() && password.isEmpty()){
-            Toast.makeText(this,"Por favor, llene todos los espacios.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please fill in all the spaces.", Toast.LENGTH_SHORT).show();
         } else if (!(email.isEmpty() && password.isEmpty())){
             mFirebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(!task.isSuccessful()){
-                        Toast.makeText(LoginActivity.this, "Su correo y contraseña no coinciden.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Your email and password do not match.", Toast.LENGTH_SHORT).show();
                     }
                     else{
                         SaveSharedPreferences.setEmail(LoginActivity.this, input_email.getText().toString());
                         SaveSharedPreferences.setPassword(LoginActivity.this,input_password.getText().toString());
-                        Intent mainActivity = new Intent(LoginActivity.this,MainActivity.class);
+                        Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(mainActivity);
-                        Toast.makeText(LoginActivity.this, "Bienvenido!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Welcome to MotorTherapy - Stats!", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

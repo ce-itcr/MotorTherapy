@@ -1,13 +1,11 @@
 package com.ceitcr.motortherapy;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
@@ -36,17 +34,17 @@ public class IntroActivity extends AppIntro {
         else{
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-            builder.setMessage("Revise su conexión a internet.")
-                    .setTitle("Wifi no detectado");
+            builder.setMessage("Check your internet connection.")
+                    .setTitle("Wifi not detected.");
 
             AlertDialog dialog = builder.create();
 
             dialog.show();
         }
 
-        addSlide(AppIntroFragment.newInstance("","Paso 1. Inicie Sesión.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
-        addSlide(AppIntroFragment.newInstance("","Paso 2. Seleccione un Paciente.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
-        addSlide(AppIntroFragment.newInstance("","Paso 3. Visualice en tiempo real sus estadísticas.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
+        addSlide(AppIntroFragment.newInstance("","Step 1. Sign In.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
+        addSlide(AppIntroFragment.newInstance("","Step 2. Select a Patient.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
+        addSlide(AppIntroFragment.newInstance("","Step 3. Visualize in real time the statistics of said patient.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
     }
 
     @Override
