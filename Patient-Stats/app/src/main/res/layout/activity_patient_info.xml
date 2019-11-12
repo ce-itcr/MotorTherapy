@@ -6,12 +6,12 @@
     android:weightSum="100">
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="70"
-        android:id="@+id/image"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_weight="50"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,5 +23,54 @@
         android:textSize="20sp"
         android:textColor="#000"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/age_pacient"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Age:"
+        android:textSize="20sp"
+        android:textColor="#000"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/score_pacient"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Score:"
+        android:textSize="20sp"
+        android:textColor="#000"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_pacient"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Progress:"
+        android:textSize="20sp"
+        android:textColor="#000"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/comments_pacient"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Comments from the last therapy:"
+        android:textSize="20sp"
+        android:textColor="#000"
+        />
+
+
+
+
+
 
 </LinearLayout>
