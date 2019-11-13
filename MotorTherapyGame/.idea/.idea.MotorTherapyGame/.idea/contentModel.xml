@@ -72,6 +72,13 @@
             <e p="SimpleGestureListener.cs" t="Include" />
           </e>
         </e>
+        <e p="Objects" t="Include">
+          <e p="LowMan" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="ThirdPersonCharacter.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="OverlayDemo" t="Include">
           <e p="Scripts" t="Include">
             <e p="KinectOverlayer.cs" t="Include" />

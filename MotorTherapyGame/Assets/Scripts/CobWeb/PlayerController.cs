@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace CobWeb
 {
@@ -9,8 +10,9 @@ namespace CobWeb
         public Camera cam;
         public NavMeshAgent agent;
         public Material goal;
+        public ThirdPersonCharacter character;
         public float rotationSpeed = 50f;
-        public float moveSpeed = 10f;
+        public float moveSpeed = 5f;
         private Rigidbody _rb;
 
         private void Start()
@@ -21,21 +23,11 @@ namespace CobWeb
         // Update is called once per frame
         private void FixedUpdate()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-            
-                if (Physics.Raycast(ray, out hit))
-                {
-                    agent.SetDestination(hit.point);
-                }
-            }
-        
             // Move Commands
             if (Input.GetKey(KeyCode.A)) RotateLeft();
             if (Input.GetKey(KeyCode.D)) RotateRight();
-            if (Input.GetKey(KeyCode.W)) MoveForward();
+            if (Input.GetKey(KeyCode.W)) Move(Vector3.forward);
+            else character.Move(Vector3.zero, false, false);
         }
 
         private void RotateRight()
@@ -50,11 +42,12 @@ namespace CobWeb
             transform.Rotate(0, angle , 0);
         }
 
-        private void MoveForward()
+        private void Move(Vector3 dir)
         {
-            var movement = transform.rotation * Vector3.forward;
+            var movement = transform.rotation * dir;
             var poss = _rb.position + (Time.fixedDeltaTime * moveSpeed * movement);
             _rb.MovePosition(poss);
+            character.Move(movement, false, false);
         }
     }
 }

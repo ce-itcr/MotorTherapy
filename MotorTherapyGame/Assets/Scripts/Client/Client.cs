@@ -16,7 +16,7 @@ namespace Client
     {
         private static Client _instance;
         private TcpClient _socket;
-        private string _ip = "192.168.1.116";
+        private string _ip = "localhost";
         private int _port = 8888;
 
         public static Client GetInstance()
