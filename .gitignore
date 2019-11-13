@@ -8,3 +8,7 @@ Compiler/src/game/__pycache__/
 Compiler/src/lexical/__pycache__/
 
 *.pyc
+
+MotorTherapyGame/Assembly-CSharp.csproj
+
+MotorTherapyGame/.idea/.idea.MotorTherapyGame/.idea/contentModel.xml
