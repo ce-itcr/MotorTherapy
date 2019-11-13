@@ -56,15 +56,11 @@ public class HomeFragment extends Fragment {
         mImageUrls.add("https://www.it.iitb.ac.in/frg/wiki/images/thumb/d/dc/User.jpg/960px-User.jpg");
         mNames.add("TestPacient");
         mImageUrls.add("https://www.it.iitb.ac.in/frg/wiki/images/thumb/d/dc/User.jpg/960px-User.jpg");
-        mNames.add("TestPacients");
+        mNames.add("TestPacient");
         mImageUrls.add("https://www.it.iitb.ac.in/frg/wiki/images/thumb/d/dc/User.jpg/960px-User.jpg");
-        mNames.add("TestPacients");
+        mNames.add("TestPacient");
         mImageUrls.add("https://www.it.iitb.ac.in/frg/wiki/images/thumb/d/dc/User.jpg/960px-User.jpg");
-        mNames.add("TestPacients");
-
-
-
-
+        mNames.add("TestPacient");
 
         initRecyclerView(root);
     }

@@ -2,10 +2,13 @@ package com.ceitcr.motortherapy.user;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -14,6 +17,8 @@ import com.ceitcr.motortherapy.R;
 public class PatientInfo extends AppCompatActivity {
 
     private static final String TAG = "PatientInfo";
+    private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,7 +26,10 @@ public class PatientInfo extends AppCompatActivity {
         setContentView(R.layout.activity_patient_info);
         Log.d(TAG, "onCreate: started.");
 
+        progressBar = (ProgressBar) findViewById(R.id.patientProgress);
+
         getIncomingIntent();
+
     }
 
     private void getIncomingIntent(){
@@ -34,6 +42,7 @@ public class PatientInfo extends AppCompatActivity {
             String imageName = getIntent().getStringExtra("image_name");
 
             setImage(imageUrl, imageName);
+            setPatientProgress(50);
         }
     }
 
@@ -49,5 +58,9 @@ public class PatientInfo extends AppCompatActivity {
                 .asBitmap()
                 .load(imageUrl)
                 .into(image);
+    }
+
+    private void setPatientProgress(int progress){
+        progressBar.setProgress(progress);
     }
 }
