@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\angelortizv\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\angelortizv\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.1276607404.00" t="ExcludeRecursive" />
-    <e p="C:\Users\angelortizv\Documents\Projects\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
+    <e p="C:\Users\Jesica\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jesica\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_MotorTherapyGame.36862027.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Jesica\Documents\TEC\Jose\MotorTherapy\MotorTherapyGame" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -143,6 +143,9 @@
           </e>
           <e p="CobWeb" t="Include">
             <e p="CobWeb.cs" t="Include" />
+            <e p="PlayerController.cs" t="Include" />
+            <e p="PopulateGrid.cs" t="Include" />
+            <e p="Score.cs" t="Include" />
           </e>
           <e p="Colors.cs" t="Include" />
           <e p="Game.cs" t="Include" />
@@ -153,9 +156,6 @@
             <e p="Score.cs" t="Include" />
             <e p="Spawner.cs" t="Include" />
           </e>
-          <e p="PlayerController.cs" t="Include" />
-          <e p="PopulateGrid.cs" t="Include" />
-          <e p="Score.cs" t="Include" />
           <e p="Targets" t="Include">
             <e p="CursorCollider.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
@@ -235,6 +235,34 @@
             <e p="fsMetaType.cs" t="Include" />
             <e p="fsReflectionUtility.cs" t="Include" />
             <e p="fsTypeCache.cs" t="Include" />
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+            <e p="Shaders" t="Include">
+              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+              <e p="TMP_Bitmap.shader" t="Include" />
+              <e p="TMP_SDF Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface.shader" t="Include" />
+              <e p="TMP_SDF.shader" t="Include" />
+              <e p="TMP_Sprite.shader" t="Include" />
+              <e p="TMPro.cginc" t="Include" />
+              <e p="TMPro_Properties.cginc" t="Include" />
+              <e p="TMPro_Surface.cginc" t="Include" />
+            </e>
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
       </e>
