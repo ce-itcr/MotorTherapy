@@ -42,9 +42,9 @@ public class IntroActivity extends AppIntro {
             dialog.show();
         }
 
-        addSlide(AppIntroFragment.newInstance("","Step 1. Sign In.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
-        addSlide(AppIntroFragment.newInstance("","Step 2. Select a Patient.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
-        addSlide(AppIntroFragment.newInstance("","Step 3. Visualize in real time the statistics of said patient.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
+        addSlide(AppIntroFragment.newInstance("","Welcome to MotorTherapy. \n Step 1. Sign In.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
+        addSlide(AppIntroFragment.newInstance("","Welcome to MotorTherapy. \n Step 2. Select a Patient.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
+        addSlide(AppIntroFragment.newInstance("","Welcome to MotorTherapy. \n Step 3. Visualize in real time the statistics of said patient.",R.drawable.ic_launcher, ContextCompat.getColor(getApplicationContext(),R.color.colorPrimary)));
     }
 
     @Override

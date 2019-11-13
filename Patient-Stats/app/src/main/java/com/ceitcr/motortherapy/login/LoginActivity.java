@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,12 +26,14 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
+    private static final String TAG = "LoginActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         input_email=findViewById(R.id.input_email);
@@ -66,11 +70,35 @@ public class LoginActivity extends AppCompatActivity {
                         SaveSharedPreferences.setPassword(LoginActivity.this,input_password.getText().toString());
                         Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(mainActivity);
-                        Toast.makeText(LoginActivity.this, "Welcome to MotorTherapy - Stats!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Welcome to MotorTherapy.", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
 
         }
+    }
+
+
+    public void sendPasswordReset(View view){
+
+        String emailAddress = input_email.getText().toString();
+
+        if(emailAddress.isEmpty()){
+            input_email.setError("Enter your email.");
+            input_email.requestFocus();
+        }else{
+            mFirebaseAuth.sendPasswordResetEmail(emailAddress).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Log.d(TAG, "Email sent.");
+                        Toast.makeText(LoginActivity.this,"We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+        }
+        
+
     }
 }
