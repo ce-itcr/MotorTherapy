@@ -150,9 +150,13 @@
           </e>
           <e p="CobWeb" t="Include">
             <e p="CobWeb.cs" t="Include" />
+<<<<<<< HEAD
             <e p="PlayerController.cs" t="Include" />
             <e p="PopulateGrid.cs" t="Include" />
             <e p="Score.cs" t="Include" />
+=======
+            <e p="CobWebGenerator.cs" t="Include" />
+>>>>>>> develop
           </e>
           <e p="Colors.cs" t="Include" />
           <e p="Game.cs" t="Include" />

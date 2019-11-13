@@ -114,9 +114,13 @@
     <Compile Include="Assets\Scripts\Balloons\Jump.cs" />
     <Compile Include="Assets\Scripts\Client\Client.cs" />
     <Compile Include="Assets\Scripts\CobWeb\CobWeb.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Scripts\CobWeb\PlayerController.cs" />
     <Compile Include="Assets\Scripts\CobWeb\PopulateGrid.cs" />
     <Compile Include="Assets\Scripts\CobWeb\Score.cs" />
+=======
+    <Compile Include="Assets\Scripts\CobWeb\CobWebGenerator.cs" />
+>>>>>>> develop
     <Compile Include="Assets\Scripts\Colors.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\Piano\GameController.cs" />
