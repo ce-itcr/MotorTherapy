@@ -35,10 +35,12 @@ def search_in_text(filename, word1, word2):
 
 def extract_variables():
     games_array = []
-    for i in range(2):
+    for i in range(3):
         data = search_in_text("game.txt", "Game"+str(i+1)+"\n", "}\n")
         # print("lex: " + str(consume(data)))
         stx.parser.parse(data)
+        if not stx.compilation_successful:
+            exit(1)
         games_array.append(stx.variables)
         stx.variables = {}
     return games_array
@@ -46,3 +48,4 @@ def extract_variables():
 games = extract_variables()
 print("Game1: " + str(games[0]))
 print("Game2: " + str(games[1]))
+print("Game3: " + str(games[2]))

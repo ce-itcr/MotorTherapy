@@ -11,8 +11,8 @@ def lexical_test():
     print("\nLexical_TEST running... ")
 
     # game_test()
-    loops_test()
-    # types_test()
+    # loops_test()
+    types_test()
     # symbols_test()
     # functions_test()
     # operators_test()
@@ -99,14 +99,47 @@ def types_test():
     # color[5] = "uopj";
     # color[0] = "adios";
     # '''
+    # data = '''
+    # String(10) color[4];
+    # color[0] = "blue";
+    # color[1] = "red";
+    # color[2] = "green";
+    # color[3] = "yellow";
+    # color[4] = "purple";
+    # Random(color, 3, 5);
+    # '''
+    # data = '''
+    # String(10) words[9];
+    # Int points[9];
+    # words[0] = "0";
+    # words[1] = "1";
+    # words[2] = "2";
+    # words[3] = "3";
+    # words[4] = "4";
+    # words[5] = "5";
+    # words[6] = "6";
+    # words[7] = "7";
+    # words[8] = "8";
+    # points[0] = 10;
+    # points[1] = 20;
+    # points[2] = 30;
+    # points[3] = 40;
+    # points[4] = 50;
+    # points[5] = 60;
+    # points[6] = 70;
+    # points[7] = 80;
+    # points[8] = 90;
+    #
+    # Int rows = 3;
+    # Int columns = 3;
+    # SpiderWeb(rows, columns);
+    # ForAsignWord(rows, columns) DO
+	#     AsignWord(words, 50);
+    # '''
     data = '''
-    String(10) color[4];
-    color[0] = "blue";
-    color[1] = "red";
-    color[2] = "green";
-    color[3] = "yellow";
-    color[4] = "purple";
-    Random(color, 3, 5);
+    Int x = 5;
+    Int y;
+    y = x;
     '''
     # print(consume(data))
     syn.parser.parse(data)

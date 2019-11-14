@@ -8,6 +8,8 @@ def p_statements_test(p):
                | For statements
                | Dow statements
                | Random statements
+               | Spiderweb statements
+               | ForAssignWord statements
                | empty
     '''
     print(p)
