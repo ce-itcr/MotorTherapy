@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:shortcutShortLabel="@string/menu_home"
+        android:shortcutLongLabel="@string/menu_home">
+
+    <intent
+        android:action="android.intent.VIEW"
+        android:targetPackage="com.ceitcr.motortherapy"
+        android:targetClass="com.ceitcr.motortherapy.MainActivity"/>
+
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="settings"
+        android:enabled="true"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:shortcutShortLabel="@string/menu_settings"
+        android:shortcutLongLabel="@string/menu_settings">
+
+        <intent
+            android:action="android.intent.VIEW"
+            android:targetPackage="com.ceitcr.motortherapy"
+            android:targetClass="com.ceitcr.motortherapy.MainActivity"/>
+
+    </shortcut>
+
+
+<!--    <shortcut-->
+<!--        android:shortcutId="web"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_web_black_24dp"-->
+<!--        android:shortcutShortLabel="@string/menu_web"-->
+<!--        android:shortcutLongLabel="@string/menu_web">-->
+
+<!--        <intent-->
+<!--            android:action="com.ceitcr.motortherapy.MainActivity.webSite"-->
+<!--            android:targetPackage="com.ceitcr.motortherapy"-->
+<!--            android:targetClass="com.ceitcr.motortherapy.MainActivity"-->
+<!--            />-->
+
+<!--    </shortcut>-->
+
+
+</shortcuts>

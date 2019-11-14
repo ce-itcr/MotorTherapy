@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.ceitcr.motortherapy.login.LoginActivity;
@@ -106,5 +107,13 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
 
         dialog.show();
+    }
+
+    public void openWebSite(){
+        Intent viewIntent =
+                new Intent("android.intent.action.VIEW",
+                        Uri.parse("https://github.com/ce-itcr/MotorTherapy"));
+        startActivity(viewIntent);
+
     }
 }
