@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "255920617887-i5ambutg0ck96rhkdgmo25830q53i9f1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ceitcr.motortherapy",
+            "certificate_hash": "35eb5b45a9ca4793a3783a3c621b7c282405ce20"
+          }
+        },
+        {
           "client_id": "255920617887-416dj9abfgq8djmpmf1bm3evl2vsndgo.apps.googleusercontent.com",
           "client_type": 3
         }
