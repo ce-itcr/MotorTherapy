@@ -70,7 +70,7 @@ class GameController:
         targets = Targets(5, 6, 30)
         #targets = self.gamesDB.targets[i]
 
-        #if i < len(self.gamesDB.targets) - 1: # self.targets_i += 1
+        #if i < len(self.gamesDB.targets) - 1: # self.targets_+= 1
         return Game(type="targets", targets=targets.dict())
         #else: return 0
 
@@ -80,7 +80,7 @@ class GameController:
         balloons = self.gamesDB.balloons[i]
 
         if i < len(self.gamesDB.balloons) - 1:
-            i += self.balloons_i
+            self.balloons_i += 1
             return Game(type="balloons", balloons=balloons.dict())
         else:
             return 0

@@ -33,7 +33,7 @@ class GamesDB:
         size = len(colors_rand)
 
         for i in range(size):
-            colors = colors_rand[i]
+            colors = GamesDB.strings_normalize(colors_rand[i])
             piano = Piano(colors, points, time[i])
             self.piano.append(piano)
 
@@ -46,11 +46,24 @@ class GamesDB:
         for i in range(rows):
             for j in range(columns):
                 card = web[i][j]
-                name = card[0]
+                name = GamesDB.string_normalize(card[0])
                 points = card[1]
+
                 cards.append(Card(name, points, i, j).dict())
 
         self.cob_web = CobWeb(cards)
 
     def create_targets(self, dict):
         pass
+
+    @staticmethod
+    def string_normalize(str):
+        return str.replace('\"', '')
+
+    @staticmethod
+    def strings_normalize(array):
+        strings = []
+        for str in array:
+            normalized = GamesDB.string_normalize(str)
+            strings.append(normalized)
+        return strings

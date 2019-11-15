@@ -12,12 +12,13 @@ Main
 // Balloons
 Game1
 {
-	Int y = 2;
-	Int x = 4;
+    Int y = 1;  // y:[0, 5]
+	Int x = 6;  // x:[0, 10]
+
 	Int i = 5;
 	Dow(i)
-		Balloon(y, x);
-		Inc(y, 2);
+		Balloon(x, y);
+		Inc(y, 1);
 		Dec(x, 1);
 	Enddo;
 }
