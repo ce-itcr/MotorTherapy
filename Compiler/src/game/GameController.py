@@ -65,8 +65,7 @@ class GameController:
 
     # Example in case the client is in the targets game
     def targets(self):
-        return
-        i = self.targets_i
+        #i = self.targets_i
         targets = Targets(5, 6, 30)
         #targets = self.gamesDB.targets[i]
 
