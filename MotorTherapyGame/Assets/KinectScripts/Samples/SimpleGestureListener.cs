@@ -18,7 +18,13 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 
 		manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
 		manager.DetectGesture(userId, KinectGestures.Gestures.Squat);
-
+		
+		manager.DetectGesture(userId, KinectGestures.Gestures.RaiseLeftHand);
+		manager.DetectGesture(userId, KinectGestures.Gestures.RaiseRightHand);
+		
+		manager.DetectGesture(userId, KinectGestures.Gestures.RaiseLeftFoot);
+		manager.DetectGesture(userId, KinectGestures.Gestures.RaiseRightFoot);
+		
 //		manager.DetectGesture(userId, KinectGestures.Gestures.Push);
 //		manager.DetectGesture(userId, KinectGestures.Gestures.Pull);
 		

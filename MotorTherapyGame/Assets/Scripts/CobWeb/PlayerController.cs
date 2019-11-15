@@ -13,9 +13,9 @@ namespace CobWeb
         public ThirdPersonCharacter character;
         public float rotationSpeed;
         public float moveSpeed;
-        public static bool Moving;
-        public static bool RotatingR;
-        public static bool RotatingL;
+        private static bool _moving;
+        private static bool _rotatingR;
+        private static bool _rotatingL;
         private Rigidbody _rb;
 
         private void Start()
@@ -23,13 +23,29 @@ namespace CobWeb
             _rb = GetComponent<Rigidbody>();
         }
 
+        private void Update()
+        {
+            var manager = KinectManager.Instance;
+            if (manager == null || !manager.IsUserDetected()) return;
+            var userId = manager.GetUser(0);
+            
+            _rotatingL = manager.GetGestureProgress(userId, KinectGestures.Gestures.RaiseLeftHand) > 0;
+            _rotatingR = manager.GetGestureProgress(userId, KinectGestures.Gestures.RaiseRightHand) > 0;
+
+            _moving = manager.GetGestureProgress(userId, KinectGestures.Gestures.RaiseLeftFoot) > 0 ||
+                      manager.GetGestureProgress(userId, KinectGestures.Gestures.RaiseRightFoot) > 0;
+            
+            
+            manager.ResetGestureListeners();
+        }
+
         // Update is called once per frame
         private void FixedUpdate()
         {
             // Move Commands
-            if (Input.GetKey(KeyCode.A) || RotatingL) RotateLeft();
-            if (Input.GetKey(KeyCode.D) || RotatingR) RotateRight();
-            if (Input.GetKey(KeyCode.W) || Moving) Move(Vector3.forward);
+            if (Input.GetKey(KeyCode.A) || _rotatingL) RotateLeft();
+            if (Input.GetKey(KeyCode.D) || _rotatingR) RotateRight();
+            if (Input.GetKey(KeyCode.W) || _moving) Move(Vector3.forward);
             else character.Move(Vector3.zero, false, false);
         }
 
