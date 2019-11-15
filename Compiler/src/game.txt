@@ -12,24 +12,23 @@ Main
 // Balloons
 Game1
 {
-	int y = 2;  // y:[0, 5]
-	int x = 4;  // x:[0, 10]
-
-	int i = 5;
+	Int y = 2;
+	Int x = 4;
+	Int i = 5;
 	Dow(i)
 		Balloon(y, x);
-		Inc(y, 1);
-		Dec(x, 2);
+		Inc(y, 2);
+		Dec(x, 1);
 	Enddo;
 }
 
 // Piano
 Game2
 {
-string(10) color[10];
-int points[10];
-int time = 60;
-int cant = 3;
+String(10) color[10];
+Int points[10];
+Int time = 60;
+Int cant = 1;
 
 color[0] = "blue";
 points[0] = 10;
@@ -42,28 +41,40 @@ points[3] = 4;
 
 Random(color, cant, time);
 
-FOR 5 times using color
+FOR 10 Times Using color
 	Random(cant, time);
-	Inc(cant, 3);
-	Dec(time, 10);
+	Inc(cant, 1);
+	Dec(time, 1);
 FOREND;
 }
 
 // CobWeb
 Game3
 {
-int size = 5;
-string(15) words[size];
-int points[size];
-int rows = 6;
-int columns = 6;
+Int size = 5;
+String(15) words[9];
+Int points[9];
+Int rows = 3;
+Int columns = 3;
 
-array[0] = "Ocean";
+words[0] = "Ocean";
 points[0] = 4;
-array[1] = "River";
+words[1] = "River";
 points[1] = 2;
-array[2] = "Fish";
+words[2] = "Fish";
 points[2] = 5;
+words[3] = "Hola";
+points[3] = 8;
+words[4] = "Adios";
+points[4] = 7;
+words[5] = "Yowaisa";
+points[5] = 30;
+words[6] = "No";
+points[6] = 1;
+words[7] = "Si";
+points[7] = 3;
+words[8] = "Talvez";
+points[8] = 10;
 
 SpiderWeb(rows, columns);
 
