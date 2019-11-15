@@ -18,11 +18,21 @@ public class PianoFlag : MonoBehaviour
         
     }
 
+    public void Hit()
+    {
+        if (_noteCollision && _noteCollider.tag.Equals("Note"))
+        {
+            AddScore();
+            Destroy(_noteCollider);
+        }
+        else Miss();
+    }
+
     private void OnMouseDown()
     {
         if (_noteCollision && _noteCollider.tag.Equals("Note"))
         {
-            Hit();
+            AddScore();
             Destroy(_noteCollider);
         }
         else Miss();
@@ -43,14 +53,9 @@ public class PianoFlag : MonoBehaviour
             _noteCollider = null;
             Miss();
         }
-        else
-        {
-            ;
-        }
-
     }
-
-    private void Hit()
+    
+    private void AddScore()
     {
         Debug.Log("HIT");
         gameController.SendMessage("AddHitScore");

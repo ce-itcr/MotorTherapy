@@ -28,7 +28,7 @@ Game2
 {
 String(10) color[10];
 Int points[10];
-Int time = 60;
+Int time = 15;
 Int cant = 1;
 
 color[0] = "blue";

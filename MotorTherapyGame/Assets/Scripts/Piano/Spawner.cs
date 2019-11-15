@@ -41,6 +41,7 @@ namespace Piano
             {
                 CreateNote(_colors[i], _points[i]);
                 _spawnCount--;
+                if (i == _colors.Length) yield break;
                 yield return new WaitForSeconds(_time);
             }
         }

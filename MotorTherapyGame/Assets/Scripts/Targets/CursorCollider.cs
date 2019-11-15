@@ -13,7 +13,7 @@ public class CursorCollider : MonoBehaviour
     public Transform cursor;
     public Rigidbody rb;
     public bool _onCollision;
-    public float time;
+    private float time;
     public float zPosition;
 
     public int mult;
@@ -22,7 +22,8 @@ public class CursorCollider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        time = 0;
+        _onCollision = false;
     }
 
     // Update is called once per frame
@@ -43,6 +44,15 @@ public class CursorCollider : MonoBehaviour
         if (other.gameObject.tag == "flag" && ((Time.time - time) > 2) && !_onCollision)
         {
             _onCollision = true;
+            time = Time.time;
+            other.gameObject.SendMessage("Hit");
+        }
+        
+        if (other.gameObject.tag == "balloon" && ((Time.time - time) > 2) && !_onCollision)
+        {
+            _onCollision = true;
+            time = Time.time;
+            targets.SendMessage("Hit");
             other.gameObject.SendMessage("Hit");
         }
 
@@ -52,5 +62,6 @@ public class CursorCollider : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("target")) _onCollision = false;
         if (other.gameObject.tag.Equals("flag")) _onCollision = false;
+        if (other.gameObject.tag.Equals("balloon")) _onCollision = false;
     }
 }
