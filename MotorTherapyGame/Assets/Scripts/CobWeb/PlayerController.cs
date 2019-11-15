@@ -10,7 +10,7 @@ namespace CobWeb
         public Camera cam;
         public NavMeshAgent agent;
         public Material goal;
-        public ThirdPersonCharacter character;
+        public static ThirdPersonCharacter character;
         public float rotationSpeed;
         public float moveSpeed;
         public static bool Moving;

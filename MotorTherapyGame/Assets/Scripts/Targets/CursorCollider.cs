@@ -28,19 +28,20 @@ public class CursorCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       rb.MovePosition(new Vector3(cursor.position.x * mult, cursor.position.y * mult,zPosition));
-       print(cursor.position.y);
+        var position = cursor.position;
+        rb.MovePosition(new Vector3(position.x * mult, position.y * mult,zPosition));
+       print(position.y);
     }
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "target" && ((Time.time - time) > 2) && !_onCollision)
+        if (other.gameObject.CompareTag("target") && ((Time.time - time) > 2) && !_onCollision)
         {
             _onCollision = true;
             time = Time.time; 
             targets.SendMessage("Hit");
         }
 
-        if (other.gameObject.tag == "flag" && ((Time.time - time) > 2) && !_onCollision)
+        if (other.gameObject.CompareTag("flag") && ((Time.time - time) > 2) && !_onCollision)
         {
             _onCollision = true;
             other.gameObject.SendMessage("Hit");

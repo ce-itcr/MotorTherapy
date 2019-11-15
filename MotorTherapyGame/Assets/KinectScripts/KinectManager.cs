@@ -1015,7 +1015,6 @@ public class KinectManager : MonoBehaviour
 			Debug.LogError(e.ToString());
 			if(CalibrationText != null)
 				CalibrationText.GetComponent<GUIText>().text = message;
-				
 			return;
 		}
 		

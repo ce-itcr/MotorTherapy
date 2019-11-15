@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeController: {fileID: 1280226056}
-  sphere: {fileID: 6059704670107864014, guid: 5ff5395accf032e459eaecc04a9ed426, type: 3}
+  sphere: {fileID: 1878516982}
 --- !u!114 &565064814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,6 +1134,7 @@ MonoBehaviour:
   _onCollision: 0
   time: 0
   zPosition: -3.05
+  mult: 0
 --- !u!54 &1878516984
 Rigidbody:
   m_ObjectHideFlags: 0
