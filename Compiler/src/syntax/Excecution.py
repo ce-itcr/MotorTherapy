@@ -31,13 +31,21 @@ def loop(loop_array, variables, var):
         for n in range(len(loop_array)-1):
             if loop_array[n][0] == 'Inc':
                 if loop_array[n][2] == 'Local':
+                    if loop_array[n][1] == "time":
+                        variables["times"].append(variables[loop_array[n][1]][0])
                     variables[loop_array[n][1]][0] += i
                 else:
+                    if loop_array[n][1] == "time":
+                        variables["times"].append(variables[loop_array[n][1]][0])
                     variables[loop_array[n][1]][0] += value(loop_array[n][2], variables, int)[1]
             elif loop_array[n][0] == 'Dec':
                 if loop_array[n][2] == 'Local':
+                    if loop_array[n][1] == "time":
+                        variables["times"].append(variables[loop_array[n][1]][0])
                     variables[loop_array[n][1]][0] -= i
                 else:
+                    if loop_array[n][1] == "time":
+                        variables["times"].append(variables[loop_array[n][1]][0])
                     variables[loop_array[n][1]][0] -= value(loop_array[n][2], variables, int)[1]
             elif loop_array[n][0] == 'Balloon':
                 x = value(loop_array[n][1], variables, int)[1]

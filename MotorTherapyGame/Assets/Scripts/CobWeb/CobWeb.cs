@@ -13,7 +13,7 @@ namespace CobWeb
         public GameObject ground;
         private float _height;
         private float _width;
-        private List<List<GameObject>> _matrix;
+        private List<List<GameObject>> _matrix = new List<List<GameObject>>();
 
 
         // Returns to the previous Scene

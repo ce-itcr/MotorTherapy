@@ -222,6 +222,10 @@ def p_ForRandom(p):
     '''
     global loop_array, variables
     try:
+        variables["times"]
+    except:
+        variables["times"] = []
+    try:
         p[9]
         if isinstance(variables[p[3]][0], list):
             if isinstance(p[5], int):
