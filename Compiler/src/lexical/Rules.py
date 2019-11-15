@@ -27,16 +27,16 @@ t_DOW = r'Dow'
 t_ENDDO = r'Enddo'
 t_FOR = r'FOR'
 t_FOREND = r'FOREND'
-t_TIMES = r'times'
-t_USING = r'using'
+t_TIMES = r'Times'
+t_USING = r'Using'
 
 # Game
 t_MAIN = r'Main'
 t_GAME = r'Game[1-4]'
 
 # Types
-t_INT = r'int'
-t_STRING = r'string'
+t_INT = r'Int'
+t_STRING = r'String'
 
 # Functions
 t_BALLOON = 'Balloon'

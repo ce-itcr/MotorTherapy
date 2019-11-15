@@ -22,7 +22,7 @@ namespace Balloons
             balloons.SendMessage("AddScore");
         }
 
-        private void Hit()
+        public void Hit()
         {
             #region Client call for data
             var message = JsonUtility.ToJson(new Game("balloons", "ok"));

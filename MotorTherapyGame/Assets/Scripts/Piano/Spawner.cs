@@ -26,6 +26,7 @@ namespace Piano
 
         public void Spawn(string[] colorsStr, int[] points, int time)
         {
+            if (colorsStr == null) return;
             _finished = false;
             _colors = TilesColors.ToColorsFromString(colorsStr);
             _points = points;
@@ -40,6 +41,7 @@ namespace Piano
             {
                 CreateNote(_colors[i], _points[i]);
                 _spawnCount--;
+                if (i == _colors.Length) yield break;
                 yield return new WaitForSeconds(_time);
             }
         }

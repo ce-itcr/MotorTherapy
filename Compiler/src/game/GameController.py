@@ -1,5 +1,5 @@
 # @Author Jose Daniel Acuna
-# Last time edited 11/1/19
+# Last time edited 11/14/19
 from game.Balloons import Balloons
 from game.CobWeb import *
 from game.Game import Game
@@ -10,63 +10,87 @@ from server.ClientObserver import *
 
 class GameController:
 
-    @staticmethod
-    def update(message):
+    def __init__(self, games_db):
+        self.gamesDB = games_db
+        self.piano_i = 0
+        self.balloons_i = 0
+        self.targets_i = 0
+        self.cob_web_i = 0
+
+    def update(self, message):
         game = Game.from_json(message)
 
         if game.status == "ok":
-            response = GameController.handle_games(game.type)
+            response = self.handle_games(game.type)
         else:
             response = GameController.handle_errors()
 
         ClientObserver.client_response = response
 
     # Switch statement
-    @staticmethod
-    def handle_games(game_type):
-        switch = \
-            {
-                'piano': GameController.piano(),
-                'targets': GameController.targets(),
-                'balloons': GameController.balloons(),
-                'cobWeb': GameController.cob_web()
-            }.get(game_type, 0)
+    def handle_games(self, game_type):
+        switch = 0
+        if game_type == "piano":
+            switch = self.piano()
+        elif game_type == "targets":
+            switch = self.targets()
+        elif game_type == "balloons":
+            switch = self.balloons()
+        elif game_type == "cobWeb":
+            switch = self.cob_web()
 
         if switch != 0:
             return switch.to_json()
         else:
-            return ""
+            return GameController.handle_end()
 
     @staticmethod
     def handle_errors():
         return Game(status="error").to_json()
 
-    # Example in case the client is in the piano game
     @staticmethod
-    def piano():
-        piano = Piano(["red", "blue", "green", "yellow"],
-                      [1, 2, 3, 4],
-                      60).dict()
-        return Game(type="piano", piano=piano)
+    def handle_end():
+        return Game(status="end").to_json()
+
+    # Example in case the client is in the piano game
+    def piano(self):
+        i = self.piano_i
+        piano = self.gamesDB.piano[i]
+
+        if i < len(self.gamesDB.piano) - 1:
+            self.piano_i += 1
+            return Game(type="piano", piano=piano.dict())
+        else:
+            return 0
 
     # Example in case the client is in the targets game
-    @staticmethod
-    def targets():
-        targets = Targets(5, 6, 30).dict()
-        return Game(type="targets", targets=targets)
+    def targets(self):
+        #i = self.targets_i
+        targets = Targets(5, 6, 30)
+        #targets = self.gamesDB.targets[i]
+
+        #if i < len(self.gamesDB.targets) - 1: # self.targets_+= 1
+        return Game(type="targets", targets=targets.dict())
+        #else: return 0
 
     # Example in case the client is in the balloons game
-    @staticmethod
-    def balloons():
-        balloons = Balloons(6, 5).dict()
-        return Game(type="balloons", balloons=balloons)
+    def balloons(self):
+        i = self.balloons_i
+        balloons = self.gamesDB.balloons[i]
+
+        if i < len(self.gamesDB.balloons) - 1:
+            self.balloons_i += 1
+            return Game(type="balloons", balloons=balloons.dict())
+        else:
+            return 0
 
     # Example in case the client is in the cobWeb game
-    @staticmethod
-    def cob_web():
-        cob_web = CobWeb([Card("ocean", 10, 0, 0).dict(),
-                          Card("sky", 5, 0, 1).dict(),
-                          Card("river", 4, 1, 0).dict(),
-                          Card("mountain", 8, 1, 1).dict()
-                          ]).dict()
-        return Game(type="cobWeb", cobWeb=cob_web)
+    def cob_web(self):
+        i = self.cob_web_i
+        cob_web = self.gamesDB.cob_web
+
+        if i < 1:
+            self.cob_web_i += 1
+            return Game(type="cobWeb", cobWeb=cob_web.dict())
+        else:
+            return 0

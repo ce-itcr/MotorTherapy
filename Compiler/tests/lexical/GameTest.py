@@ -12,7 +12,7 @@ def game_test():
 def read_file():
     # Open the file
     cur_path = os.path.dirname(__file__)
-    path = os.path.relpath('game.txt', cur_path)
+    path = os.path.relpath('src/game.txt', cur_path)
     file = open(path, "r")
     print("\tOpen file:", file.name)
 

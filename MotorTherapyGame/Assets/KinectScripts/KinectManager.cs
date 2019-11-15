@@ -273,6 +273,12 @@ public class KinectManager : MonoBehaviour
     { 
 		return usersClrTex;
 	}
+
+    // return the userId in the given index
+    public uint GetUser(int index)
+    {
+	    return allUsers[index];
+    }
 	
 	// returns true if at least one user is currently detected by the sensor
 	public bool IsUserDetected()
@@ -625,9 +631,9 @@ public class KinectManager : MonoBehaviour
 	}
 	
 	// returns true, if the given gesture is in the list of detected gestures for the specified user
-	public bool IsGestureDetected(uint UserId, KinectGestures.Gestures gesture)
+	public bool IsGestureDetected(uint userId, KinectGestures.Gestures gesture)
 	{
-		int index = GetGestureIndex(UserId, gesture);
+		int index = GetGestureIndex(userId, gesture);
 		return index >= 0;
 	}
 	

@@ -20,6 +20,11 @@ namespace Balloons
             _points++;
             score.text = $"Score: {_points.ToString()}";
         }
+
+        public void Hit()
+        {
+            AddScore();
+        }
     }
 }
 

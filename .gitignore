@@ -5,6 +5,8 @@ MotorTherapyGame/Library/
 
 Compiler/src/game/__pycache__/
 
+Compiler/src/venv
+
 Compiler/src/lexical/__pycache__/
 
 *.pyc

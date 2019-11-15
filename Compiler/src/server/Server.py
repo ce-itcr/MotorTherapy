@@ -12,7 +12,7 @@ from server.ClientObserver import *
 class Server:
 
     def __init__(self):
-        self.Ip = 'localhost'
+        self.Ip = '0.0.0.0'
         self.port = 8888
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
