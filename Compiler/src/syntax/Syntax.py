@@ -14,28 +14,29 @@ compilation_successful = True
 #     '''
 #     Game : GAME LBRACE statements_excecute RBRACE END SEMICOL
 #     '''
+
 def p_Random(p):
     '''
     Random : RANDOM LPAREN ID COMMA atomic_variable COMMA atomic_variable RPAREN SEMCOL
     '''
     global variables
     try:
-        ex.random_list(len(variables[p[3]][0]), int(p[5]), variables[p[3]][0])
+        variables["Random" + str(p[3])].append( ex.random_list(len(ex.value(p[3], variables, list)[1]), ex.value(p[5], variables, int)[1], ex.value(p[3], variables, list)[1]))
     except:
-        try:
-            if isinstance(variables[p[5]][0], int):
-                ex.random_list(len(variables[p[3]][0]), variables[p[5]][0], variables[p[3]][0])
-            else:
-                print("Error en Random: Se requiere un tipo int")
-        except:
-            print("Error: Random contiene un ID que no se ha iniciado")
-
-def p_num_variable(p):
+        variables["Random" + str(p[3])] = []
+        variables["Random" + str(p[3])].append( ex.random_list(len(ex.value(p[3], variables, list)[1]), ex.value(p[5], variables, int)[1], ex.value(p[3], variables, list)[1]))
+   
+def p_atomic_variable(p):
     '''
     atomic_variable : NUMBER
                     | ID
+                    | ID LSPAREN ID RSPAREN
+                    | ID LSPAREN NUMBER RSPAREN
     '''
-    p[0] = p[1]
+    try:
+        p[0] = ex.value(p[1], variables, list)[1][ex.value(p[3], variables, int)[1]]
+    except:
+        p[0] = p[1]
 
 def p_var_assign(p):
     '''
@@ -64,7 +65,7 @@ def p_var_define(p):
     var_define : ID EQUAL ATOMIC SEMCOL
                | ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL
                | TYPE ID EQUAL ATOMIC SEMCOL
-               | ID EQUAL ID SEMCOL
+               | ID EQUAL atomic_variable SEMCOL
     '''
     global variables, compilation_successful
     if p[3] == '=':
@@ -214,9 +215,9 @@ def p_ForAssignWord(p):
     except:
         print("Error en for assign")
 
-def p_ForRandom(p):
+def p_RandomFor(p):
     '''
-    ForRandom : RANDOM LPAREN ID COMMA atomic_variable RPAREN SEMCOL
+    RandomFor : RANDOM LPAREN ID COMMA atomic_variable RPAREN SEMCOL
               | RANDOM LPAREN NUMBER COMMA atomic_variable RPAREN SEMCOL
               | RANDOM LPAREN ID COMMA atomic_variable COMMA atomic_variable RPAREN SEMCOL
     '''
@@ -242,7 +243,33 @@ def p_ForRandom(p):
         elif isinstance(variables[p[3]][0], int):
             loop_array.append(['Random', [], p[3]])
         else:
-            print("Error en ForRandom")
+            print("Error en RandomFor")
+
+def p_ObjectFor(p):
+    '''
+    ObjectFor : OBJECT LPAREN atomic_variable_for COMMA atomic_variable_for COMMA atomic_variable_for RPAREN SEMCOL
+    '''
+    global loop_array, variables, compilation_successful
+    try:
+        variables['Objects']
+    except:
+        variables['Objects'] = []
+    print("p[3]: " + str(p[3]))
+    # print(isinstance(ex.value(p[3], variables, int)[1], int))
+    print("p[5]: " + str(p[5]))
+    # print(isinstance(ex.value(p[5], variables, int)[1], int))
+    print("p[7]: " + str(p[7]))
+    # print(isinstance(ex.value(p[7], variables, int)[1], int))
+    # print(isinstance(ex.value(p[3], variables, int)[1], int))
+    try:
+        array = ['Object', p[3], p[5], p[7]]
+        for n in range(3):
+            if not isinstance(array[n+1], list):
+                array[n+1] = [array[n+1], -2]
+        loop_array.append(array)
+    except:
+        print("Error Semántico en Objects dentro de For: entrada inválida")
+
 
 
 def p_BalloonFor(p):
@@ -309,7 +336,8 @@ def p_Body(p):
     Body : IncFor Body
          | DecFor Body
          | BalloonFor Body
-         | ForRandom Body
+         | RandomFor Body
+         | ObjectFor Body
          | empty
     '''
     p[0] = p[1]
@@ -371,6 +399,24 @@ def p_atomic(p):
            | TEXT
     '''
     p[0] = p[1]
+
+def p_atomic_variable_for(p):
+    '''
+    atomic_variable_for : ID LSPAREN atomic_variable RSPAREN
+                        | ID
+                        | NUMBER
+    '''
+    global variables
+    try:
+        if isinstance(ex.value(p[1], variables, list)[1], list):
+            try:
+                if ex.value(p[3], variables, int)[1] + 1:
+                    True
+                p[0] = [p[1], p[3]]
+            except:
+                p[0] = [p[1], -1]
+    except:
+        p[0] = p[1]
 
 
 

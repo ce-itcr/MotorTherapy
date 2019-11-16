@@ -40,11 +40,11 @@ points[2] = 8;
 color[3] = "yellow";
 points[3] = 4;
 
-Random(color, cant, time);
+Random(color, 3, time);
 
 FOR 10 Times Using color
 	Random(cant, time);
-	Inc(cant, 1);
+	Inc(cant, points[2]);
 	Dec(time, 1);
 FOREND;
 }
@@ -61,6 +61,7 @@ Int columns = 3;
 words[0] = "Ocean";
 points[0] = 4;
 words[1] = "River";
+
 points[1] = 2;
 words[2] = "Fish";
 points[2] = 5;
@@ -86,9 +87,9 @@ ForAsignWord(rows, columns) DO
 // Targets
 Game4
 {
-int alt = 2;
-int time = 25
-int pos[5];
+Int alt = 2;
+Int time = 25;
+Int pos[5];
 
 pos[0] = 2;
 pos[1] = 1;
@@ -96,8 +97,8 @@ pos[2] = 5;
 pos[3] = 1;
 pos[4] = 7;
 
-FOR 5 times using i
-	Object(alt, pos[i], time)
+FOR 5 Times Using i
+	Object(alt, pos[i], time);
 FOREND;
 }
 
