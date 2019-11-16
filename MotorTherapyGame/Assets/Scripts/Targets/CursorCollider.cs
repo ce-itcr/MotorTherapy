@@ -31,7 +31,6 @@ public class CursorCollider : MonoBehaviour
     {
         var position = cursor.position;
         rb.MovePosition(new Vector3(position.x * mult, position.y * mult,zPosition));
-       print(position.y);
     }
     private void OnCollisionEnter(Collision other)
     {

@@ -27,6 +27,7 @@ namespace Targets
         {
             timeLeft -= Time.deltaTime;
             scaleSize = sphere.localScale.x;
+            if (sphereTime == 0) return;
             scaleSize -= (float) (0.95/sphereTime) * Time.deltaTime;
             textTime.text = "Time: " + timeLeft.ToString("0");
             sphere.localScale = new Vector3(scaleSize,scaleSize,scaleSize);

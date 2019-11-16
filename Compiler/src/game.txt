@@ -44,7 +44,7 @@ Random(color, 3, time);
 
 FOR 10 Times Using color
 	Random(cant, time);
-	Inc(cant, points[2]);
+	Inc(cant, 1);
 	Dec(time, 1);
 FOREND;
 }
