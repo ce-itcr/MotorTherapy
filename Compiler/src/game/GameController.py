@@ -65,15 +65,15 @@ class GameController:
 
     # Example in case the client is in the targets game
     def targets(self):
-        #i = self.targets_i
+        i = self.targets_i
         targets = Targets(5, 6, 30)
-        #targets = self.gamesDB.targets[i]
+        targets = self.gamesDB.targets[i]
 
-        #if i < len(self.gamesDB.targets) - 1:
-            #self.targets_+= 1
-        return Game(type="targets", targets=targets.dict())
-        #else:
-           # return 0
+        if i < len(self.gamesDB.targets) - 1:
+            self.targets += 1
+            return Game(type="targets", targets=targets.dict())
+        else:
+            return 0
 
     # Example in case the client is in the balloons game
     def balloons(self):

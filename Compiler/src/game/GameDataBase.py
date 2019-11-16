@@ -18,7 +18,7 @@ class GamesDB:
         self.create_balloons(games[0])
         self.create_piano(games[1])
         self.crete_cobweb(games[2])
-        #self.create_targets(games[3])
+        self.create_targets(games[3])
 
     def create_balloons(self, dict):
         coords_array = dict["Balloons"]
@@ -55,8 +55,7 @@ class GamesDB:
         self.cob_web = CobWeb(cards)
 
     def create_targets(self, dict):
-        return
-        array = dict["Targets"]
+        array = dict["Objects"]
         for entries in array:
             alt = entries[0]
             pos = entries[1]

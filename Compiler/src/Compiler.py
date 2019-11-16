@@ -28,7 +28,7 @@ def search_in_text(filename, word1, word2):
 # Calls the compiler and returns the games tables
 def extract_variables(filename):
     games_array = []
-    for i in range(3):
+    for i in range(4):
         data = search_in_text(filename, "Game"+str(i+1)+"\n", "}\n")
         stx.parser.parse(data)
         if not stx.compilation_successful:
