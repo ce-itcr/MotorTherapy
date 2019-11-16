@@ -20,6 +20,8 @@ def value(var, variables, t):
         return
 
 def loop(loop_array, variables, var):
+    print(variables)
+    print("loop array: " + str(loop_array))
     if isinstance(var, str):
         var_str = True
     else:
@@ -31,18 +33,37 @@ def loop(loop_array, variables, var):
         for n in range(len(loop_array)-1):
             if loop_array[n][0] == 'Inc':
                 if loop_array[n][2] == 'Local':
+                    if loop_array[n][1] == "time":
+                        variables["times"].append(variables[loop_array[n][1]][0])
                     variables[loop_array[n][1]][0] += i
                 else:
+                    if loop_array[n][1] == "time":
+                        variables["times"].append(variables[loop_array[n][1]][0])
                     variables[loop_array[n][1]][0] += value(loop_array[n][2], variables, int)[1]
             elif loop_array[n][0] == 'Dec':
                 if loop_array[n][2] == 'Local':
+                    if loop_array[n][1] == "time":
+                        variables["times"].append(variables[loop_array[n][1]][0])
                     variables[loop_array[n][1]][0] -= i
                 else:
+                    if loop_array[n][1] == "time":
+                        variables["times"].append(variables[loop_array[n][1]][0])
                     variables[loop_array[n][1]][0] -= value(loop_array[n][2], variables, int)[1]
             elif loop_array[n][0] == 'Balloon':
                 x = value(loop_array[n][1], variables, int)[1]
                 y = value(loop_array[n][2], variables, int)[1]
                 variables['Balloons'].append([x, y])
+            elif loop_array[n][0] == 'Object':
+                entry_array = []
+                for h in range(3):
+                    if loop_array[n][h+1][1] == -1:
+                        entry_array.append(value(loop_array[n][h+1][0], variables, list)[1][i])
+                    elif loop_array[n][h+1][1] == -2:
+                        entry_array.append(value(loop_array[n][h+1][0], variables, int)[1])
+                    else:
+                        entry_array.append(value(loop_array[n][h+1][0][loop_array[n][h][1]], variables, int)[1])
+                variables['Objects'].append(entry_array)
+
             elif loop_array[n][0] == 'Random':
                 var_val_list = value(var, variables, list)
                 var_val_int = value(var, variables, int)
@@ -51,7 +72,6 @@ def loop(loop_array, variables, var):
                     str_name = 'Random' + var
                 else:
                     str_name = 'Random' + ran_arr
-                print("ran_arr = " + str(ran_arr))
                 if value(ran_arr, variables, list)[1] == []:
                     try:
                         variables[str_name]
@@ -172,15 +192,11 @@ def assignValueSpiderWeb(variables, rowsID, columnsID, scoreID, wordsID):
 
 
 def validatedefineID(ID1, ID2, variables):
-    print("1")
     if variables[ID1][1] == variables[ID2][1]:
-        print("2")
         if isinstance(variables[ID1][0], type(variables[ID2][0])):
-            print("3")
             if variables[ID1][1] == 'String' and isinstance(variables[ID1][0], str):
                 print(variables[ID1], variables[ID2][0])
                 if variables[ID1][2] >= len(variables[ID2][0]) - 2:
-                    print("success")
                     return True
                 else:
                     print("Error: Tamaño de String es incompatible en " + ID1)
@@ -210,3 +226,4 @@ def validatedefineID(ID1, ID2, variables):
     else:
         print("Error: tipos de variables incompatible en " + ID1)
         return False
+
