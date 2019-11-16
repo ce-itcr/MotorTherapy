@@ -26,6 +26,14 @@ namespace Targets
             timerScript.sphere = sphere;
         }
 
+        private void Update()
+        {
+	        if (_game.status == "end")
+	        {
+		        Results();   
+	        }
+        }
+
         private void Awake()
         {
             _client = Client.Client.GetInstance();
@@ -49,6 +57,11 @@ namespace Targets
 	        var material = TilesColors.RandomMeshColor();
 	        _sphereIns.GetComponent<MeshRenderer>().sharedMaterial = material;
 	        return _sphereIns;
+        }
+        
+        public void Results()
+        {
+	        SceneManager.LoadScene("Results");
         }
     }
 }

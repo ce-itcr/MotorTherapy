@@ -8,12 +8,22 @@ namespace Balloons
     {
         public Text score;
         private int _points;
+        private Game _game;
         
         // Returns to the previous Scene
         public void Back()
         {
             SceneManager.LoadScene("AppInterface");
         }
+        
+        private void Update()
+        {
+            if (_game.status == "end")
+            {
+                Results();   
+            }
+        }
+        
 
         public void AddScore()
         {
@@ -25,6 +35,12 @@ namespace Balloons
         {
             AddScore();
         }
+        
+        public void Results()
+        {
+            SceneManager.LoadScene("Results");
+        }
+        
     }
 }
 

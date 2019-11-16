@@ -27,6 +27,11 @@ namespace Piano
             var response = _client.Message(message);
             _game = Game.CreateFromJson(response);
             if (_game != null) _spawner.Spawn(_game.piano.colors, _game.piano.points, _game.piano.time);
+            if (_game.status == "end")
+            {
+             Results();   
+            }
+
         }
 
         public void AddHitScore() => hitText.SendMessage("AddScore");
@@ -39,9 +44,9 @@ namespace Piano
             SceneManager.LoadScene("AppInterface");
         }
 
-        public void Hit()
+        public void Results()
         {
-            
+            SceneManager.LoadScene("Results");
         }
         
     }
