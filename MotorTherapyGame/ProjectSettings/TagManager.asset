@@ -11,6 +11,9 @@ TagManager:
   - handcursorsphere
   - balloon
   - flag
+  - cobwebPlayer
+  - lines
+  - map
   layers:
   - Default
   - TransparentFX

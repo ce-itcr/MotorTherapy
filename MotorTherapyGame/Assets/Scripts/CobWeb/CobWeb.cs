@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,8 +13,9 @@ namespace CobWeb
         private LineRenderer lineRenderer;
         private Game _game;
         public GameObject target;
-        public Material wall;
+        public GameObject wall;
         public GameObject ground;
+        public GameObject map;
         private float _height;
         private float _width;
         private List<List<GameObject>> _matrix = new List<List<GameObject>>();
@@ -46,9 +48,9 @@ namespace CobWeb
             _width = scale.x;
 
             lineRenderer = gameObject.AddComponent<LineRenderer>();
-            lineRenderer.material = wall;
             lineRenderer.widthMultiplier = 0.6f;
             lineRenderer.positionCount = 200;
+            //lineRenderer.tag = "lines";
 
             float alpha = 1.0f;
             Gradient gradient = new Gradient();
@@ -59,46 +61,13 @@ namespace CobWeb
             lineRenderer.colorGradient = gradient;
             
             InstantiatedTargets();
-            //CreatePaths();
+            CreatePaths();
         }
 
 
         private void Update()
         {
-            int rows = _matrix[0].Count;
-            int columns = _matrix.Count;
-            int counter = 0;
-            for (int i = 0; i < columns; i++)
-            {
-                for (int j = 0; j < rows; j++)
-                {
-                    Vector3 pos1 = _matrix[i][j].transform.position;
-                    if (i == (columns - 1) && j == (rows - 1))
-                    {
-
-                    }
-                    else if (j == rows - 1)
-                    {
-
-                    }
-                    else if (i == columns - 1)
-                    {
-
-                    }
-                    else
-                    {
-                        Vector3 pos2 = _matrix[i][j + 1].transform.position;
-                        Vector3 pos3 = _matrix[i + 1][j].transform.position;
-                        lineRenderer.SetPosition(counter, pos1);
-                        counter++;
-                        lineRenderer.SetPosition(counter, pos2);
-                        counter++;
-                        lineRenderer.SetPosition(counter, pos3);
-                        counter++;
-                    }
-                }
-            }
-
+           
         }
 
         private void InstantiatedTargets()
@@ -107,8 +76,8 @@ namespace CobWeb
             var columns = 8;
             var xOffset = _width / (rows + 1);
             var zOffset = _height / (columns + 1);
-            var xInitial = _width / 2 + xOffset / 4;
-            var zInitial = _height / 2;
+            var xInitial = _width / 2 + xOffset / 4 - 25;
+            var zInitial = _height / 2 - 25;
             Material material = null;
 
             for (var j = 0; j < rows; ++j)
@@ -123,7 +92,7 @@ namespace CobWeb
 
                     // Creates the Target
                     var x = (i + 1) * xOffset - xInitial + odd;
-                    var obj = Instantiate(target, new Vector3(x, 0, z), Quaternion.identity);
+                    var obj = Instantiate(target, new Vector3(x, 1, z), Quaternion.identity);
                     row.Add(obj);
                 }
                 _matrix.Add(row);
@@ -132,16 +101,15 @@ namespace CobWeb
 
         private void CreatePaths()
         {
-            // Reads the matrix and generates the connections
-            
-            int rows = _matrix[0].Count;
+             int rows = _matrix[0].Count;
             int columns = _matrix.Count;
-
+            int counter = 0;
             for (int i = 0; i < columns; i++)
             {
                 for (int j = 0; j < rows; j++)
                 {
                     Vector3 pos1 = _matrix[i][j].transform.position;
+                    pos1.y -= 1.4f;
                     if (i == (columns - 1) && j == (rows - 1))
                     {
 
@@ -157,18 +125,45 @@ namespace CobWeb
                     else
                     {
                         Vector3 pos2 = _matrix[i][j + 1].transform.position;
+                        pos2.y -= 1.4f;
                         Vector3 pos3 = _matrix[i + 1][j].transform.position;
-                        //double distance12 = Vector3.Distance(pos1, pos2);
-                        //double distance13 = Vector3.Distance(pos1, pos3);
-                        //Vector3 v2 = (pos2 - pos1).normalized;
-                        //Instantiate(line, new Vector3(0,0,0), Quaternion.identity);
-                        //line.SetPosition(0, pos1);
-                        //line.SetPosition(1, pos2);
+                        pos3.y -= 1.4f;
+                        /*lineRenderer.SetPosition(counter, pos1);
+                        counter++;
+                        lineRenderer.SetPosition(counter, pos2);
+                        counter++;
+                        lineRenderer.SetPosition(counter, pos3);
+                        counter++;*/
+
+                        Vector3 med = Vector3.Lerp(pos1, pos2, 0.5f);
+                        var wallObj = Instantiate(wall, med, Quaternion.identity);
+                        //wallObj.transform.localScale = new Vector3(1,0.1f,Vector3.Distance(pos1, pos2));
+
+                        Vector3 scale = new Vector3(Math.Abs(pos1.x - pos2.x), Math.Abs(pos1.y - pos2.y) + 1, Math.Abs(pos1.z - pos2.z) + 2);
+                        wallObj.transform.localScale = scale;
+
+                        var negative = 1;
+                        if (i % 2 != 0) negative = -1;
+                        
+                        Vector3 med1 = Vector3.Lerp(pos1, pos3, 0.5f);
+                        var wallObj1 = Instantiate(wall, med1, Quaternion.identity);
+                        var rotate = Vector3.Angle(pos1, pos3);
+                        wallObj1.transform.Rotate(0, rotate * negative, 0);
+
+                        var scale1 = Vector3.forward * Vector3.Distance(pos1, pos3);
+                        scale1.x = 2;
+                        scale1.y = 1;
+                        
+                        wallObj1.transform.localScale = scale1;
+
+                        
+                        wallObj.transform.SetParent(map.transform);
+                        wallObj1.transform.SetParent(map.transform);
                     }
                 }
             }
+
         }
-        
     }
 }
     

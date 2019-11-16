@@ -7,16 +7,18 @@ namespace CobWeb
 {
     public class PlayerController : MonoBehaviour
     {
+        
         public Camera cam;
         public NavMeshAgent agent;
         public Material goal;
-        public static ThirdPersonCharacter character;
+        public ThirdPersonCharacter character;
         public float rotationSpeed;
         public float moveSpeed;
         private static bool _moving;
         private static bool _rotatingR;
         private static bool _rotatingL;
         private Rigidbody _rb;
+        private bool _onLine;
 
         private void Start()
         {
@@ -63,7 +65,7 @@ namespace CobWeb
             //character.Move(Vector3.left, false, false);
 
         }
-
+        
         private void Move(Vector3 dir)
         {
             var movement = transform.rotation * dir;
@@ -71,5 +73,28 @@ namespace CobWeb
             _rb.MovePosition(poss);
             character.Move(movement, false, false);
         }
+
+        /**
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.tag.Equals("lines")) _onLine = true;
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (!collision.gameObject.tag.Equals("lines") || _onLine)
+            {
+                _onLine = false;
+                return;
+            } 
+
+            Debug.Log("Collision");
+            // Connects to Server
+            var message = JsonUtility.ToJson(new Game("cobWeb", "error"));
+            _client.Message(message);
+
+            _audio.clip = missSound;
+            _audio.Play();
+        }**/
     }
 }

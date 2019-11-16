@@ -78,7 +78,7 @@ namespace Piano
 
             var note = Instantiate(notePrefab, new Vector3(x, y, z), notePrefab.transform.rotation);
             note.GetComponent<MeshRenderer>().sharedMaterial = material;
-            //((Note) EditorUtility.InstanceIDToObject(note.GetInstanceID())).points = points;
+            // (Note) note.points = points;
 
         }
 
