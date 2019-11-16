@@ -323,7 +323,6 @@ MonoBehaviour:
   cursor: {fileID: 560355018}
   rb: {fileID: 383892592}
   _onCollision: 0
-  time: 0
   zPosition: -3.05
   mult: 1
 --- !u!135 &383892594
@@ -603,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeController: {fileID: 1280226056}
-  sphere: {fileID: 1878516982}
+  sphere: {fileID: 6059704670107864014, guid: 5ff5395accf032e459eaecc04a9ed426, type: 3}
 --- !u!114 &565064814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1295,15 +1294,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
       propertyPath: MirroredMovement
@@ -1432,7 +1431,6 @@ MonoBehaviour:
   cursor: {fileID: 1381129589}
   rb: {fileID: 1878516984}
   _onCollision: 0
-  time: 0
   zPosition: -3.05
   mult: 1
 --- !u!54 &1878516984
