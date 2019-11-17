@@ -18,7 +18,6 @@ namespace CobWeb
         private static bool _rotatingR;
         private static bool _rotatingL;
         private Rigidbody _rb;
-        private bool _onLine;
 
         private void Start()
         {
@@ -73,28 +72,5 @@ namespace CobWeb
             _rb.MovePosition(poss);
             character.Move(movement, false, false);
         }
-
-        /**
-        private void OnCollisionEnter(Collision other)
-        {
-            if (other.gameObject.tag.Equals("lines")) _onLine = true;
-        }
-
-        private void OnCollisionExit(Collision collision)
-        {
-            if (!collision.gameObject.tag.Equals("lines") || _onLine)
-            {
-                _onLine = false;
-                return;
-            } 
-
-            Debug.Log("Collision");
-            // Connects to Server
-            var message = JsonUtility.ToJson(new Game("cobWeb", "error"));
-            _client.Message(message);
-
-            _audio.clip = missSound;
-            _audio.Play();
-        }**/
     }
 }

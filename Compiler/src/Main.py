@@ -7,7 +7,7 @@ from game.GameDataBase import GamesDB
 # Example of the program
 def main():
     # Compiles and gets the games tables from compiler
-    games = compile("game.txt")
+    games = compile("../game.txt")
     games_db = GamesDB(games)
 
     # Runs the Code of the Game and handle the loops

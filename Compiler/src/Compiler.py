@@ -20,7 +20,7 @@ def search_in_text(filename, word1, word2):
     f.close()
     f = open(filename, "r")
     for i, line in enumerate(f):
-        if i in range(index1+2, index2):
+        if i in range(index1 + 2, index2):
             str_ret += line
     return str_ret
 
@@ -29,7 +29,7 @@ def search_in_text(filename, word1, word2):
 def extract_variables(filename):
     games_array = []
     for i in range(4):
-        data = search_in_text(filename, "Game"+str(i+1)+"\n", "}\n")
+        data = search_in_text(filename, "Game" + str(i + 1) + "\n", "}\n")
         stx.parser.parse(data)
         if not stx.compilation_successful:
             exit(1)
@@ -39,4 +39,5 @@ def extract_variables(filename):
 
 
 def compile(filename):
+    print("Compiling: %s" % filename)
     return extract_variables(filename)

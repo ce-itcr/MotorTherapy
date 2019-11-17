@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CobWeb
@@ -10,7 +11,9 @@ namespace CobWeb
         private Client.Client _client;
         public AudioClip missSound;
         private AudioSource _audio;
-        private bool _onLine;
+        private static bool _onLine;
+        private static List<GameObject> _lines = new List<GameObject>();
+        private static bool _outside;
 
         private void Start()
         {
@@ -20,27 +23,26 @@ namespace CobWeb
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.CompareTag("Player")) _onLine = true;
+            if (other.gameObject.CompareTag("Player")) 
+                _lines.Add(gameObject);
         }
 
         private void OnCollisionExit(Collision other)
         {
             if (other.gameObject.CompareTag("Player"))
-            {
-                StartCoroutine(Collision());
-            }
+                _lines.Remove(gameObject);
         }
 
-        IEnumerator Collision()
+        private void Update()
         {
-            yield return new WaitForSeconds(0.5f);
-            if (_onLine)
-            {
-                _onLine = false;
-                yield break;
-            }
+            if (_lines.Count == 0 && !_outside) NotOnLine();
+            if (_lines.Count > 0) _outside = false;
+        }
 
-            Debug.Log("Collision");
+        private void NotOnLine()
+        {
+            _outside = true;
+            
             // Connects to Server
             var message = JsonUtility.ToJson(new Game("cobWeb", "error"));
             //_client.Message(message);

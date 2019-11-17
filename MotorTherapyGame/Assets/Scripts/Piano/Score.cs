@@ -16,6 +16,6 @@ namespace Piano
             scoreText.text = $"{tag} : {_score.ToString()}";
         }
 
-        public void AddScore() => _score += 1;
+        public void AddScore(int points) => _score += points;
     }
 }

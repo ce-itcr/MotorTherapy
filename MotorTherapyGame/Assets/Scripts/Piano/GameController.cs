@@ -34,9 +34,9 @@ namespace Piano
 
         }
 
-        public void AddHitScore() => hitText.SendMessage("AddScore");
+        public void AddHitScore(int points) => hitText.SendMessage("AddScore", points);
 
-        public void AddMissScore() => missText.SendMessage("AddScore");
+        public void AddMissScore() => missText.SendMessage("AddScore", 1);
     
         // Returns to the previous Scene
         public void Back()

@@ -1,22 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Note : MonoBehaviour
+namespace Piano
 {
-    public Rigidbody rb;
-    public int points;
-    private const float YSpeed = -0.05f;
-
-    private void Update()
+    public class Note : MonoBehaviour
     {
-        Move();
-    }
+        public Rigidbody rb;
+        public int points;
+        private const float YSpeed = -0.05f;
 
-    private void Move()
-    {
-        var poss = transform.position;
-        poss.y += YSpeed;
-        rb.MovePosition(poss);
+        private void Update()
+        {
+            Move();
+        }
+
+        private void Move()
+        {
+            var poss = transform.position;
+            poss.y += YSpeed;
+            rb.MovePosition(poss);
+        }
     }
 }
