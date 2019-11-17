@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Results : MonoBehaviour
 {
@@ -14,5 +15,11 @@ public class Results : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    public void MainMenu()
+    {
+        Debug.Log("AppInterface");
+        SceneManager.LoadScene("AppInterface");
     }
 }
