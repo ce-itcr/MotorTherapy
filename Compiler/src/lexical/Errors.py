@@ -5,7 +5,7 @@
 # Error handling for invalid characters
 def t_error(t):
     line = read_line(t.value)
-    error = "Lexical error: {0} in line {1}".format(line, t.lineno)
+    error = "Error léxico: {0} en linea {1}".format(line, t.lineno)
     print(error)
     exit(1)
 
