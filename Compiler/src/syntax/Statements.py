@@ -7,6 +7,8 @@ def p_statements_test(p):
                | var_define statements
                | For statements
                | Dow statements
+               | Inc statements
+               | Dec statements
                | Random statements
                | Spiderweb statements
                | ForAssignWord statements

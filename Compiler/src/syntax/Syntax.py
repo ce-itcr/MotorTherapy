@@ -1,6 +1,7 @@
 import ply.yacc as yacc
 from src.lexical.Tokens import *
 from src.syntax.Statements import *
+from src.lexical.Errors import *
 import numpy
 import src.syntax.Excecution as ex
 import random
@@ -43,21 +44,22 @@ def p_var_assign(p):
     var_assign : TYPE ID LSPAREN NUMBER RSPAREN SEMCOL
                | TYPE ID SEMCOL
     '''
-    global variables
-    if p[3] == '[':
-        if p[1][0] == 'Int':
-            print(("Created", p[2]))
-            variables[p[2]] = [[], p[1][0], p[4]]
-        elif p[1][0] == 'String':
-            print(("Created", p[2]))
-            variables[p[2]] = [[], p[1][0], p[4], p[1][1]] # dato, tipo, tamaño array, tamaño string
-    else:
-        try:
-            variables[p[2]] = ["", p[1][0], p[1][1]]
-            print(("Created", p[2]))
-        except:
-            variables[p[2]] = [0, p[1][0]]
-            print(("Created", p[2]))
+    global variables, compilation_successful
+    try:
+        if variables[p[2]]:
+            print("Error en asignacion: variable {0} ya existe".format(p[2]))
+            compilation_successful = False
+    except:
+        if p[3] == '[':
+            if p[1][0] == 'Int':
+                variables[p[2]] = [[], p[1][0], p[4]]
+            elif p[1][0] == 'String':
+                variables[p[2]] = [[], p[1][0], p[4], p[1][1]] # dato, tipo, tamaño array, tamaño string
+        else:
+            try:
+                variables[p[2]] = ["", p[1][0], p[1][1]]
+            except:
+                variables[p[2]] = [0, p[1][0]]
 
 
 def p_var_define(p):
@@ -66,90 +68,136 @@ def p_var_define(p):
                | ID LSPAREN NUMBER RSPAREN EQUAL ATOMIC SEMCOL
                | TYPE ID EQUAL ATOMIC SEMCOL
                | ID EQUAL atomic_variable SEMCOL
+               | ID LSPAREN NUMBER RSPAREN EQUAL atomic_variable SEMCOL
+               | ID LSPAREN ID RSPAREN EQUAL atomic_variable SEMCOL
     '''
     global variables, compilation_successful
     if p[3] == '=':
         try:
-            variables[p[2]] = [p[4], p[1][0], p[1][1]]
+            if variables[p[2]]:
+                print("Error en asignacion: variable {0} ya existe".format(p[2]))
+                compilation_successful = False
         except:
-            print(("=", p[2], p[4]))
-            variables[p[2]] = [p[4], p[1][0]]
+            var_type = 0
+            if p[1][0] == 'Int':
+                var_type = int
+            else:
+                var_type = str
+            try:
+                if p[1][0] == 'String' and isinstance(p[4], var_type):
+                    variables[p[2]] = [p[4], p[1][0], p[1][1]]
+                else:
+                    if var_type == int:
+                        raise Exception
+                    else:
+                        print("Error en asignacion: tipo de variable incompatible en {0} ".format(p[2]))
+            except:
+                if isinstance(p[4], var_type):
+                    variables[p[2]] = [p[4], p[1][0]]
+                else:
+                    print("Error en asignacion: tipo de variable incompatible en {0} ".format(p[2]))
     elif p[2] == '=':
         try:
             x = ex.value(p[3], variables, type(variables[p[1]][0]))
-            print(variables)
             if ex.validatedefineID(p[1], p[3], variables):
                 variables[p[1]][0] = variables[p[3]][0]
-                print(variables)
             else:
                 compilation_successful = False
         except:
             if variables[p[1]][1] == 'String':
                 if isinstance(p[3], str):
                     if len(p[3]) <= variables[p[1]][2]:
-                        # excecute.change_atomic('String', p[3])
                         variables[p[1]][0] = p[3]
                     else:
-                        print("Error: Tamaño de String es incompatible en " + p[1])
+                        print("Error en definición de variable {0}: Tamaño de String es incompatible ".format(p[1]))
                         compilation_successful = False
                 else:
-                    print("Error en la definicion de " + p[1])
+                    print("Error en definición de variable {0}".format(p[1]))
                     compilation_successful = False
             else:
                 if isinstance(p[3], int):
-                    # excecute.change_atomic('Int', p[3])
-                    print(("=", p[1], p[3]))
                     variables[p[1]][0] = p[3]
                 else:
-                    print("Error en la definicion de " + p[1])
+                    print("Error en definición de variable {0}".format(p[1]))
                     compilation_successful = False
     elif p[5] == '=':
-        if variables[p[1]][1] == 'String':
-            if isinstance(variables[p[1]][0], list):
-                if isinstance(p[6], str):
-                    if len(p[6]) <= variables[p[1]][3]:
-                        if len(variables[p[1]][0]) > p[3] and variables[p[1]][2] > p[3]:
-                            # excecute.change_atomic('String', p[3])
-                            variables[p[1]][0][p[3]] = p[6]
-                        elif len(variables[p[1]][0]) == p[3] and variables[p[1]][2] > p[3]:
-                            variables[p[1]][0].append(str(p[6]))
-                            print(variables)
+        try:
+            tp = 0
+            if variables[p[1]][1] == 'Int':
+                tp = int;
+            else:
+                tp = str;
+            if isinstance(p[6], tp):
+                if isinstance(variables[p[3]][0], str) or isinstance(variables[p[3]][0], list):
+                    print("Error en definición de variable {0}".format(p[1]))
+                    compilation_successful = False
+                else:
+                    if tp == str:
+                        if variables[p[1]][3] >= len(ex.value(p[6], variables, tp)[1]):
+                            if len(variables[p[1]][0]) < ex.value(p[3], variables, int)[1]:
+                                variables[p[1]][0][ex.value(p[3], variables, int)[1]] = ex.value(p[6], variables, tp)[1]
+                            elif len(variables[p[1]][0]) == ex.value(p[3], variables, int)[1]:
+                                variables[p[1]][0].append = ex.value(p[6], variables, tp)[1]
+                            else:
+                                print("Error en definición de variable {0}: Indice fuera de rango".format(p[1]))
+                                compilation_successful = False
                         else:
-                            print("Indice fuera de rango en declaración " + p[1])
+                            print("Error en definición de variable {0}: Tamaño de String es incompatible ".format(p[1]))
                             compilation_successful = False
                     else:
-                        print("Tamaño de String es incompatible en " + p[1])
-                        compilation_successful = False
-                else:
-                    print("Error en la definicion de " + p[1])
-                    compilation_successful = False
+                        if len(variables[p[1]][0]) < ex.value(p[3], variables, int)[1]:
+                            variables[p[1]][0][ex.value(p[3], variables, int)[1]] = ex.value(p[6], variables, tp)[1]
+                        elif len(variables[p[1]][0]) == ex.value(p[3], variables, int)[1]:
+                            variables[p[1]][0].append = ex.value(p[6], variables, tp)[1]
+                        else:
+                            print("Error en definición de variable {0}: Indice fuera de rango".format(p[1]))
+                            compilation_successful = False
             else:
-                print("Error en la definicion de " + p[1])
+                print("Error en definición de variable {0}: tipo de variable o indice incompatible".format(p[1]))
                 compilation_successful = False
-        else:
-            if isinstance(variables[p[1]][0], list):
-                if isinstance(p[6], int):
-                    if len(variables[p[1]][0]) > p[3] and variables[p[1]][2] > p[3]:
-                        # excecute.change_atomic('String', p[3])
-                        variables[p[1]][0][p[3]] = p[6]
-                    elif len(variables[p[1]][0]) == p[3] and variables[p[1]][2] > p[3]:
-                        variables[p[1]][0].append(p[6])
+        except:
+            if variables[p[1]][1] == 'String':
+                if isinstance(variables[p[1]][0], list):
+                    if isinstance(p[6], str):
+                        if len(p[6]) <= variables[p[1]][3]:
+                            if len(variables[p[1]][0]) > p[3] and variables[p[1]][2] > p[3]:
+                                variables[p[1]][0][p[3]] = p[6]
+                            elif len(variables[p[1]][0]) == p[3] and variables[p[1]][2] > p[3]:
+                                variables[p[1]][0].append(str(p[6]))
+                            else:
+                                print("Error en definición de variable {0}: Indice fuera de rango".format(p[1]))
+                                compilation_successful = False
+                        else:
+                            print("Error en definición de variable {0}: Tamaño de String es incompatible ".format(p[1]))
+                            compilation_successful = False
                     else:
-                        print("Indice fuera de rango en declaración " + p[1])
+                        print("Error en definición de variable {0}".format(p[1]))
                         compilation_successful = False
                 else:
-                    print("Error en la definicion de " + p[1])
+                    print("Error en definición de variable {0}".format(p[1]))
                     compilation_successful = False
             else:
-                print("Error en la definicion de " + p[1])
-                compilation_successful = False
+                if isinstance(variables[p[1]][0], list):
+                    if isinstance(p[6], int):
+                        if len(variables[p[1]][0]) > p[3] and variables[p[1]][2] > p[3]:
+                            variables[p[1]][0][p[3]] = p[6]
+                        elif len(variables[p[1]][0]) == p[3] and variables[p[1]][2] > p[3]:
+                            variables[p[1]][0].append(p[6])
+                        else:
+                            print("Error en definición de variable {0}: Indice fuera de rango".format(p[1]))
+                            compilation_successful = False
+                    else:
+                        print("Error en definición de variable {0}".format(p[1]))
+                        compilation_successful = False
+                else:
+                    print("Error en definición de variable {0}".format(p[1]))
+                    compilation_successful = False
 
 def p_SpiderWeb(p):
     '''
      Spiderweb : SPIDERWEB LPAREN atomic_variable COMMA atomic_variable RPAREN SEMCOL
     '''
-    global variables
-    print(variables)
+    global variables, compilation_successful
     rows = 0
     columns = 0
     if isinstance(p[3], int) and isinstance(p[5], int):
@@ -162,7 +210,8 @@ def p_SpiderWeb(p):
         except:
             rows = 0
             columns = 0
-            print("ID no definida " + p[3])
+            print("Error en SpiderWeb: ID {0} no definida".format(p[3]))
+            compilation_successful = False
     elif isinstance(p[3], int) and isinstance(p[5], str):
         try:
             rows = p[3]
@@ -170,7 +219,8 @@ def p_SpiderWeb(p):
         except:
             rows = 0
             columns = 0
-            print("ID no definida " + p[5])
+            print("Error en SpiderWeb: ID {0} no definida".format(p[5]))
+            compilation_successful = False
     else:
         try:
             rows = variables[p[3]][0]
@@ -178,22 +228,16 @@ def p_SpiderWeb(p):
         except:
             rows = 0
             columns = 0
-            print("ID no definida " + p[5] + " y " + p[3])
+            print("Error en SpiderWeb: ID {0} y {1} no definidas ".format(p[5],p[3]))
+            compilation_successful = False
     if rows and columns:
-        # SpiderWeb = []
-        # for i in range(columns):
-        #     tempList = []
-        #     for j in range(rows):
-        #         tempList.append(["", 0])
-        #     SpiderWeb.append(tempList)
         variables['spiderWeb'] = [[], rows, columns]
-        print(variables)
 
 def p_ForAssignWord(p):
     '''
     ForAssignWord : FORASIGNWORD LPAREN atomic_variable COMMA atomic_variable RPAREN DO ASIGNWORD LPAREN ID COMMA atomic_variable RPAREN SEMCOL
     '''
-    global variables
+    global variables, compilation_successful
     try:
         if isinstance(variables['spiderWeb'][0], list):
             if ex.value(p[3], variables, int)[1] <= variables['spiderWeb'][1]:
@@ -202,18 +246,46 @@ def p_ForAssignWord(p):
                         if isinstance(ex.value(p[12], variables, list)[1][0], int):
                             variables['spiderWeb'] = ex.assignValueSpiderWeb(variables, p[3], p[5], p[12], p[10])
                         else:
-                            print("La lista no es de numeros")
+                            print("Error en ForAsignWord: La lista no es de numeros")
+                            compilation_successful = False
                     except:
                         if ex.value(p[12], variables, int)[0]:
                             variables['spiderWeb'] = ex.assignValueSpiderWeb(variables, p[3], p[5], p[12], p[10])
                         else:
-                            print("score no es un numero")
+                            print("Error en ForAsignWord: score no es un numero")
+                            compilation_successful = False
                 else:
-                    print("Numero de columnas invalido")
+                    print("Error en ForAsignWord: Numero de columnas invalido")
+                    compilation_successful = False
             else:
-                print("Numero de filas invalido")
+                print("Error en ForAsignWord: Numero de filas invalido")
+                compilation_successful = False
     except:
-        print("Error en for assign")
+        print("Error en ForAsignWord")
+        compilation_successful = False
+
+def p_Inc(p):
+    '''
+    Inc : INC LPAREN ID COMMA atomic_variable RPAREN SEMCOL
+    '''
+    global variables, compilation_successful
+    try:
+        variables[p[3]][0] += ex.value(p[5], variables, int)[1]
+    except:
+        print("Error en Inc: entrada inválida")
+        compilation_successful = False
+
+
+def p_Dec(p):
+    '''
+    Dec : DEC LPAREN ID COMMA atomic_variable RPAREN SEMCOL
+    '''
+    global variables, compilation_successful
+    try:
+        variables[p[3]][0] -= ex.value(p[5], variables, int)[1]
+    except:
+        print("Error en Dec: entrada inválida")
+        compilation_successful = False
 
 def p_RandomFor(p):
     '''
@@ -221,7 +293,7 @@ def p_RandomFor(p):
               | RANDOM LPAREN NUMBER COMMA atomic_variable RPAREN SEMCOL
               | RANDOM LPAREN ID COMMA atomic_variable COMMA atomic_variable RPAREN SEMCOL
     '''
-    global loop_array, variables
+    global loop_array, variables, compilation_successful
     try:
         variables["times"]
     except:
@@ -234,16 +306,19 @@ def p_RandomFor(p):
             elif isinstance(variables[p[5]], int):
                 loop_array.append(['Random', variables[p[3]], p[5]])
             else:
-                print("Error")
+                print("Error en Random: entrada inválida")
+                compilation_successful = False
         else:
-            print("Error")
+            print("Error en Random: entrada inválida")
+            compilation_successful = False
     except:
         if isinstance(p[3], int):
             loop_array.append(['Random', [], p[3]])
         elif isinstance(variables[p[3]][0], int):
             loop_array.append(['Random', [], p[3]])
         else:
-            print("Error en RandomFor")
+            print("Error en Random: entrada inválida")
+            compilation_successful = False
 
 def p_ObjectFor(p):
     '''
@@ -254,13 +329,6 @@ def p_ObjectFor(p):
         variables['Objects']
     except:
         variables['Objects'] = []
-    print("p[3]: " + str(p[3]))
-    # print(isinstance(ex.value(p[3], variables, int)[1], int))
-    print("p[5]: " + str(p[5]))
-    # print(isinstance(ex.value(p[5], variables, int)[1], int))
-    print("p[7]: " + str(p[7]))
-    # print(isinstance(ex.value(p[7], variables, int)[1], int))
-    # print(isinstance(ex.value(p[3], variables, int)[1], int))
     try:
         array = ['Object', p[3], p[5], p[7]]
         for n in range(3):
@@ -268,7 +336,8 @@ def p_ObjectFor(p):
                 array[n+1] = [array[n+1], -2]
         loop_array.append(array)
     except:
-        print("Error Semántico en Objects dentro de For: entrada inválida")
+        print("Error en Objects dentro de For: entrada inválida")
+        compilation_successful = False
 
 
 
@@ -279,7 +348,7 @@ def p_BalloonFor(p):
                | BALLOON LPAREN NUMBER COMMA ID RPAREN SEMCOL
                | BALLOON LPAREN NUMBER COMMA NUMBER RPAREN SEMCOL
     '''
-    global loop_array, variables
+    global loop_array, variables, compilation_successful
     try:
         variables["Balloons"]
     except:
@@ -291,6 +360,7 @@ def p_BalloonFor(p):
             raise Exception
     except:
         print("Error en creación de globos: entrada inválida")
+        compilation_successful = False
 
 
 def p_IncFor(p):
@@ -304,24 +374,15 @@ def p_IncFor(p):
         else:
             raise Exception
     except:
-        print("Error en Inc dentro de for: entrada inválida")
+        print("Error en Inc: entrada inválida")
         compilation_successful = False
-    # print("variables: " + str(variables))
-    # try:
-    #     if not ex.value(p[3], variables, int)[0]:
-    #         if ex.value(p[5], variables, int)[0]:
-    #             loop_array.append(['Inc', p[3], p[5]])
-    #         elif not ex.value(p[5], variables, int)[0]:
-    #             loop_array.append(['Inc', p[3], variables[p[5]][0]])
-    # except:
-    #     print("Error en IncFor")
-
+        loop_array.append()
 
 def p_DecFor(p):
     '''
     DecFor : DEC LPAREN ID COMMA atomic_variable RPAREN SEMCOL
     '''
-    global variables, loop_array
+    global variables, loop_array, compilation_successful
     try:
         if not ex.value(p[3], variables, int)[0]:
             if ex.value(p[5], variables, int)[0]:
@@ -329,7 +390,9 @@ def p_DecFor(p):
             elif not ex.value(p[5], variables, int)[0]:
                 loop_array.append(['Dec', p[3], variables[p[5]][0]])
     except:
-        print("Error en DecFor")
+        print("Error en DecFor: entrada inválida")
+        compilation_successful = False
+        loop_array = []
 
 def p_Body(p):
     '''
@@ -346,20 +409,13 @@ def p_For(p):
     '''
     For : FOR NUMBER TIMES USING ID Body FOREND SEMCOL
     '''
-    # if isinstance(variables[p[5]][0], list):
-    #     loop_array.append(p[2])
-    # else:
     global variables, loop_array
-    print("variables" + str(variables))
     loop_array.append(p[2])
-    print("loop array: " + str(loop_array))
     try:
         if isinstance(variables[p[5]][0], list):
-            print("p[5] = " + str(p[5]))
             variables = ex.loop(loop_array, variables, p[5])
     except:
         variables = ex.loop(loop_array, variables, 0)
-    print(variables)
     loop_array = []
 
 def p_Dow(p):
@@ -371,7 +427,6 @@ def p_Dow(p):
     try:
         loop_array.append(ex.value(p[3], variables, int)[1])
         variables = ex.loop(loop_array, variables, [])
-        print(variables)
     except:
         print("Error en Dow: entrada inválida")
         compilation_successful = False
@@ -390,7 +445,7 @@ def p_type(p):
     '''
     if p[1] == 'Int':
         p[0] = [p[1]]
-    elif p[1] == 'String':
+    elif p[2] == '(':
         p[0] = [p[1], p[3]]
 
 def p_atomic(p):
@@ -418,28 +473,11 @@ def p_atomic_variable_for(p):
     except:
         p[0] = p[1]
 
-
-
-# def p_Random():
-#     '''
-#     Random : RANDOM LPAREN ID COMMA ID COMMA ID RPAREN SEMICOL
-#     '''
-#     p[0] = p[1]
-
-
-# def p_optitem(p):
-#     '''
-#     optitem : item'
-#             | empty
-#     '''
-#    if:
-#    else:
-#        pass
-
-# def p_error(t):
-#     if not t:
-#         print("puto")
-#         return
-#     print("Syntax error at '%s'" % t.value)
-
+def p_error(p):
+    global compilation_successful
+    if not p:
+        exit(1)
+    compilation_successful = False
+    print("Error sintáctico en linea {0}".format(p.lineno))
+    exit(1)
 parser = yacc.yacc()
