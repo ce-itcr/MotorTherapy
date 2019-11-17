@@ -114,8 +114,23 @@ def p_var_define(p):
             else:
                 tp = str;
             if isinstance(p[6], tp):
-                if tp == str:
-                    if variables[p[1]][3] >= len(ex.value(p[6], variables, tp)[1]):
+                if isinstance(variables[p[3]][0], str) or isinstance(variables[p[3]][0], list):
+                    print("Error en definición de variable {0}".format(p[1]))
+                    compilation_successful = False
+                else:
+                    if tp == str:
+                        if variables[p[1]][3] >= len(ex.value(p[6], variables, tp)[1]):
+                            if len(variables[p[1]][0]) < ex.value(p[3], variables, int)[1]:
+                                variables[p[1]][0][ex.value(p[3], variables, int)[1]] = ex.value(p[6], variables, tp)[1]
+                            elif len(variables[p[1]][0]) == ex.value(p[3], variables, int)[1]:
+                                variables[p[1]][0].append = ex.value(p[6], variables, tp)[1]
+                            else:
+                                print("Error en definición de variable {0}: Indice fuera de rango".format(p[1]))
+                                compilation_successful = False
+                        else:
+                            print("Error en definición de variable {0}: Tamaño de String es incompatible ".format(p[1]))
+                            compilation_successful = False
+                    else:
                         if len(variables[p[1]][0]) < ex.value(p[3], variables, int)[1]:
                             variables[p[1]][0][ex.value(p[3], variables, int)[1]] = ex.value(p[6], variables, tp)[1]
                         elif len(variables[p[1]][0]) == ex.value(p[3], variables, int)[1]:
@@ -123,17 +138,6 @@ def p_var_define(p):
                         else:
                             print("Error en definición de variable {0}: Indice fuera de rango".format(p[1]))
                             compilation_successful = False
-                    else:
-                        print("Error en definición de variable {0}: Tamaño de String es incompatible ".format(p[1]))
-                        compilation_successful = False
-                else:
-                    if len(variables[p[1]][0]) < ex.value(p[3], variables, int)[1]:
-                        variables[p[1]][0][ex.value(p[3], variables, int)[1]] = ex.value(p[6], variables, tp)[1]
-                    elif len(variables[p[1]][0]) == ex.value(p[3], variables, int)[1]:
-                        variables[p[1]][0].append = ex.value(p[6], variables, tp)[1]
-                    else:
-                        print("Error en definición de variable {0}: Indice fuera de rango".format(p[1]))
-                        compilation_successful = False
             else:
                 print("Error en definición de variable {0}: tipo de variable o indice incompatible".format(p[1]))
                 compilation_successful = False
