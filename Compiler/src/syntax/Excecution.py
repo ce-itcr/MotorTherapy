@@ -48,14 +48,18 @@ def loop(loop_array, variables, var):
                 variables['Balloons'].append([x, y])
             elif loop_array[n][0] == 'Object':
                 entry_array = []
-                for h in range(3):
-                    if loop_array[n][h+1][1] == -1:
-                        entry_array.append(value(loop_array[n][h+1][0], variables, list)[1][i])
-                    elif loop_array[n][h+1][1] == -2:
-                        entry_array.append(value(loop_array[n][h+1][0], variables, int)[1])
-                    else:
-                        entry_array.append(value(loop_array[n][h+1][0][loop_array[n][h][1]], variables, int)[1])
-                variables['Objects'].append(entry_array)
+                try:
+                    for h in range(3):
+                        if loop_array[n][h+1][1] == -1:
+                            entry_array.append(value(loop_array[n][h+1][0], variables, list)[1][i])
+                        elif loop_array[n][h+1][1] == -2:
+                            entry_array.append(value(loop_array[n][h+1][0], variables, int)[1])
+                        else:
+                            entry_array.append(value(loop_array[n][h+1][0][loop_array[n][h][1]], variables, int)[1])
+                    variables['Objects'].append(entry_array)
+                except:
+                    print("Error: Object contiene una entrada inválida y no se ha ejecutado")
+
 
             elif loop_array[n][0] == 'Random':
                 var_val_list = value(var, variables, list)

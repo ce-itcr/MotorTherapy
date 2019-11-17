@@ -78,10 +78,24 @@ def p_var_define(p):
                 print("Error en asignacion: variable {0} ya existe".format(p[2]))
                 compilation_successful = False
         except:
+            var_type = 0
+            if p[1][0] == 'Int':
+                var_type = int
+            else:
+                var_type = str
             try:
-                variables[p[2]] = [p[4], p[1][0], p[1][1]]
+                if p[1][0] == 'String' and isinstance(p[4], var_type):
+                    variables[p[2]] = [p[4], p[1][0], p[1][1]]
+                else:
+                    if var_type == int:
+                        raise Exception
+                    else:
+                        print("Error en asignacion: tipo de variable incompatible en {0} ".format(p[2]))
             except:
-                variables[p[2]] = [p[4], p[1][0]]
+                if isinstance(p[4], var_type):
+                    variables[p[2]] = [p[4], p[1][0]]
+                else:
+                    print("Error en asignacion: tipo de variable incompatible en {0} ".format(p[2]))
     elif p[2] == '=':
         try:
             x = ex.value(p[3], variables, type(variables[p[1]][0]))
