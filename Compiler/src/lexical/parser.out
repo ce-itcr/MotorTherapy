@@ -1,0 +1,158 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ASIGNWORD
+    BALLOON
+    BEGIN
+    COMMA
+    DEC
+    DIVIDE
+    DO
+    END
+    ENDDO
+    FORASIGNWORD
+    FOREND
+    GAME
+    INC
+    INT
+    LBRACE
+    LPAREN
+    LSPAREN
+    MAIN
+    MINUS
+    MULTI
+    OBJECT
+    PLUS
+    RANDOM
+    RBRACE
+    RPAREN
+    RSPAREN
+    SEMCOL
+    SPIDERWEB
+    STRING
+
+Grammar
+
+Rule 0     S' -> For
+Rule 1     For -> FOR NUMBER TIMES USING NUMBER
+Rule 2     Dow -> DOW ( ID )
+Rule 3     Dow -> DOW ( NUMBER )
+Rule 4     var -> <empty>
+Rule 5     var_assign -> ID EQUAL NUMBER
+Rule 6     var_assign -> ID EQUAL TEXT
+Rule 7     var_assign -> i n t ID EQUAL NUMBER
+Rule 8     var_assign -> s t r i n g ( NUMBER ) ID [ NUMBER ]
+Rule 9     var_assign -> i n t ID [ NUMBER ]
+Rule 10    empty -> <empty>
+
+Terminals, with rules where they appear
+
+(                    : 2 3 8
+)                    : 2 3 8
+ASIGNWORD            : 
+BALLOON              : 
+BEGIN                : 
+COMMA                : 
+DEC                  : 
+DIVIDE               : 
+DO                   : 
+DOW                  : 2 3
+END                  : 
+ENDDO                : 
+EQUAL                : 5 6 7
+FOR                  : 1
+FORASIGNWORD         : 
+FOREND               : 
+GAME                 : 
+ID                   : 2 5 6 7 8 9
+INC                  : 
+INT                  : 
+LBRACE               : 
+LPAREN               : 
+LSPAREN              : 
+MAIN                 : 
+MINUS                : 
+MULTI                : 
+NUMBER               : 1 1 3 5 7 8 8 9
+OBJECT               : 
+PLUS                 : 
+RANDOM               : 
+RBRACE               : 
+RPAREN               : 
+RSPAREN              : 
+SEMCOL               : 
+SPIDERWEB            : 
+STRING               : 
+TEXT                 : 6
+TIMES                : 1
+USING                : 1
+[                    : 8 9
+]                    : 8 9
+error                : 
+g                    : 8
+i                    : 7 8 9
+n                    : 7 8 9
+r                    : 8
+s                    : 8
+t                    : 7 8 9
+
+Nonterminals, with rules where they appear
+
+Dow                  : 
+For                  : 0
+empty                : 
+var                  : 
+var_assign           : 
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . For
+    (1) For -> . FOR NUMBER TIMES USING NUMBER
+
+    FOR             shift and go to state 2
+
+    For                            shift and go to state 1
+
+state 1
+
+    (0) S' -> For .
+
+
+
+state 2
+
+    (1) For -> FOR . NUMBER TIMES USING NUMBER
+
+    NUMBER          shift and go to state 3
+
+
+state 3
+
+    (1) For -> FOR NUMBER . TIMES USING NUMBER
+
+    TIMES           shift and go to state 4
+
+
+state 4
+
+    (1) For -> FOR NUMBER TIMES . USING NUMBER
+
+    USING           shift and go to state 5
+
+
+state 5
+
+    (1) For -> FOR NUMBER TIMES USING . NUMBER
+
+    NUMBER          shift and go to state 6
+
+
+state 6
+
+    (1) For -> FOR NUMBER TIMES USING NUMBER .
+
+    $end            reduce using rule 1 (For -> FOR NUMBER TIMES USING NUMBER .)
+

@@ -1,0 +1,33 @@
+{
+	"type": "",
+
+	"status": "",
+  
+  	"piano":
+  	{
+    	    "colors": ["red", "blue", "green", "yellow"],
+	    "points": [1, 2, 3, 4],
+	    "time": 60
+  	},
+  
+	"targets":
+	{
+	    "x": 300,
+	    "y": 200,
+	    "time": 30
+	},
+	  
+	"cobWeb":
+	{
+	    "cards": [{"name":"ocean", "points":10, "i":0, "j":0},
+	    		  {"name":"sky", "points":5, "i":0, "j":1},
+	              {"name":"river", "points":4, "i":1, "j":0}, 
+	              {"name":"mountain", "points":8, "i":1, "j":1}]
+	},
+	  
+	"balloons":
+	{
+		"x": 300,
+	    "y": 200
+	}
+}
