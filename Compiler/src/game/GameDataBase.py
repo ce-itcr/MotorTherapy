@@ -52,7 +52,7 @@ class GamesDB:
 
                 cards.append(Card(name, points, i, j).dict())
 
-        self.cob_web = CobWeb(cards)
+        self.cob_web = CobWeb(cards, rows, columns)
 
     def create_targets(self, dict):
         array = dict["Objects"]

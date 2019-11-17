@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Object = System.Object;
 
 namespace CobWeb
 {
@@ -12,7 +13,7 @@ namespace CobWeb
         private Client.Client _client;
         private LineRenderer lineRenderer;
         private Game _game;
-        public GameObject target;
+        public GameObject goal;
         public GameObject wall;
         public GameObject ground;
         public GameObject map;
@@ -42,7 +43,7 @@ namespace CobWeb
             var response = _client.Message(message);
             _game = Game.CreateFromJson(response);
 
-            // Scale of the Ground and Instantiate Targets
+            #region Scale of the Ground and Instantiate Targets
             var scale = ground.GetComponent<MeshRenderer>().bounds.size;
             _height = scale.z;
             _width = scale.x;
@@ -59,26 +60,31 @@ namespace CobWeb
                 new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
             );
             lineRenderer.colorGradient = gradient;
+            #endregion
             
+            if (_game.cobWeb.cards == null) return;
             InstantiatedTargets();
             CreatePaths();
         }
 
-
-        private void Update()
+        private void LoadCard(GameObject obj, int i, int j)
         {
-           
+            var card = _game.GetCard(i, j);
+            var sGoal = obj.GetComponent<Goal>();
+            sGoal.name = card.name;
+            sGoal.points = card.points;
+            sGoal.i = i;
+            sGoal.j = j;
         }
 
         private void InstantiatedTargets()
         {
-            var rows = 8;
-            var columns = 8;
+            var rows = _game.cobWeb.rows;
+            var columns = _game.cobWeb.columns;
             var xOffset = _width / (rows + 1);
             var zOffset = _height / (columns + 1);
             var xInitial = _width / 2 + xOffset / 4 - 25;
             var zInitial = _height / 2 - 25;
-            Material material = null;
 
             for (var j = 0; j < rows; ++j)
             {
@@ -92,7 +98,8 @@ namespace CobWeb
 
                     // Creates the Target
                     var x = (i + 1) * xOffset - xInitial + odd;
-                    var obj = Instantiate(target, new Vector3(x, 1, z), Quaternion.identity);
+                    var obj = Instantiate(goal, new Vector3(x, 1, z), Quaternion.identity);
+                    LoadCard(obj, i, j);
                     row.Add(obj);
                 }
                 _matrix.Add(row);
@@ -101,14 +108,13 @@ namespace CobWeb
 
         private void CreatePaths()
         {
-             int rows = _matrix[0].Count;
-            int columns = _matrix.Count;
-            int counter = 0;
-            for (int i = 0; i < columns; i++)
+             var rows = _matrix[0].Count;
+            var columns = _matrix.Count;
+            for (var i = 0; i < columns; i++)
             {
-                for (int j = 0; j < rows; j++)
+                for (var j = 0; j < rows; j++)
                 {
-                    Vector3 pos1 = _matrix[i][j].transform.position;
+                    var pos1 = _matrix[i][j].transform.position;
                     pos1.y -= 1.4f;
                     if (i == (columns - 1) && j == (rows - 1))
                     {

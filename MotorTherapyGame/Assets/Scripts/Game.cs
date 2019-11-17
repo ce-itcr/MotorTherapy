@@ -52,6 +52,8 @@ public class Game
     public struct CobWeb
     {
         public Card[] cards;
+        public int rows;
+        public int columns;
         
         [Serializable]
         public struct Card
@@ -68,5 +70,18 @@ public class Game
     {
         public int x;
         public int y;
+    }
+
+    public CobWeb.Card GetCard(int i, int j)
+    {
+        var result = new CobWeb.Card();
+        foreach (var card in cobWeb.cards)
+        {
+            if (card.i != i || card.j != j) continue;
+            result = card;
+            break;
+        }
+
+        return result;
     }
 }

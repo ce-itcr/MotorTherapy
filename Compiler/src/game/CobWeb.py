@@ -4,12 +4,16 @@ import json
 # Class for Json encoding
 class CobWeb:
 
-    def __init__(self, cards):
+    def __init__(self, cards, rows, columns):
         self.cards = cards
+        self.rows = rows
+        self.columns = columns
 
     def dict(self):
         return {
-            'cards': self.cards}
+            'cards': self.cards,
+            'rows': self.rows,
+            'columns': self.columns}
 
     def to_json(self):
         return json.dumps(self.dict())
