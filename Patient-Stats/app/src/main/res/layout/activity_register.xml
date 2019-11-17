@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity">
+    tools:context=".login.RegisterActivity">
 
     <EditText
         android:id="@+id/input_email"
@@ -47,8 +47,8 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="156dp"
         android:background="@color/colorPrimaryDark"
-        android:onClick="validateLoginInputFields"
-        android:text="Sign In"
+        android:onClick="validateInputFields"
+        android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,27 +81,11 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="170dp"
         android:layout_marginRight="170dp"
-        android:onClick="sendPasswordReset"
-        android:text="@string/forgot_password"
+        android:onClick="toLogin"
+        android:text="@string/have_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_signup" />
-
-    <TextView
-        android:id="@+id/have_account_tv2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="183dp"
-        android:layout_marginLeft="183dp"
-        android:layout_marginTop="97dp"
-        android:layout_marginEnd="170dp"
-        android:layout_marginRight="170dp"
-        android:onClick="toRegister"
-        android:text="@string/no_account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/have_account_tv" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

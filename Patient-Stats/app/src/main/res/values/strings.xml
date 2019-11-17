@@ -24,5 +24,9 @@
     <string name="info_text">MotorTherapy corresponds to Project I for the course of Languages, Compilers and Interpreters (CE3104) by the Computer Engineering degree
         of the Technological Institute of Costa Rica. It consists of an implementation of a device that helps people in their gross motor therapies.</string>
     <string name="more_info">For more information visit: https://github.com/ce-itcr/MotorTherapy</string>
+
+
     <string name="forgot_password">Forgot your password?</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="no_account">Don\'t have an account?</string>
 </resources>

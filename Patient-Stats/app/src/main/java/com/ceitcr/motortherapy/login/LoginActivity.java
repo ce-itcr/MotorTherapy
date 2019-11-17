@@ -38,14 +38,14 @@ public class LoginActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         input_email=findViewById(R.id.input_email);
         input_password=findViewById(R.id.input_password);
-        button_sigin = findViewById(R.id.button_signin);
+        button_sigin = findViewById(R.id.button_signup);
     }
 
     @Override
     public void onBackPressed() { moveTaskToBack(false); }
 
 
-    public void validateInputFields(View view){
+    public void validateLoginInputFields(View view){
 
         String email = input_email.getText().toString();
         String password = input_password.getText().toString();
@@ -98,7 +98,11 @@ public class LoginActivity extends AppCompatActivity {
             });
 
         }
-        
 
+    }
+
+    public void toRegister(View view){
+        Intent i = new Intent(getBaseContext(), RegisterActivity.class);
+        startActivity(i);
     }
 }
