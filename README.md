@@ -28,7 +28,7 @@ en sí mismo y resulta determinante para el correcto funcionamiento de la psicom
 
 ## Documentación
 
-Si desea leer sobre el uso de [MotorTherapy](https://github.com/ce-itcr/MotorTherapy) y su documentación técnica. Diríjase a: [MotorTherapy/docs](https://github.com/ce-itcr/MotorTherapy).
+Si desea leer sobre el uso de [MotorTherapy](https://github.com/ce-itcr/MotorTherapy) y su documentación técnica. Diríjase a: [MotorTherapy/docs](https://github.com/ce-itcr/MotorTherapy/docs).
 Allí encontrará los siguientes archivos:
 
  - `MotorTherapy - Arquitectura`
@@ -36,25 +36,29 @@ Allí encontrará los siguientes archivos:
  - `MotorTherapy - Atributos`
     Este archivo contiene la explicación en qué manera se aplicaron los atributos que posee el curso y su impacto. Se detalla la aplicación del atributo, el impacto del proyecto en la sociedad,
     y la retroalimentación obtenida gracias al proyecto.
- - `MotorTherapy - Diseño de Marca`
-    Este archivo explica el naming e identidad corporativa de MotorTherapy.
  - `MotorTherapy - Documentación Técnica`
     Este archivo incluye alternativas de soluciones y justificación a cada una de ellas. Problemas conocidos, actividades realizadas por cada desarrollador del proyecto,conclusiones y recomendaciones del proyecto.
     En síntesis, la documentación técnica provee una interfaz para el desarrollador donde ilustra decisiones de diseño.
+ - `MotorTherapy - Gestión del Proyecto`
+    Este archivo es un resumen de las labores realizadas, horas y flujo de trabajo mediante un Gantt Chart.
 
 Puede consultar usos del proyecto en: [ce-itcr](https://ce-itcr.github.io/projects/CE3104/motortherapy.html)
 
 
 ## Instalación y Dependencias
 
-### PreRequisitos
-
-```
-```
-
 ### Dependencias
 
 ```
+Kinect Studio V1.7.0
+Developer Toolkit Browaser v1.7.0 (Kinect for Windows)
+
+Unity 2018.4.12f1 o superior : JetBrains Rider
+Python 3.8 : JetBrains PyCharm
+
+Unity Asset Store:  RESTClient
+Unity Asset Store:  
+
 ```
 
 ### Instalación
