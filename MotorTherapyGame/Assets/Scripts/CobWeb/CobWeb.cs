@@ -117,7 +117,7 @@ namespace CobWeb
 
         private void CreatePaths()
         {
-             var rows = _matrix[0].Count;
+            var rows = _matrix[0].Count;
             var columns = _matrix.Count;
             for (var i = 0; i < columns; i++)
             {
@@ -127,15 +127,47 @@ namespace CobWeb
                     pos1.y -= 1.4f;
                     if (i == (columns - 1) && j == (rows - 1))
                     {
-
+                        continue;
                     }
                     else if (j == rows - 1)
                     {
+                        Vector3 pos3 = _matrix[i + 1][j].transform.position;
+                        pos3.y -= 1.4f;
+                        
+                        //wallObj.transform.localScale = new Vector3(1,0.1f,Vector3.Distance(pos1, pos2));
 
+                        var negative = 1;
+                        if (i % 2 != 0) negative = -1;
+                        
+                        Vector3 med1 = Vector3.Lerp(pos1, pos3, 0.5f);
+                        var wallObj1 = Instantiate(wall, med1, Quaternion.identity);
+                        var rotate = Vector3.Angle(pos1, pos3);
+                        wallObj1.transform.Rotate(0, rotate * negative, 0);
+
+                        var scale1 = Vector3.forward * Vector3.Distance(pos1, pos3);
+                        scale1.x = 2;
+                        scale1.y = 1;
+                        
+                        wallObj1.transform.localScale = scale1;
+                        
+                        wallObj1.transform.SetParent(map.transform);
                     }
                     else if (i == columns - 1)
                     {
+                        Vector3 pos2 = _matrix[i][j + 1].transform.position;
+                        pos2.y -= 1.4f;
 
+                        Vector3 med = Vector3.Lerp(pos1, pos2, 0.5f);
+                        var wallObj = Instantiate(wall, med, Quaternion.identity);
+                        //wallObj.transform.localScale = new Vector3(1,0.1f,Vector3.Distance(pos1, pos2));
+
+                        Vector3 scale = new Vector3(Math.Abs(pos1.x - pos2.x), Math.Abs(pos1.y - pos2.y) + 1, Math.Abs(pos1.z - pos2.z) + 2);
+                        wallObj.transform.localScale = scale;
+
+                        var negative = 1;
+                        if (i % 2 != 0) negative = -1;
+                        
+                        wallObj.transform.SetParent(map.transform);
                     }
                     else
                     {
