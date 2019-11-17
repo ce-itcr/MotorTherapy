@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Object = System.Object;
 
 namespace CobWeb
@@ -11,19 +12,20 @@ namespace CobWeb
     public class CobWeb : MonoBehaviour
     {
         private Client.Client _client;
-        private LineRenderer lineRenderer;
         private Game _game;
         public GameObject goal;
         public GameObject wall;
         public GameObject ground;
         public GameObject map;
+        public Text time;
+        public Text score;
+        private int _score;
+        private const float TimeMax = 60f;
+        private float _startTime;
         private float _height;
         private float _width;
         private List<List<GameObject>> _matrix = new List<List<GameObject>>();
         
-        public Color c1 = Color.yellow;
-        public Color c2 = Color.red;
-        private LineRenderer line;
 
         // Returns to the previous Scene
         public void Back()
@@ -43,36 +45,42 @@ namespace CobWeb
             var message = JsonUtility.ToJson(new Game("cobWeb", "ok"));
             var response = _client.Message(message);
             _game = Game.CreateFromJson(response);
-
-            #region Scale of the Ground and Instantiate Targets
+            if (_game.status.Equals("end")) Back();
+            
+            // Gets Ground scale
             var scale = ground.GetComponent<MeshRenderer>().bounds.size;
             _height = scale.z;
             _width = scale.x;
-
-            lineRenderer = gameObject.AddComponent<LineRenderer>();
-            lineRenderer.widthMultiplier = 0.6f;
-            lineRenderer.positionCount = 200;
-            //lineRenderer.tag = "lines";
-
-            float alpha = 1.0f;
-            Gradient gradient = new Gradient();
-            gradient.SetKeys(
-                new GradientColorKey[] { new GradientColorKey(c1, 0.0f), new GradientColorKey(c2, 1.0f) },
-                new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
-            );
-            lineRenderer.colorGradient = gradient;
-            #endregion
             
+            // Loads Matrix
             if (_game.cobWeb.cards == null) return;
             InstantiatedTargets();
             CreatePaths();
+
+            _startTime = Time.time;
+        }
+
+        private void Update()
+        {
+            var t = TimeMax - (Time.time - _startTime);
+            time.text = $"Time: {t:0}";
+            
+            if (t > 0) return;
+            var message = JsonUtility.ToJson(new Game("cobWeb", "end"));
+            _client.Message(message);
+        }
+
+        public void AddScore(int points)
+        {
+            _score += points;
+            score.text = $"Score: {_score}";
         }
 
         private void LoadCard(GameObject obj, int i, int j)
         {
             var card = _game.GetCard(i, j);
             var sGoal = obj.GetComponent<Goal>();
-            sGoal.name = card.name;
+            sGoal.word = card.name;
             sGoal.points = card.points;
             sGoal.i = i;
             sGoal.j = j;
