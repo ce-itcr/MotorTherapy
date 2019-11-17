@@ -41,6 +41,7 @@ namespace Piano
         // Returns to the previous Scene
         public void Back()
         {
+            SceneManager.UnloadSceneAsync("Scenes/PianoScene");
             SceneManager.LoadScene("AppInterface");
         }
 

@@ -28,6 +28,7 @@ namespace CobWeb
         // Returns to the previous Scene
         public void Back()
         {
+            SceneManager.UnloadSceneAsync("Scenes/CobWeb");
             SceneManager.LoadScene("AppInterface");
         }
 

@@ -13,6 +13,7 @@ namespace Balloons
         // Returns to the previous Scene
         public void Back()
         {
+            SceneManager.UnloadSceneAsync("Scenes/Balloons");
             SceneManager.LoadScene("AppInterface");
         }
         

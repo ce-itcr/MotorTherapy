@@ -61,6 +61,7 @@ namespace Targets
         
         public void Results()
         {
+	        SceneManager.UnloadSceneAsync("Scenes/Targets");
 	        SceneManager.LoadScene("Results");
         }
     }
