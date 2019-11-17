@@ -358,6 +358,7 @@ def p_IncFor(p):
     except:
         print("Error en Inc: entrada inválida")
         compilation_successful = False
+        loop_array.append()
 
 def p_DecFor(p):
     '''
@@ -373,6 +374,7 @@ def p_DecFor(p):
     except:
         print("Error en DecFor: entrada inválida")
         compilation_successful = False
+        loop_array = []
 
 def p_Body(p):
     '''

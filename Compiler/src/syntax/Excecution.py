@@ -14,6 +14,8 @@ def loop(loop_array, variables, var):
         var_str = True
     else:
         var_str = False
+    if loop_array == []:
+        return variables
     for i in range(loop_array[-1]):
         for n in range(len(loop_array)-1):
             if loop_array[n][0] == 'Inc':
@@ -24,7 +26,10 @@ def loop(loop_array, variables, var):
                 else:
                     if loop_array[n][1] == "time":
                         variables["times"].append(variables[loop_array[n][1]][0])
-                    variables[loop_array[n][1]][0] += value(loop_array[n][2], variables, int)[1]
+                    try:
+                        variables[loop_array[n][1]][0] += value(loop_array[n][2], variables, int)[1]
+                    except:
+                        print("Error: Inc contiene una entrada inválida y no se ha ejecutado")
             elif loop_array[n][0] == 'Dec':
                 if loop_array[n][2] == 'Local':
                     if loop_array[n][1] == "time":
@@ -33,7 +38,10 @@ def loop(loop_array, variables, var):
                 else:
                     if loop_array[n][1] == "time":
                         variables["times"].append(variables[loop_array[n][1]][0])
-                    variables[loop_array[n][1]][0] -= value(loop_array[n][2], variables, int)[1]
+                    try:
+                        variables[loop_array[n][1]][0] -= value(loop_array[n][2], variables, int)[1]
+                    except:
+                        print("Error: Dec contiene una entrada inválida y no se ha ejecutado")
             elif loop_array[n][0] == 'Balloon':
                 x = value(loop_array[n][1], variables, int)[1]
                 y = value(loop_array[n][2], variables, int)[1]
@@ -53,10 +61,13 @@ def loop(loop_array, variables, var):
                 var_val_list = value(var, variables, list)
                 var_val_int = value(var, variables, int)
                 ran_arr = loop_array[n][1]
-                if var_str:
-                    str_name = 'Random' + var
-                else:
-                    str_name = 'Random' + ran_arr
+                try:
+                    if var_str:
+                        str_name = 'Random' + var
+                    else:
+                        str_name = 'Random' + ran_arr
+                except:
+                    pass
                 if value(ran_arr, variables, list)[1] == []:
                     try:
                         variables[str_name]
@@ -68,7 +79,7 @@ def loop(loop_array, variables, var):
                     if ran_arr_val[0]:
                         variables[str_name].append(random_list(len(ran_arr_val[1]), var_val_int[1], ran_arr_val[1]))
                     else:
-                        print("Error en RandomFor")
+                        print("Error en Random dentro de loop")
                         raise Exception
                 except:
                     if ran_arr_val[0]:
@@ -76,7 +87,7 @@ def loop(loop_array, variables, var):
                         if list_to_append != None:
                             variables[str_name].append(list_to_append)
                     else:
-                        print("Error en RandomFor")
+                        print("Error en Random dentro de loop")
                         raise Exception
     return variables
 
