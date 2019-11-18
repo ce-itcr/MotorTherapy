@@ -64,10 +64,6 @@ namespace CobWeb
         {
             var t = TimeMax - (Time.time - _startTime);
             time.text = $"Time: {t:0}";
-            
-            if (t > 0) return;
-            var message = JsonUtility.ToJson(new Game("cobWeb", "end"));
-            _client.Message(message);
         }
 
         public void AddScore(int points)
