@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "255920617887",
+    "firebase_url": "https://motortherapy-auth.firebaseio.com",
+    "project_id": "motortherapy-auth",
+    "storage_bucket": "motortherapy-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255920617887:android:bff709581e4ce5346ba5aa",
+        "android_client_info": {
+          "package_name": "com.ceitcr.motortherapy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255920617887-i5ambutg0ck96rhkdgmo25830q53i9f1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ceitcr.motortherapy",
+            "certificate_hash": "35eb5b45a9ca4793a3783a3c621b7c282405ce20"
+          }
+        },
+        {
+          "client_id": "255920617887-416dj9abfgq8djmpmf1bm3evl2vsndgo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYK3cikShRyOJnsIU7os7_mUibWlO7zY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255920617887-416dj9abfgq8djmpmf1bm3evl2vsndgo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
